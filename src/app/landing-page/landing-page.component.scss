@@ -1,0 +1,158 @@
+$bluecolor: rgba(51, 186, 207, 0.7);
+$greencolor: rgba(92, 208, 95, 0.7);
+
+/* ============ background Image container ============ */
+div.background-img-container {
+  background-image: url("src/assets/blueSquareCube.jpg");
+  background-attachment: fixed;
+  //background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+/* ============ HomePage Top ============ */
+section.homepage-top {
+  position: page;
+  background-image: linear-gradient(to bottom, $bluecolor, $greencolor);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  //background-attachment: fixed;
+  width: 100%;
+}
+
+section.homepage-banner {
+  color: #ffffff;
+  margin-right: 15%;
+  margin-left: 15%;
+  padding-bottom: 1px;
+  text-align: center;
+}
+
+div.banner-wrap {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
+
+div.crypto-container {
+  display: flex;
+  justify-content: center;
+}
+div.crypto-wrap h5, div.crypto-wrap p {
+  margin: 0;
+  padding: 0;
+}
+div.banner-wrap h1 {
+  font-weight: 900;
+}
+div.crypto-wrap h5 {
+  margin-top: 2px;
+  font-weight: 600;
+  font-size: 18px;
+}
+div.crypto-wrap p {
+  font-size: 15px;
+
+}
+div.crypto-wrap {
+  margin: 1rem;
+  border: 2px solid white;
+  border-radius: 30px;
+  width: 250px;
+}
+
+section.homepage-bottom {
+  margin: 0 12% 1rem;
+}
+section.crypto-price-table {
+  margin-top: 1rem;
+}
+
+
+/* ============ Carousel ============ */
+section.carousel-container {
+  margin: 1.5rem 0;
+}
+
+
+/* ============ Bottom Registration Container ============ */
+div.register-container {
+  text-align: center;
+  padding: 3rem;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), $bluecolor);
+}
+div.register-background {
+  background-size: cover;
+  //background-color: $bluecolor;
+}
+
+div.form-container {
+  z-index: 1;
+  display: block;
+  width: 350px;
+  margin: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+h3.label-register {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+}
+
+button.register-button, input.email-input, button.login-button {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  outline: none;
+  border: none;
+  height: 2.5rem;
+  border-radius: 30px;
+  margin: 4px;
+  width: 300px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+button.register-button, button.login-button {
+  font-weight: 500 ;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  background-image: linear-gradient(to right, $bluecolor, $greencolor);
+}
+
+button.register-button:hover, input.email-input:hover, button.login-button:hover {
+  transition:  0.3s ease-out;
+  transform: perspective(1px) scale(1.02) translate3d(0,0,0);
+  -webkit-font-smoothing: antialiased;
+}
+
+.mobile-view-only {
+  display: none;
+}
+p.mobile-view-only {
+  margin: 16px 0;
+}
+
+
+
+/* ============ Mobile View ============ */
+@media all and (max-width: 992px) {
+  div.crypto-container {
+    display: block;
+    text-align: center;
+    justify-content: center;
+    justify-content: center;
+    margin: auto;
+  }
+  div.crypto-wrap {
+    margin: auto;
+    margin-top: 1rem;
+    border: 2px solid white;
+    border-radius: 30px;
+    width: 250px;
+  }
+
+  .mobile-view-only {
+    display: block;
+  }
+
+}

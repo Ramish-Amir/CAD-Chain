@@ -1,0 +1,42 @@
+<body>
+<div class="background-container">
+  <app-navigation-bar></app-navigation-bar>
+
+  <!------- Sign-up ------>
+  <div class="container fadeInDown">
+    <div class="formContent">
+      <div class="form-background">
+        <div class="signup-header">
+          <h1>Sign up</h1>
+          <hr>
+        </div>
+
+
+
+        <!-- Form -->
+        <form>
+          <!-- Tabs Titles -->
+          <a><h2 (click)="changeToEmailSignup()" [class]="emailClass" >Email</h2></a>
+          <a><h2 (click)="changeToPhoneSignup()" [class]="phoneClass">Phone</h2></a>
+
+          <input type="text" class="fadeIn" placeholder="Nationality">
+          <input *ngIf="isEmailActive" type="email" placeholder="Email">
+          <input *ngIf="!isEmailActive" type="text" placeholder="Phone Number">
+          <input type="password" class="fadeIn" placeholder="Set Password">
+          <input type="password" class="fadeIn" placeholder="Confirm Password">
+          <input type="submit" class="fadeIn button" value="Sign Up">
+        </form>
+        <!-- Forgot Password -->
+        <div class="formFooter">
+          <p>Already have an account?</p>
+          <a class="underlineHover" routerLink="/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!------- ./Sign-up End ------>
+
+
+</div>
+</body>

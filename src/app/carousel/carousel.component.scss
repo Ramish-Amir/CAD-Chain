@@ -1,0 +1,32 @@
+$bluecolor: rgba(51, 186, 207, 0.6);
+$greencolor: rgba(92, 208, 95, 0.6);
+
+div.controls-bottom {
+  justify-content: space-between;
+  text-align: justify;
+  display: flex;
+}
+
+img {
+  transition: 0.3s;
+}
+
+img:hover, img:focus, img:active {
+  display: inline-block;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+i.fa {
+  color: $bluecolor;
+  padding: 8px 6px 8px 10px;
+  width: 120%;
+  background: transparent;
+  border-radius: 50% ;
+  transition: 0.3s;
+}
+i.fa:hover {
+  background-image: linear-gradient($bluecolor, $greencolor);
+  color: #ffffff;
+  transition: 0.3s;
+}

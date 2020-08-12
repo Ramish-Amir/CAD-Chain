@@ -1,0 +1,214 @@
+$bluecolor: rgba(51, 186, 207, 0.7);
+$greencolor: rgba(92, 208, 95, 0.7);
+
+
+div.background-container {
+  background-image: linear-gradient(to bottom, $bluecolor, $greencolor);
+}
+
+*:focus {
+  outline: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  //height: 100vh;
+  overflow: auto;
+  background-image: url("src/assets/blueSquareCube.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+a {
+  color: #56baed;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+p {
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 10px 8px;
+  color: black;
+}
+
+
+/* STRUCTURE */
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding-top: 7rem;
+  padding-bottom: 12%;
+}
+
+form {
+  margin: 40px 0 50px 0;
+}
+
+.formContent {
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0;
+  width: 80%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.form-background {
+  background-color: rgba(86, 186, 237, 0.2);
+  //background-image: linear-gradient(to bottom,  rgba(86,186,237, 0.3), #ffffff,  rgba(86,186,237, 0.3));
+}
+
+.formFooter {
+  background: transparent;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  //border-radius: 0 0 10px 10px;
+}
+
+h1 {
+  margin: 0;
+  padding: 12px 0;
+  color: rgb(128,128,128);
+}
+
+hr {
+  margin: 0;
+}
+
+h2.inactive {
+  //color: #cccccc;
+  cursor: pointer;
+  //transition: all 0.3s ease-in-out;
+}
+
+h2.active {
+  //color: #fff;
+  border-bottom: 2px solid #5fbae9;
+  //transition: all 0.3s ease-in-out;
+}
+
+/* FORM STYLING */
+
+input[type=submit] {
+  background: transparent;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  border-radius: 30px;
+  height: 2.5rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  vertical-align: middle;
+  width: 85%;
+}
+
+input[type=submit]:hover, input[type=reset]:hover {
+  box-shadow: 0 0 10px 0 skyblue;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  //color: #fff;
+}
+
+
+input[type=text], input[type=email], input[type="password"] {
+  background: transparent;
+  padding: 15px 32px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: solid 1px rgb(220,220,220);
+  box-shadow: 0 0 1px skyblue;
+  transition: all 0.3s ease-in-out;
+  border-radius: 30px;
+  height: 2.5rem;
+  -webkit-font-smoothing: antialiased;
+}
+
+input[type=text]:focus,input[type=email]:focus, input[type="password"]:focus {
+  box-shadow: 0 0 10px skyblue;
+  border-color: skyblue;
+  //color: #fff;
+}
+
+
+/* ANIMATIONS */
+
+/* Fade-in Animation */
+
+//@keyframes fadeIn {
+//  from {
+//    opacity:0;
+//  }
+//
+//  to {
+//    opacity:1;
+//  }
+//}
+
+//.fadeIn {
+//  opacity:1;
+//  animation: fadeIn ease-in 1s;
+//  animation-fill-mode: forwards;
+//  animation-duration: 1s;
+//}
+
+
+/* Fade-in Animation */
+
+.inactive:after, .underlineHover:after  {
+  display: block;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #56baed;
+  content: "";
+  transition: 0.2s;
+}
+
+
+.inactive:hover:after, .underlineHover:hover:after {
+  width: 100%;
+}
+
+input.fadeIn.button {
+  background-image: linear-gradient(to right, $bluecolor, $greencolor);
+  transition: 0.3s;
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+}
+
+input.fadeIn.button:hover {
+  transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
+  transition: 0.3s ease-out;
+
+}
+
+
