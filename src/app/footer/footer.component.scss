@@ -4,13 +4,12 @@ footer.page-footer {
   padding-bottom: 2rem;
   padding-left: 12%;
   padding-right: 12%;
+  font-family: 'Quicksand', sans-serif;
 }
 
 p, i, p a {
   font-size: 14px;
-  //font-weight: 400;
   margin: 0 0 4px;
-  //color: #565656;
   transition: 0.4s;
   color: #ffffff;
 
@@ -23,6 +22,9 @@ p, p a {
 p:hover, p a:hover, .list-inline-item:hover {
   color: darkblue;
   transition: 0.4s;
+  a:hover {
+    color: darkblue;
+  }
 
 }
 
@@ -36,22 +38,20 @@ p:hover, p a:hover, .list-inline-item:hover {
 }
 
 p.tagline:hover, .copyright:hover {
-  //color: #565656;
   color: #ffffff;
 }
 
 a.btn-floating {
-  font-family: sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 10px;
   padding-top: 8px;
   padding-bottom: 7px;
 }
 
 h6 {
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.2rem;
   text-underline: black;
-  //color: #565656;
   color: #ffffff;
 
 }
