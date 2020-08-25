@@ -12,19 +12,47 @@
         </div>
 
 
-
         <!-- Form -->
-        <form>
+        <form #signupForm="ngForm">
           <!-- Tabs Titles -->
-          <a><h2 (click)="changeToEmailSignup()" [class]="emailClass" >Email</h2></a>
+          <a><h2 (click)="changeToEmailSignup()" [class]="emailClass">Email</h2></a>
           <a><h2 (click)="changeToPhoneSignup()" [class]="phoneClass">Phone</h2></a>
 
-          <input type="text" class="fadeIn" placeholder="Nationality">
-          <input *ngIf="isEmailActive" type="email" placeholder="Email">
-          <input *ngIf="!isEmailActive" type="text" placeholder="Phone Number">
-          <input type="password" class="fadeIn" placeholder="Set Password">
-          <input type="password" class="fadeIn" placeholder="Confirm Password">
-          <input type="submit" class="fadeIn button" value="Sign Up">
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nationality" required>
+          </div>
+          <div *ngIf="isEmailActive" class="form-group">
+            <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" required
+                   #email="ngModel" name="email" class="form-control" placeholder="Email" ngModel>
+            <div class="error-display">
+              <span *ngIf="email.invalid && email.touched">Please enter email with format "example@abc.com"</span>
+            </div>
+          </div>
+
+          <div *ngIf="!isEmailActive" class="form-group">
+            <input type="text"
+                   onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
+                   class="form-control" placeholder="Phone Number" required #phone="ngModel" name="phone" ngModel>
+            <div class="error-display">
+              <span *ngIf="phone.invalid && phone.touched">Please enter phone number</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Set Password" required minlength="8" maxlength="20"
+                   name="setPass" #setPass="ngModel" ngModel>
+            <div class="error-display">
+              <span *ngIf="setPass.invalid && setPass.touched">Please insert 8-20 char password</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Confirm Password" required minlength="8"
+                   maxlength="20" name="confirmPass" #confirmPass="ngModel" ngModel>
+            <div class="error-display">
+              <span *ngIf="confirmPass.invalid && confirmPass.touched">Please confirm your password</span>
+            </div>
+          </div>
+          <input [disabled]="signupForm.form.invalid" type="submit" class="fadeIn button" value="Sign Up">
         </form>
         <!-- Forgot Password -->
         <div class="formFooter">

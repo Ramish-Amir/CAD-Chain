@@ -10,18 +10,29 @@
         <hr>
 
         <!-- Form -->
-        <form>
-
-          <input type="text" placeholder="Username">
-          <input type="password" class="fadeIn" placeholder="Password">
-          <input type="submit" class="fadeIn button" value="Login">
+        <form #loginForm="ngForm">
+          <div class="form-group">
+            <input type="text" class="form-control" #username="ngModel" name="username" placeholder="Username" required
+                   ngModel>
+            <div class="error-display">
+              <span style="color: red" *ngIf="username.touched && username.invalid">Please enter username</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" #password="ngModel" name="password" placeholder="Password"
+                   required ngModel>
+            <div class="error-display">
+              <span *ngIf="password.touched && password.invalid">Please enter your password</span>
+            </div>
+          </div>
+          <input [disabled]="loginForm.form.invalid" type="submit" class="fadeIn button" value="Login">
           <a class="underlineHover" routerLink="/">Forgot Password?</a>
 
         </form>
         <!-- FOrm Footer -->
         <div class="formFooter">
           <p>Don't have an account?</p>
-          <a class="underlineHover" routerLink="/signup">Sing Up</a>
+          <a class="underlineHover" routerLink="/signup">Sing Up now</a>
         </div>
       </div>
     </div>

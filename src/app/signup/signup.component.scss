@@ -57,7 +57,7 @@ h2 {
   width: 100%;
   min-height: 100%;
   padding-top: 7rem;
-  padding-bottom: 12%;
+  padding-bottom: 13%;
 }
 
 form {
@@ -210,6 +210,17 @@ input.fadeIn.button:hover {
   transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
   transition: 0.3s ease-out;
 
+}
+
+.form-group {
+  margin: 0;
+}
+
+.error-display {
+  color: red;
+  text-align: left;
+  padding-left: 50px;
+  font-size: 13px;
 }
 
 

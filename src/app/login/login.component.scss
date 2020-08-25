@@ -1,6 +1,11 @@
 $bluecolor: rgba(51, 186, 207, 0.7);
 $greencolor: rgba(92, 208, 95, 0.7);
 
+.is-invalid {
+  border-color: red;
+  background-color: #5fbae9;
+}
+
 
 div.background-container {
   background-image: linear-gradient(to bottom, $bluecolor, $greencolor);
@@ -177,7 +182,17 @@ input.fadeIn.button {
 input.fadeIn.button:hover {
   transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
   transition: 0.3s ease-out;
+}
 
+.form-group {
+  margin: 0;
+}
+
+.error-display {
+  color: red;
+  text-align: left;
+  padding-left: 50px;
+  font-size: 13px;
 }
 
 
