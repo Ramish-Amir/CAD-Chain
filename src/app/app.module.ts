@@ -15,6 +15,7 @@ import { SignupComponent } from './signup/signup.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { appRoutes } from './app-routing.module';
 import {RouterModule, Routes} from '@angular/router';
+import {NgSelectModule} from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -30,13 +31,14 @@ import {RouterModule, Routes} from '@angular/router';
   entryComponents: [
     LandingPageComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MDBBootstrapModule,
-    FormsModule,
-    RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'}),
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MDBBootstrapModule,
+        FormsModule,
+        RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'}),
+        NgSelectModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

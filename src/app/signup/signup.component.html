@@ -2,6 +2,7 @@
 <div class="background-container">
   <app-navigation-bar></app-navigation-bar>
 
+
   <!------- Sign-up ------>
   <div class="container fadeInDown" data-aos="zoom-in" data-aos-duration="900">
     <div class="formContent">
@@ -19,9 +20,13 @@
           <a><h2 (click)="changeToPhoneSignup()" [class]="phoneClass">Phone</h2></a>
 
 
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nationality" required>
+
+          <div class="country">
+            <select id="selectCountry">
+              <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
+            </select>
           </div>
+
           <div *ngIf="isEmailActive" class="form-group">
             <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" required
                    #email="ngModel" name="email" class="form-control" placeholder="Email" ngModel>
