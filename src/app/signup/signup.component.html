@@ -22,9 +22,10 @@
 
 
           <div class="country">
-            <select id="selectCountry">
-              <option *ngFor="let country of countries" value="{{country}}">{{country}}</option>
-            </select>
+            <input type="text" list="countries" name="selectCountry" id="selectCountry" placeholder="Nationality">
+            <datalist style="background-color: #dce8f1; height: 400px; overflow: hidden; color: red" id="countries">
+              <option *ngFor="let country of countries" value="{{country}}">
+            </datalist>
           </div>
 
           <div *ngIf="isEmailActive" class="form-group">

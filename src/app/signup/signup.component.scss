@@ -223,25 +223,8 @@ input.fadeIn.button:hover {
   font-size: 13px;
 }
 
-ng-select, select{
-  text-decoration: none;
-  padding-left: 32px;
-  padding-right: 32px;
-  //display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: solid 1px rgb(220,220,220);
-  box-shadow: 0 0 1px skyblue;
-  transition: all 0.3s ease-in-out;
-  border-radius: 30px;
-  height: 2.5rem;
-  -webkit-font-smoothing: antialiased;
-  color: dimgrey;
-  line-height: 2.5rem;
-  background: transparent;
-}
-select option {
+
+datalist option {
   background-color: rgba(86, 186, 237, 0.15);
 }
 
