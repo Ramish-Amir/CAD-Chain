@@ -8,7 +8,7 @@
     <app-navigation-bar></app-navigation-bar>
     <!--/.Navbar end -->
 
-    <!--/ Homepage banner-->
+    <!-- Homepage banner-->
     <section class="homepage-banner">
       <div class="banner-wrap">
         <h1 data-aos="fade-up" data-aos-easing="linear" data-aos-duration="1000" class="tagline"> A Global
@@ -26,12 +26,15 @@
           </div>
         </div>
 
-
+        <!-- Crypto-currency Converter -->
         <div class="crypto-converter">
           <div class="send-crypto">
             <div class="input-container">
-              <label class="coin-input-label" for="sendCoin">You Send</label>
-              <input class="coin-input" id="sendCoin" type="text" placeholder="Enter amount">
+              <label class="coin-input-label" for="sendAmount">You Send</label>
+              <input class="coin-input" #sendingAmount id="sendAmount" type="text" placeholder="Enter amount"
+                     value="{{sendAmount}}"
+                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                     (keyup)="convertTo(sendingAmount.value)">
             </div>
             <select>
               <option style="overflow-y: auto" *ngFor="let coin of coinList1" value="{{coin}}">{{coin}}</option>
@@ -40,8 +43,11 @@
           <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>
           <div class="get-crypto">
             <div class="input-container">
-              <label class="coin-input-label" for="getCoin">You Get</label>
-              <input class="coin-input" id="getCoin" type="text" placeholder="- - - ">
+              <label class="coin-input-label" for="getAmount">You Get</label>
+              <input class="coin-input" #receivingAmount id="getAmount" type="text" placeholder="- - - "
+                     value="{{getAmount}}"
+                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                     (keyup)="convertFrom(receivingAmount.value)">
             </div>
             <select>
               <option *ngFor="let coin of coinList2" value="{{coin}}">{{coin}}</option>
@@ -49,14 +55,16 @@
           </div>
         </div>
         <div class="exchange-button">
-          <input type="submit" value="EXCHANGE">
+          <input id="exchangeButton" type="submit" value="EXCHANGE">
         </div>
+        <!-- ./Crypto-currency Converter End -->
+
       </div>
     </section>
-    <!--/ Homepage banner end -->
+    <!-- ./Homepage banner end -->
+
   </section>
 </div>
-
 <!------------ ./Homepage Top End ---------->
 
 
@@ -84,7 +92,7 @@
 
 <!------- Register Container ------------>
 <div class="register-background">
-  <div class="register-container" data-aos="fade-up" data-aos-duration="3000">
+  <div class="register-container" data-aos="fade-up" data-aos-duration="2000">
     <h3 class="label-register">Start Trading Now</h3>
     <div class="form-container">
 

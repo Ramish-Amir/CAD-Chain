@@ -9,6 +9,7 @@ import {filter} from 'rxjs/operators';
 })
 export class SignupComponent implements OnInit {
 
+  // tslint:disable-next-line:max-line-length
   countries = ['United Kingdom', 'Pakistan', 'Canada', 'China', 'Korea', 'Vietnam', 'Brazil', 'Russia', 'Albania', 'Algeria', 'Angola', 'Argentina',
     'Armenia', 'Australia', 'Austria', 'Bahrain', 'Belgium', 'Bermuda', 'Bhutan', 'Cyprus', 'Combodia', 'Columbia'];
   public selectedCountry;
@@ -16,33 +17,8 @@ export class SignupComponent implements OnInit {
   public isEmailActive = true;
   public emailClass = 'active';
   public phoneClass = 'inactive';
-  // private txtValue: string;
-  // myFunction() {
-  //   document.getElementById('myDropdown').classList.toggle('show');
-  // }
-  //
-  // filterFunction() {
-  //   let input;
-  //   // filter;
-  //   let ul;
-  //   li, a, i;
-  //   input = document.getElementById('myInput');
-  //   filter = input.value.toUpperCase();
-  //   div = document.getElementById('myDropdown');
-  //   a = div.getElementsByTagName('a');
-  //   let i: number;
-  //   for (i = 0; i < a.length; i++) {
-  //     this.txtValue = a[i].textContent || a[i].innerText;
-  //     if (this.txtValue.toUpperCase().indexOf(filter) > -1) {
-  //       a[i].style.display = '';
-  //     } else {
-  //       a[i].style.display = 'none';
-  //     }
-  //   }
-  // }
 
-
-public changeToPhoneSignup() {
+  public changeToPhoneSignup() {
     this.isEmailActive = false;
     this.emailClass = 'inactive';
     this.phoneClass = 'active';

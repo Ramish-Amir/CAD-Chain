@@ -19,8 +19,6 @@ a.navbar-brand {
 
 a.nav-link, button {
   margin: 0 5px;
-  //max-height: 2rem;
-  //font-family: sans-serif;
   font-size: 15px;
   padding-top: 0;
   padding-bottom: 0;
@@ -45,9 +43,19 @@ a.dropdown-item {
   //font-family: sans-serif;
   font-size: 15px;
 }
+.fade-down {
+  background-color: rgba(28, 52, 108, 0.5);
+}
+li.nav-item {
+  white-space: nowrap;
+  a {
+    //display: inline-block;
+  }
+}
+
 
 /* ============ desktop view ============ */
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 992px) {
   .navbar .nav-item .dropdown-menu {
     display: block;
     opacity: 0;
@@ -83,7 +91,7 @@ a.dropdown-item {
   }
   .dropdown-item:hover {
     border-radius: 5px;
-    transform: scale(1.1);
+    transform: scale(1.07);
     transition: 0.3s ease-in-out;
     background-color: rgba(28, 52, 108, 0.5);
   }
@@ -98,7 +106,7 @@ a.dropdown-item {
 
 
 /* ============ mobile view ============ */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 992px) {
   .navbar .nav-item:hover .dropdown-menu {
     transition: .3s;
     opacity: 0.8;
@@ -107,7 +115,7 @@ a.dropdown-item {
     transform: rotateX(0deg);
   }
 
-  .navbar .dropdown-menu.fade-up {
+  .navbar .dropdown-menu.fade-up, .fade-down {
     transition: ease-in-out 0.3s;
     width: 200px;
     top: 180%;
@@ -119,10 +127,30 @@ a.dropdown-item {
   li.nav-item {
     margin-top: 5px;
     margin-bottom: 5px;
-    margin-left: 4%;
+    margin-left: 10%;
+  }
+  ul.dropdown-menu.fade-up {
+    transition: all ease-in-out 0.5s;
+    animation-name: fadeDown;
+    animation-duration: 0.5s;
+  }
+  @keyframes fadeDown {
+    0% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 
-  ul.navbar-nav.ml-auto {
+  .dropdown-item:hover, .dropdown-item:active {
+    border-radius: 5px;
+    transform: scale(1.07);
+    transition: 0.3s ease-in-out;
+    background-color: rgba(28, 52, 108, 0.5);
+  }
+
+  li.nav-buttons {
     display: none;
   }
 }

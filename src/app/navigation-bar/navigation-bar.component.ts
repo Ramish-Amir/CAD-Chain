@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -8,11 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationBarComponent implements OnInit {
 
   public selectedLanguage = 'English';
+  public isLoggedIn = false;
 
   changeLanguage(newLanguage) {
     this.selectedLanguage = newLanguage;
   }
-  constructor() { }
+
+  logout() {
+    this.isLoggedIn = false;
+  }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

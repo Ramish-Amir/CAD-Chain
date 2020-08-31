@@ -64,7 +64,7 @@ form {
   margin: 40px 0 50px 0;
 }
 
-.formContent {
+.form-content {
   border-radius: 8px;
   background: #ffffff;
   padding: 0;
@@ -79,7 +79,7 @@ form {
   background-color: rgba(86, 186, 237, 0.15);
 }
 
-.formFooter {
+.form-footer {
   background: transparent;
   border-top: 1px solid #dce8f1;
   padding: 25px;
@@ -135,7 +135,7 @@ input[type=submit]:hover, input[type=reset]:hover {
 }
 
 
-input[type=text], input[type=email], input[type="password"]{
+input[type=text], input[type=email], input[type=password]{
   background: transparent;
   padding: 15px 32px;
   text-decoration: none;
@@ -231,4 +231,24 @@ datalist option {
 .co {
   text-align: center;
   display: block;
+}
+
+/////////  Mobile view  ////////////////
+@media screen and (max-width: 992px) {
+  input[type=text], input[type=email], input[type=password], input[type=submit] {
+    height: 2rem;
+    font-size: 12px;
+  }
+  h2 {
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  .error-display {
+    font-size: 10px;
+  }
+  p, a {
+    font-size: 12px;
+  }
 }

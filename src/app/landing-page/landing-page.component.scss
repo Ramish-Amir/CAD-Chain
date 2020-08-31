@@ -5,21 +5,34 @@ $greencolor: rgba(92, 208, 95, 0.7);
 * {
   font-family: 'Nunito', sans-serif;
 }
-
+///* width */
+//::-webkit-scrollbar {
+//  width: 10px;
+//}
+//
+///* Track */
+//::-webkit-scrollbar-track {
+//  box-shadow: inset 0 0 5px grey;
+//  margin-right: 5px;
+//
+//}
+//
+///* Handle */
+//::-webkit-scrollbar-thumb {
+//  background-color: rgba(57, 119, 153, 0.8);
+//  border-radius: 10px;
+//}
 
 /* ============ background Image container ============ */
 div.background-img-container {
   background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("src/assets/blueSquareCube.jpg");
   background-attachment: fixed;
-  position: sticky;
-  //background-position: center;
   background-repeat: no-repeat;
-
+  width: 100%;
 }
 
 /* ============ HomePage Top ============ */
 section.homepage-top {
-  height: 100vh;
   font-weight: 500;
   position: page;
   //background-image: linear-gradient(to bottom, $bluecolor, $greencolor);
@@ -39,8 +52,8 @@ section.homepage-banner {
 }
 
 div.banner-wrap {
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 10vw;
+  margin-bottom: 10vw;
 }
 
 div.crypto-container {
@@ -91,11 +104,13 @@ div.crypto-converter {
   justify-content: center;
   margin-top: 3rem;
 }
+
 .exchange-icon {
   margin-top: 47px;
   font-size: 1.2rem;
   color: #dce8f1;
 }
+
 div.input-container {
   white-space: nowrap;
   //overflow-x: auto;
@@ -116,7 +131,7 @@ div.input-container {
 label.coin-input-label {
   width: 100px;
   display: inline-block;
-  color: rgba(57, 119, 153, 0.6) ;
+  color: rgba(57, 119, 153, 0.6);
   font-size: 17px;
   padding: 8px 10px 5px 15px;
   margin: 0;
@@ -127,11 +142,13 @@ input.coin-input {
   border: none;
   border-left: solid 1px dimgrey;
   width: 70%;
+  margin-right: 1px;
   padding-left: 10px;
   padding-right: 10px;
   background: none;
   outline: none;
 }
+
 select {
   color: white;
   outline: none;
@@ -157,12 +174,12 @@ div.exchange-button input {
   transition: ease-in-out 0.3s;
   -webkit-font-smoothing: antialiased;
 }
+
 div.exchange-button input:hover {
   transition: 0.3s ease-out;
   transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
   -webkit-font-smoothing: antialiased;
 }
-
 
 
 /* ============ Carousel ============ */
@@ -233,21 +250,28 @@ p.mobile-view-only {
 
 /* ============ Mobile View ============ */
 @media screen and (max-width: 992px) {
+
   div.crypto-container {
     display: block;
     text-align: center;
     justify-content: center;
     margin: auto;
+
     h5 {
       font-size: 13px;
     }
+
     p {
       font-size: 10px;
     }
 
   }
-  div.banner-wrap h1 {
-    font-size: 2rem;
+  div.banner-wrap {
+    margin-top: 20%;
+    margin-bottom: 20%;
+    h1 {
+      font-size: 2rem;
+    }
   }
 
   div.crypto-wrap {
@@ -267,7 +291,6 @@ p.mobile-view-only {
 
     .exchange-icon {
       font-size: 1rem;
-      font-family: Arial Bold;
       margin-top: 0;
       transform: rotate(90deg);
     }
@@ -286,12 +309,20 @@ p.mobile-view-only {
     }
   }
   div.exchange-button input {
+    width: 175px;
     height: 2rem;
     margin-top: 10px;
+    font-size: 0.8rem;
   }
 
   .mobile-view-only {
     display: block;
+  }
+
+}
+@media screen and (min-width: 992px) and (min-height: 700px){
+  div.background-img-container {
+    height: 100vh;
   }
 
 }
