@@ -1,6 +1,6 @@
-# MdbAngularFree
+# CAD-Chain
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.2.
+CAD-Chain is the project for front-end development of a cryptocurrency website.
 
 ## Development server
 
