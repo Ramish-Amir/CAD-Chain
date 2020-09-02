@@ -16,6 +16,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { appRoutes } from './app-routing.module';
 import {RouterModule, Routes} from '@angular/router';
 import {NgSelectModule} from '@ng-select/ng-select';
+import { BuyCryptoComponent } from './buy-crypto/buy-crypto.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
     LoginComponent,
     SignupComponent,
     CarouselComponent,
+    BuyCryptoComponent,
   ],
   entryComponents: [
     LandingPageComponent,

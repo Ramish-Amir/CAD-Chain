@@ -1,0 +1,82 @@
+<body>
+<div class="background-container">
+  <app-navigation-bar></app-navigation-bar>
+
+  <!------- Currency Converter ------>
+  <div class="container fadeInDown" data-aos="zoom-in" data-aos-duration="900">
+    <div class="form-content">
+      <div class="form-background">
+        <h1>Exchange</h1>
+        <hr>
+
+
+        <div class="crypto-converter">
+          <div class="send-crypto">
+            <div class="label-wrap">
+              <label class="coin-input-label" for="sendAmount">You Send</label>
+            </div>
+            <div class="input-container">
+              <input class="coin-input" #sendingAmount id="sendAmount" type="text" placeholder="Enter amount"
+                     value="{{sendAmount}}"
+                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                     (keyup)="convertTo(sendingAmount.value)">
+              <select>
+                <option style="overflow-y: auto" *ngFor="let coin of coinList1" value="{{coin}}">{{coin}}</option>
+              </select>
+            </div>
+
+          </div>
+          <!--          <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>-->
+          <div class="get-crypto">
+            <div class="label-wrap">
+              <label class="coin-input-label" for="getAmount">You Get</label>
+            </div>
+            <div class="input-container">
+              <input class="coin-input" #receivingAmount id="getAmount" type="text" placeholder="Enter Amount"
+                     value="{{getAmount}}"
+                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                     (keyup)="convertFrom(receivingAmount.value)">
+              <select>
+                <option *ngFor="let coin of coinList2" value="{{coin}}">{{coin}}</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="exchange-button">
+            <input routerLink="/buy" id="exchangeButton" type="submit" value="EXCHANGE">
+          </div>
+        </div>
+
+
+        <!--        &lt;!&ndash; FOrm Footer &ndash;&gt;-->
+        <!--        <div class="form-footer">-->
+        <!--          <p>Don't have an account?</p>-->
+        <!--          <a class="underlineHover" routerLink="/signup">Sing Up now</a>-->
+        <!--        </div>-->
+      </div>
+    </div>
+  </div>
+
+  <!--  <div class="dropdown" mdbDropdown [autoClose]="false">-->
+  <!--    <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button"-->
+  <!--            mdbWavesEffect>-->
+  <!--      Dropdown primary-->
+  <!--    </button>-->
+  <!--    <div class="dropdown-menu dropdown-primary">-->
+  <!--      <div class="md-form">-->
+  <!--        <input type="search" class="form-control" id="input1" [(ngModel)]="searchValue" mdbInput-->
+  <!--               (keyup)="filterItems()">-->
+  <!--        <label for="input1">Search</label>-->
+  <!--      </div>-->
+  <!--      <a class="dropdown-item" href="#" *ngFor="let item of filterItems()">-->
+  <!--        {{item}}-->
+  <!--      </a>-->
+  <!--    </div>-->
+
+
+  <!------- ./Login End ------>
+
+
+</div>
+
+</body>

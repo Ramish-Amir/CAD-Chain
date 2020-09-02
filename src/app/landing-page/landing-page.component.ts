@@ -20,10 +20,15 @@ export class LandingPageComponent implements OnInit {
 
   coinList2 = ['BTC', 'USDT', 'ETH', 'BCH', 'XRP', 'EOS', 'LTC', 'HUSD', 'ETC', 'BSV',
     'DASH', 'HPT'];
+  elements: any = [
+    {rank: 1, name: 'Bitcoin', price: '$ 11,920.00', change: '+2.71%', market: 'None'},
+    {rank: 2, name: 'Bitcoin', price: '$ 11,920.00', change: '+2.71%', market: 'None'},
+    {rank: 3, name: 'Bitcoin', price: '$ 11,920.00', change: '+2.71%', market: 'None'},
+    {rank: 4, name: 'Bitcoin', price: '$ 11,920.00', change: '+2.71%', market: 'None'},
+    {rank: 5, name: 'Bitcoin', price: '$ 11,920.00', change: '+2.71%', market: 'None'},
+  ];
 
-  // isNumberKey(value) {
-  //   this.getAmount.innerText = value;
-  // }
+  headElements = ['Rank', 'Name', 'Price', '24 hrs change', 'Market'];
 
   convertTo(val) {
     const amount = val * 2;

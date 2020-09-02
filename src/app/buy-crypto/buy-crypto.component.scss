@@ -1,0 +1,224 @@
+$bluecolor: rgba(51, 186, 207, 0.7);
+$greencolor: rgba(92, 208, 95, 0.7);
+
+
+div.background-container {
+  background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("src/assets/blueSquareCube.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  overflow: auto;
+
+}
+
+*:focus {
+  outline: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+a {
+  color: #56baed;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
+
+/* STRUCTURE */
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  min-height: 100%;
+  padding-top: 7rem;
+  padding-bottom: 20%;
+}
+
+.form-content {
+  min-width: 300px;
+  margin: 0;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0;
+  width: 80%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.form-background {
+  background-color: rgba(86, 186, 237, 0.15);
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 10px 8px;
+  color: black;
+}
+
+h1 {
+  margin: 0;
+  padding: 12px 0;
+  color: rgb(128, 128, 128);
+}
+
+hr {
+  margin: 0;
+}
+
+form {
+  margin: 50px 0;
+}
+
+
+div.crypto-converter {
+  display: block;
+  margin: 0;
+  padding: 2rem 2rem 5rem;
+
+
+  div.send-crypto, div.get-crypto {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    div.label-wrap {
+      display: flex;
+      white-space: nowrap;
+
+      label.coin-input-label {
+        float: left;
+        width: 100px;
+        display: inline-block;
+        color: rgba(57, 119, 153, 0.6);
+        font-size: 17px;
+        padding: 8px 15px;
+      }
+    }
+
+    div.input-container {
+      white-space: nowrap;
+      display: flex;
+      justify-content: space-between;
+      background: transparent;
+      border-radius: 50px;
+      height: 2.5rem;
+      border: 1px solid rgba(57, 119, 153, 0.7);
+      //margin: 0 20px;
+      padding: 1px 1px 1px 15px;
+
+      input.coin-input {
+        border: none;
+        background: none;
+        display: inline-block;
+      }
+
+      select {
+        display: inline-block;
+        color: white;
+        outline: none;
+        border-radius: 50px;
+        float: right;
+        background: rgba(57, 119, 153, 0.7);
+        border: none;
+        margin-left: 1px;
+        padding: 0 20px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+div.exchange-button input {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  background: rgba(57, 119, 153, 0.8);
+  height: 2.5rem;
+  width: 250px;
+  border-radius: 50px;
+  outline: none;
+  color: white;
+  box-shadow: none;
+  border: none;
+  transition: ease-in-out 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+div.exchange-button input:hover {
+  transition: 0.3s ease-out;
+  transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.form-footer {
+  background: transparent;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+}
+
+/////////  Mobile view  ////////////////
+@media screen and (max-width: 992px) {
+
+  div.crypto-converter {
+    min-width: 290px;
+    display: block;
+    margin: 0;
+    padding: 1rem 1rem 3rem;
+    div.send-crypto, div.get-crypto {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+      div.label-wrap {
+        label.coin-input-label {
+          font-size: 14px;
+          padding: 0;
+        }
+      }
+      div.input-container {
+        height: 2rem;
+        margin-left: 2px;
+        margin-right: 2px;
+        font-size: 12px;
+      }
+
+    }
+
+  }
+  div.exchange-button input {
+    height: 2rem;
+    width: 100%;
+    font-size: 13px;
+  }
+
+  h2 {
+    font-size: 13px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+}
+@media screen and (min-height: 600px) and (max-width: 992px){
+  div.background-container {
+    height: 100vh;
+  }
+}
+
+
+
+

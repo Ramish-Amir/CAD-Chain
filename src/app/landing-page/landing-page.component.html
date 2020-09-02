@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="exchange-button">
-          <input id="exchangeButton" type="submit" value="EXCHANGE">
+          <input routerLink="/buy" id="exchangeButton" type="submit" value="EXCHANGE">
         </div>
         <!-- ./Crypto-currency Converter End -->
 
@@ -75,16 +75,34 @@
     <app-carousel></app-carousel>
   </section>
 
-  <section class="crypto-price-table">
-    <div>
-      <!--          style="height:374px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F; padding: 0px; margin: 0px; width: 100%;">-->
-      <div style="height:450px; padding:0px; margin:0px; width: 100%;">
-        <!--        <iframe src="https://widget.coinlib.io/widget?type=full_v2&theme=light&cnt=5&pref_coin_id=1505&graph=yes"-->
-        <!--                width="100%" height="450px" marginwidth="0" marginheight="0" frameborder="0" border="0"-->
-        <!--                style="border:0;margin:0;padding:0;"></iframe>-->
-      </div>
-    </div>
+  <section class="crypto-table-container">
+    <table class="crypto-table" mdbTable hover="true">
+      <!--        <caption>List of users</caption>-->
+      <thead>
+      <tr>
+        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-rows" mdbTableCol *ngFor="let el of elements">
+        <th scope="row">{{el.rank}}</th>
+        <td>{{el.name}}</td>
+        <td>{{el.price}}</td>
+        <td>{{el.change}}</td>
+        <td>{{el.market}}</td>
+        <!--          <td>{{el.market}}</td>-->
+      </tr>
+      </tbody>
+    </table>
   </section>
+<!--  <div>-->
+<!--    style="width: 250px; height:80px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; block-size:220px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F;padding:1px;padding: 0px; margin: 0px;">-->
+<!--    <div style="height:80px; padding:0px; margin:0px; width: 100%;">-->
+<!--      <iframe src="https://widget.coinlib.io/widget?type=single_v2&theme=light&coin_id=859&pref_coin_id=1505"-->
+<!--              width="250" height="80px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"-->
+<!--              style="border:0;margin:0;padding:0;line-height:14px;"></iframe>-->
+<!--    </div>-->
+<!--  </div>-->
 
 </section>
 
@@ -94,21 +112,16 @@
 <div class="register-background">
   <div class="register-container" data-aos="fade-up" data-aos-duration="2000">
     <h3 class="label-register">Start Trading Now</h3>
-    <div class="form-container">
-
-      <form>
-        <input class="email-input" id="email" type="email" name="username" placeholder="Enter your Email"/>
-        <button routerLink="/signup" class="register-button">
-          <a>Get Registered</a>
-        </button>
-
-
-        <p class="mobile-view-only">OR</p>
-        <button routerLink="/login" class="login-button mobile-view-only">
-          <a>Login</a>
-        </button>
-      </form>
-    </div>
+    <form class="register-form">
+      <input class="email-input" id="email" type="email" name="username" placeholder="Enter your Email"/>
+      <button routerLink="/signup" class="register-button">
+        <a>Get Registered</a>
+      </button>
+      <p class="mobile-view-only">OR</p>
+      <button routerLink="/login" class="login-button mobile-view-only">
+        <a>Login</a>
+      </button>
+    </form>
 
   </div>
 </div>

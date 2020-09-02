@@ -129,7 +129,7 @@ li.nav-item {
     margin-bottom: 5px;
     margin-left: 10%;
   }
-  ul.dropdown-menu.fade-up {
+  ul.dropdown-menu.fade-up, .fade-down {
     transition: all ease-in-out 0.5s;
     animation-name: fadeDown;
     animation-duration: 0.5s;

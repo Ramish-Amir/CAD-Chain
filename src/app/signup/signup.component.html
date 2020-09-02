@@ -31,7 +31,7 @@
             </div>
           </div>
 
-          <div *ngIf="isEmailActive" class="form-group">
+          <div data-aos="fade-right" data-aos-duration="" *ngIf="isEmailActive" class="form-group">
             <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" type="email" required
                    #email="ngModel" name="email" class="form-control" placeholder="Email" ngModel>
             <div class="error-display">
@@ -39,7 +39,7 @@
             </div>
           </div>
 
-          <div *ngIf="!isEmailActive" class="form-group">
+          <div data-aos="fade-left" data-aos-duration="" *ngIf="!isEmailActive" class="form-group">
             <input type="text"
                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
                    class="form-control" placeholder="Phone Number" required #phone="ngModel" name="phone" ngModel>
