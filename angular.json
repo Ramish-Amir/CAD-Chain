@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "mdb-angular-free"
+  "defaultProject": "mdb-angular-free",
+  "cli": {
+    "analytics": "7c064cac-dc51-4bfa-a176-e9d987b09166"
+  }
 }
