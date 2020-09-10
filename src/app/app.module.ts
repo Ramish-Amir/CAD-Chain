@@ -17,6 +17,7 @@ import { appRoutes } from './app-routing.module';
 import {RouterModule, Routes} from '@angular/router';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { BuyCryptoComponent } from './buy-crypto/buy-crypto.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { BuyCryptoComponent } from './buy-crypto/buy-crypto.component';
         FormsModule,
         RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'}),
         NgSelectModule,
+      HttpClientModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

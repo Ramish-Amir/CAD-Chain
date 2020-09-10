@@ -12,18 +12,19 @@
 
         <div class="crypto-converter">
           <div class="send-crypto">
+            <form>
             <div class="label-wrap">
               <label class="coin-input-label" for="sendAmount">You Send</label>
             </div>
             <div class="input-container">
-              <input class="coin-input" #sendingAmount id="sendAmount" type="text" placeholder="Enter amount"
-                     value="{{sendAmount}}"
+              <input [(ngModel)]="sendAmount" class="coin-input" #sendingAmount name="depositAmount" id="sendAmount" type="text" placeholder="Enter amount"
                      onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
-                     (keyup)="convertTo(sendingAmount.value)">
-              <select>
-                <option style="overflow-y: auto" *ngFor="let coin of coinList1" value="{{coin}}">{{coin}}</option>
+                     (keyup)="convertTo(depositCoin.value, receiveCoin.value)">
+              <select  (change)="getReceiveCoinList(depositCoin.value)" #depositCoin >
+                <option *ngFor="let coin of coinList1" value="{{coin.symbol}}">{{coin.symbol}}</option>
               </select>
             </div>
+            </form>
 
           </div>
           <!--          <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>-->
@@ -32,19 +33,21 @@
               <label class="coin-input-label" for="getAmount">You Get</label>
             </div>
             <div class="input-container">
-              <input class="coin-input" #receivingAmount id="getAmount" type="text" placeholder="Enter Amount"
-                     value="{{getAmount}}"
-                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
-                     (keyup)="convertFrom(receivingAmount.value)">
-              <select>
-                <option *ngFor="let coin of coinList2" value="{{coin}}">{{coin}}</option>
+              <input [(ngModel)]="getAmount.rate" class="coin-input" id="getAmount" type="text" placeholder="-"
+                     onkeypress="return !(event.charCode !==46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))">
+              <select #receiveCoin>
+                <option *ngFor="let coin of coinList2" value="{{coin.symbol}} selected">{{coin.symbol}}</option>
               </select>
             </div>
 
           </div>
           <div class="exchange-button">
-            <input routerLink="/buy" id="exchangeButton" type="submit" value="EXCHANGE">
+            <input (click)="convert()" id="exchangeButton" type="submit" value="EXCHANGE">
           </div>
+          <div class="exchange-button">
+            <input  id="exchange2Button" type="submit" value="EXCHANGE">
+          </div>
+
         </div>
 
 
@@ -53,9 +56,13 @@
         <!--          <p>Don't have an account?</p>-->
         <!--          <a class="underlineHover" routerLink="/signup">Sing Up now</a>-->
         <!--        </div>-->
+
+
       </div>
+
     </div>
   </div>
+
 
   <!--  <div class="dropdown" mdbDropdown [autoClose]="false">-->
   <!--    <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button"-->

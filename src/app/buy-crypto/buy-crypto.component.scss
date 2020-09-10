@@ -82,7 +82,7 @@ hr {
 }
 
 form {
-  margin: 50px 0;
+  margin: 0;
 }
 
 
@@ -130,6 +130,9 @@ div.crypto-converter {
       select {
         display: inline-block;
         color: white;
+        width: 110px;
+        text-align: right;
+        text-transform: uppercase;
         outline: none;
         border-radius: 50px;
         float: right;
@@ -137,7 +140,12 @@ div.crypto-converter {
         border: none;
         margin-left: 1px;
         padding: 0 20px;
-        text-align: center;
+        //text-align: center;
+
+        option {
+          text-align: right;
+          white-space: pre;
+        }
       }
     }
   }

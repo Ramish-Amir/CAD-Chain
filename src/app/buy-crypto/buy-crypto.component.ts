@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable, Subscription, throwError} from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Component({
   selector: 'app-buy-crypto',
@@ -6,51 +9,87 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./buy-crypto.component.scss']
 })
 export class BuyCryptoComponent implements OnInit {
-  public getAmount; sendAmount;
-
-  coinList1 = ['USD', 'CNY', 'HKD', 'VND', 'MYR', 'TWD', 'KRW', 'RUB', 'AUD', 'CAD', 'SGD', 'GBP', 'EUR', 'INR', 'CHF', 'NGN',
-    'BRL', 'AED', 'TRY', 'NZD', 'ZAR', 'NOK', 'DKK', 'SEK', 'ALL', 'BGN', 'CZK', 'HRK', 'HUF', 'MDL', 'MKD', 'PLN', 'RON'];
-
-  coinList2 = ['BTC', 'USDT', 'ETH', 'BCH', 'XRP', 'EOS', 'LTC', 'HUSD', 'ETC', 'BSV',
+  sendAmount;
+  getAmount: any = [];
+  depositCurrency;
+  receiveCurrency;
+  coinList1: any = [];
+  coinList = ['BTC', 'USDT', 'eth', 'BCH', 'XRP', 'EOS', 'LTC', 'HUSD', 'ETC', 'BSV',
     'DASH', 'HPT'];
-  sortedItems = ['Link 1', 'Link 2', 'Link 3', 'Link 4'];
-  searchValue = '';
+  coinList2 = [
+    {
+      image: 'https://simpleswap.io/static/img/currencies/A.svg',
+      name: 'Arcblock',
+      symbol: 'eth'
+    },
+    {
+      image: 'https://simpleswap.io/static/img/currencies/ada.svg',
+      name: 'Cardano',
+      symbol: 'ada'
+    },
+    {
+      image: 'https://simpleswap.io/static/img/currencies/xeda.svg',
+      name: 'AdEx',
+      symbol: 'adx'
+    },
+    {
+      image: 'https://simpleswap.io/static/img/currencies/ae.svg',
+      name: 'Aeternity',
+      symbol: 'ae'
+    },
+    {
+      image: 'https://simpleswap.io/static/img/currencies/S.svg',
+      name: 'SingularityNET',
+      symbol: 'agi'
+    }];
 
-  filterItems() {
-    return this.sortedItems.filter(el => el.indexOf(this.searchValue) !== -1);
+  convertTo(depositCoin, receiveCoin ) {
+    if (this.sendAmount === '0' || this.sendAmount === '' || this.sendAmount === '0.0') {
+      console.log('amount is not valid');
+      this.getAmount.rate = '';
+      return;
+    }
+    const deposit = depositCoin;
+    const receive = 'eth';
+    const amount = this.sendAmount;
+    return this.http.get('http://127.0.0.1:5000/getRate?deposit=' + deposit + '&receive=' + receive + '&amount=' + amount).subscribe(
+      (data) => {
+        this.getAmount = data;
+        console.log(data);
+      });
   }
-  convertTo(val) {
-    const amount = val * 2;
-    if (isNaN(amount)) {
-      this.getAmount = 'Invalid Amount';
-      return;
-    }
-    if (amount === 0) {
-      this.getAmount = '';
-      return;
-    }
-    this.getAmount = amount;
-    return;
-  }
-  convertFrom(val) {
-    const amount = val / 2;
-    if (isNaN(amount)) {
-      this.sendAmount = 'Invalid Amount';
-      return;
-    }
-    if (amount === 0) {
-      this.sendAmount = '';
-      return;
-    }
-    this.sendAmount = amount;
-    return;
+  getReceiveCoinList(depositCoin) {
+    console.log('get receive coin list function works adn value deposit coin is ' + depositCoin);
   }
 
+  convert() {
+    const deposit = this.depositCurrency;
+    const receive = 'eth';
+    const amount = this.sendAmount;
+    return this.http.get('http://127.0.0.1:5000/getRate?deposit=' + deposit + '&receive=' + receive + '&amount=' + amount).subscribe(
+      (data) => {
+        this.getAmount = data;
+        console.log(data);
+      });
+  }
+
+  // postData() {
+  //   this.http.post(this.postUrl, this.postedData).subscribe(
+  //     (data: any) => {
+  //       this.receivedResponse = JSON.stringify(data);
+  //   });
+  // }
 
 
-  constructor() { }
+
+  constructor(private http: HttpClient) {  }
 
 ngOnInit(): void {
+    this.http.get('http://127.0.0.1:5000/login').subscribe(
+      (data) => {
+        this.coinList1 = data;
+      }
+    );
   }
 
 }
