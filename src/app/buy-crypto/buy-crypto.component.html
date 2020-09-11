@@ -13,17 +13,24 @@
         <div class="crypto-converter">
           <div class="send-crypto">
             <form>
-            <div class="label-wrap">
-              <label class="coin-input-label" for="sendAmount">You Send</label>
-            </div>
-            <div class="input-container">
-              <input [(ngModel)]="sendAmount" class="coin-input" #sendingAmount name="depositAmount" id="sendAmount" type="text" placeholder="Enter amount"
-                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
-                     (keyup)="convertTo(depositCoin.value, receiveCoin.value)">
-              <select  (change)="getReceiveCoinList(depositCoin.value)" #depositCoin >
-                <option *ngFor="let coin of coinList1" value="{{coin.symbol}}">{{coin.symbol}}</option>
-              </select>
-            </div>
+              <div class="label-wrap">
+                <label class="coin-input-label" for="sendAmount">You Send</label>
+              </div>
+              <div class="input-container">
+                <input [(ngModel)]="sendAmount" class="coin-input" #sendingAmount name="depositAmount" id="sendAmount"
+                       type="text" placeholder="Enter amount"
+                       onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
+                       (keyup)="convertTo(depositCoin.value, receiveCoin.value)">
+                <select (change)="getReceiveCoinList(depositCoin.value)" #depositCoin>
+                  <option *ngFor="let coin of coinList1" value="{{coin.symbol}}">{{coin.symbol}}</option>
+                </select>
+              </div>
+              <div class="info">
+                <span *ngIf="minMax.max === null && minMax.min !== 0">Minimum amount should be {{minMax.min}}</span>
+                <span
+                  *ngIf="minMax.min === null || minMax.min === 0 && minMax.max !== null">Maximum amount should be {{minMax.max}}</span>
+              </div>
+              {{receiveCurrency}}
             </form>
 
           </div>
@@ -35,18 +42,39 @@
             <div class="input-container">
               <input [(ngModel)]="getAmount.rate" class="coin-input" id="getAmount" type="text" placeholder="-"
                      onkeypress="return !(event.charCode !==46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))">
-              <select #receiveCoin>
-                <option *ngFor="let coin of coinList2" value="{{coin.symbol}} selected">{{coin.symbol}}</option>
+              <select (change)="getMinMax(depositCoin.value, receiveCoin.value)" [(ngModel)]="receiveCurrency" name="r"
+                      #receiveCoin>
+                <option *ngFor="let coin of coinList2" value="{{coin.symbol}}">{{coin.symbol}}</option>
               </select>
             </div>
 
           </div>
-          <div class="exchange-button">
-            <input (click)="convert()" id="exchangeButton" type="submit" value="EXCHANGE">
+          <div class="address-container">
+            <div class="form-group">
+              <div class="label-wrap">
+                <label for="address">Recipient's Address</label>
+              </div>
+              <input id="address" name="addressField" class="address-input form-control"
+                     type="text" #recipientAddress="ngModel" required ngModel="{{recipientAddress.value}}"
+                     placeholder="Enter Recipient's address">
+
+            </div>
+          </div>
+
+          <div class="address-validation-button">
+            <div>
+              <div *ngIf="recipientAddress.touched" class="info">
+                <span *ngIf="addressValidation.valid">Address is Valid</span>
+                <span *ngIf="!addressValidation.valid">Invalid Address</span>
+              </div>
+            </div>
+            <input (click)="validateAddress(recipientAddress.value)" id="addressValidationButton" type="submit"
+                   value="Validate Address">
           </div>
           <div class="exchange-button">
-            <input  id="exchange2Button" type="submit" value="EXCHANGE">
+            <input id="exchangeButton" type="submit" value="EXCHANGE">
           </div>
+
 
         </div>
 

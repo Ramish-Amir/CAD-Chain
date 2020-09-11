@@ -93,62 +93,64 @@ div.crypto-converter {
 
 
   div.send-crypto, div.get-crypto {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    //margin-top: 1rem;
+    //margin-bottom: 1rem;
 
-    div.label-wrap {
-      display: flex;
-      white-space: nowrap;
-
-      label.coin-input-label {
-        float: left;
-        width: 100px;
-        display: inline-block;
-        color: rgba(57, 119, 153, 0.6);
-        font-size: 17px;
-        padding: 8px 15px;
-      }
-    }
-
-    div.input-container {
-      white-space: nowrap;
-      display: flex;
-      justify-content: space-between;
-      background: transparent;
-      border-radius: 50px;
-      height: 2.5rem;
-      border: 1px solid rgba(57, 119, 153, 0.7);
-      //margin: 0 20px;
-      padding: 1px 1px 1px 15px;
-
-      input.coin-input {
-        border: none;
-        background: none;
-        display: inline-block;
-      }
-
-      select {
-        display: inline-block;
-        color: white;
-        width: 110px;
-        text-align: right;
-        text-transform: uppercase;
-        outline: none;
-        border-radius: 50px;
-        float: right;
-        background: rgba(57, 119, 153, 0.7);
-        border: none;
-        margin-left: 1px;
-        padding: 0 20px;
-        //text-align: center;
-
-        option {
-          text-align: right;
-          white-space: pre;
-        }
-      }
-    }
   }
+
+}
+
+
+div.label-wrap {
+  display: flex;
+  white-space: nowrap;
+}
+
+label.coin-input-label, label {
+  float: left;
+  width: 100px;
+  display: inline-block;
+  color: rgba(57, 119, 153, 0.6);
+  font-size: 17px;
+  padding: 8px 15px;
+}
+
+div.input-container {
+  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  background: transparent;
+  border-radius: 50px;
+  height: 2.5rem;
+  border: 1px solid rgba(57, 119, 153, 0.7);
+  //margin: 0 20px;
+  padding: 1px 1px 1px 15px;
+}
+
+input.coin-input {
+  border: none;
+  background: none;
+  display: inline-block;
+}
+
+option {
+  text-align: right;
+  white-space: pre;
+}
+
+.address-input {
+  background: transparent;
+  padding: 15px 32px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  box-shadow: 0 0 1px skyblue;
+  transition: all 0.3s ease-in-out;
+  border-radius: 30px;
+  height: 2.5rem;
+  border: 1px solid rgba(57, 119, 153, 0.7);
+  -webkit-font-smoothing: antialiased;
 }
 
 div.exchange-button input {
@@ -166,10 +168,55 @@ div.exchange-button input {
   -webkit-font-smoothing: antialiased;
 }
 
+select {
+  display: inline-block;
+  color: white;
+  width: 110px;
+  text-align: right;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 50px;
+  float: right;
+  background: rgba(57, 119, 153, 0.7);
+  border: none;
+  margin-left: 1px;
+  padding: 0 20px;
+  //text-align: center;
+}
+
 div.exchange-button input:hover {
   transition: 0.3s ease-out;
   transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
   -webkit-font-smoothing: antialiased;
+}
+
+.info {
+
+}
+
+.info span {
+  font-size: 12px;
+  margin-left: 12px;
+  color: darkred;float: left;
+}
+.address-validation-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#addressValidationButton {
+  width: 110px;
+  background: rgba(57, 119, 153, 0.8);
+  height: 2.5rem;
+  font-size: 12px;
+  border-radius: 50px;
+  outline: none;
+  color: white;
+  box-shadow: none;
+  border: none;
+  transition: ease-in-out 0.3s;
+  -webkit-font-smoothing: antialiased;
+
 }
 
 
@@ -188,6 +235,7 @@ div.exchange-button input:hover {
     display: block;
     margin: 0;
     padding: 1rem 1rem 3rem;
+
     div.send-crypto, div.get-crypto {
       margin-top: 1rem;
       margin-bottom: 1rem;
@@ -198,6 +246,7 @@ div.exchange-button input:hover {
           padding: 0;
         }
       }
+
       div.input-container {
         height: 2rem;
         margin-left: 2px;
@@ -221,7 +270,8 @@ div.exchange-button input:hover {
     font-size: 25px;
   }
 }
-@media screen and (min-height: 600px) and (max-width: 992px){
+
+@media screen and (min-height: 600px) and (max-width: 992px) {
   div.background-container {
     height: 100vh;
   }
