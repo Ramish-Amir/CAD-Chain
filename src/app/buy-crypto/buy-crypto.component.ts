@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
+
 import {Observable, of, Subscription, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 
@@ -20,6 +22,8 @@ export class BuyCryptoComponent implements OnInit {
   minMax: any = [];
   recipientAddress;
   addressValidation: any = [];
+  messageText = '';
+  messageValidation: any = [];
 
   convertTo(depositCoin, receiveCoin) {
     if (this.sendAmount < this.minMax.min) {
@@ -42,11 +46,11 @@ export class BuyCryptoComponent implements OnInit {
     this.http.get('http://127.0.0.1:5000/currencypair?symbol=' + depositCoin).subscribe(
       (data) => {
         this.coinList2 = data;
-        // this.receiveCurrency = this.coinList2[0].symbol;
-        // console.log(data);
         console.log(this.receiveCurrency);
       }
     );
+    this.sendAmount = '';
+    this.getAmount = '';
     this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive=' + this.coinList2[0].symbol).subscribe(
       (data) => {
         this.minMax = data;
@@ -66,13 +70,23 @@ export class BuyCryptoComponent implements OnInit {
         console.log(data);
       }
     );
+    this.sendAmount = '';
+    this.getAmount = '';
   }
+
   validateAddress(receiveCoin, address) {
     console.log('http://127.0.0.1:5000/validateaddress?symbol=' + receiveCoin + '&address=' + address);
     this.http.get('http://127.0.0.1:5000/validateaddress?symbol=' + receiveCoin + '&address=' + address).subscribe(
       data => {
         this.addressValidation = data;
         console.log(data);
+      }
+    );
+  }
+  validateMessage(receiveCoin, message) {
+    this.http.get('http://127.0.0.1:5000/validateextra?symbol=' + receiveCoin + '&extra=' + message).subscribe(
+      data => {
+        this.messageValidation = data;
       }
     );
   }
@@ -88,12 +102,25 @@ export class BuyCryptoComponent implements OnInit {
       });
   }
 
-  // postData() {
-  //   this.http.post(this.postUrl, this.postedData).subscribe(
-  //     (data: any) => {
-  //       this.receivedResponse = JSON.stringify(data);
-  //   });
-  // }
+  postData(depositCoin, receiveCoin) {
+    const postData = {
+      depositcurrency: depositCoin,
+      receivecurrency: receiveCoin,
+      address: this.recipientAddress,
+      amount: this.sendAmount,
+      extraid: this.messageText
+    };
+    const opts = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+    console.log(postData);
+    this.http.post('http://127.0.0.1:5000/createexchange', postData, opts).toPromise().then(
+      (data: any) => {
+        console.log(data);
+    });
+  }
 
 
   constructor(private http: HttpClient) {

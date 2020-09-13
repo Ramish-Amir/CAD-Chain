@@ -62,53 +62,38 @@
               </div>
             </div>
           </div>
-          <div *ngIf="receiveCoin.has_extra_id" class="message-container">
-            <div class="form-group">
-              <div class="label-wrap">
-                <label for="address">Message</label>
-              </div>
-              <input id="message" name="addressField" class="address-input form-control"
-                     [(ngModel)]="recipientAddress"
-                     (keyup)="validateAddress(receiveCoin.value, recipientAddress)"
-                     placeholder="Enter Recipient's address">
-              <div class="info">
-                <span *ngIf="recipientAddress && addressValidation.valid">Address is Valid</span>
-                <span *ngIf="recipientAddress && !addressValidation.valid">Invalid Address</span>
+
+          <div *ngFor="let rCoin of coinList2">
+            <div *ngIf="receiveCoin.value == rCoin.symbol && rCoin.has_extra_id" class="message-container">
+              <div class="form-group">
+                <div class="label-wrap">
+                  <label for="address">{{rCoin.extra_id}}</label>
+                </div>
+                <input id="message" name="addressField" class="address-input form-control"
+                       [(ngModel)]="messageText"
+                       (keyup)="validateMessage(receiveCoin.value, messageText)"
+                       placeholder="Enter {{rCoin.extra_id}} (optional)">
+                <div class="info">
+                  <span *ngIf="messageText && messageValidation.valid">{{rCoin.extra_id}} is Valid</span>
+                  <span *ngIf="messageText && !messageValidation.valid">Invalid {{rCoin.extra_id}}</span>
+                </div>
               </div>
             </div>
           </div>
 
 
           <div class="exchange-button">
-            <input id="exchangeButton" type="submit" value="EXCHANGE">
+            <input (click)="postData(depositCoin.value, receiveCoin.value)" id="exchangeButton" type="submit" value="EXCHANGE">
           </div>
           <p>0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae</p>
 
         </div>
 
 
-
       </div>
 
     </div>
   </div>
-
-
-  <!--  <div class="dropdown" mdbDropdown [autoClose]="false">-->
-  <!--    <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button"-->
-  <!--            mdbWavesEffect>-->
-  <!--      Dropdown primary-->
-  <!--    </button>-->
-  <!--    <div class="dropdown-menu dropdown-primary">-->
-  <!--      <div class="md-form">-->
-  <!--        <input type="search" class="form-control" id="input1" [(ngModel)]="searchValue" mdbInput-->
-  <!--               (keyup)="filterItems()">-->
-  <!--        <label for="input1">Search</label>-->
-  <!--      </div>-->
-  <!--      <a class="dropdown-item" href="#" *ngFor="let item of filterItems()">-->
-  <!--        {{item}}-->
-  <!--      </a>-->
-  <!--    </div>-->
 
 
   <!------- ./Login End ------>
