@@ -30,11 +30,9 @@
                 <span
                   *ngIf="minMax.min === null || minMax.min === 0 && minMax.max !== null">Maximum amount should be {{minMax.max}}</span>
               </div>
-              {{receiveCurrency}}
             </form>
 
           </div>
-          <!--          <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>-->
           <div class="get-crypto">
             <div class="label-wrap">
               <label class="coin-input-label" for="getAmount">You Get</label>
@@ -55,35 +53,39 @@
                 <label for="address">Recipient's Address</label>
               </div>
               <input id="address" name="addressField" class="address-input form-control"
-                     type="text" #recipientAddress="ngModel" required ngModel="{{recipientAddress.value}}"
+                     [(ngModel)]="recipientAddress"
+                     (keyup)="validateAddress(receiveCoin.value, recipientAddress)"
                      placeholder="Enter Recipient's address">
-
-            </div>
-          </div>
-
-          <div class="address-validation-button">
-            <div>
-              <div *ngIf="recipientAddress.touched" class="info">
-                <span *ngIf="addressValidation.valid">Address is Valid</span>
-                <span *ngIf="!addressValidation.valid">Invalid Address</span>
+              <div class="info">
+                <span *ngIf="recipientAddress && addressValidation.valid">Address is Valid</span>
+                <span *ngIf="recipientAddress && !addressValidation.valid">Invalid Address</span>
               </div>
             </div>
-            <input (click)="validateAddress(recipientAddress.value)" id="addressValidationButton" type="submit"
-                   value="Validate Address">
           </div>
+          <div *ngIf="receiveCoin.has_extra_id" class="message-container">
+            <div class="form-group">
+              <div class="label-wrap">
+                <label for="address">Message</label>
+              </div>
+              <input id="message" name="addressField" class="address-input form-control"
+                     [(ngModel)]="recipientAddress"
+                     (keyup)="validateAddress(receiveCoin.value, recipientAddress)"
+                     placeholder="Enter Recipient's address">
+              <div class="info">
+                <span *ngIf="recipientAddress && addressValidation.valid">Address is Valid</span>
+                <span *ngIf="recipientAddress && !addressValidation.valid">Invalid Address</span>
+              </div>
+            </div>
+          </div>
+
+
           <div class="exchange-button">
             <input id="exchangeButton" type="submit" value="EXCHANGE">
           </div>
-
+          <p>0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae</p>
 
         </div>
 
-
-        <!--        &lt;!&ndash; FOrm Footer &ndash;&gt;-->
-        <!--        <div class="form-footer">-->
-        <!--          <p>Don't have an account?</p>-->
-        <!--          <a class="underlineHover" routerLink="/signup">Sing Up now</a>-->
-        <!--        </div>-->
 
 
       </div>

@@ -113,6 +113,7 @@ label.coin-input-label, label {
   color: rgba(57, 119, 153, 0.6);
   font-size: 17px;
   padding: 8px 15px;
+  text-transform: capitalize;
 }
 
 div.input-container {
@@ -154,7 +155,7 @@ option {
 }
 
 div.exchange-button input {
-  margin-top: 10px;
+  margin: 10px auto 0;
   font-size: 1.1rem;
   background: rgba(57, 119, 153, 0.8);
   height: 2.5rem;
@@ -191,33 +192,17 @@ div.exchange-button input:hover {
 }
 
 .info {
+  text-align: left;
 
 }
 
 .info span {
   font-size: 12px;
   margin-left: 12px;
-  color: darkred;float: left;
+  color: darkred;
 }
-.address-validation-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-#addressValidationButton {
-  width: 110px;
-  background: rgba(57, 119, 153, 0.8);
-  height: 2.5rem;
-  font-size: 12px;
-  border-radius: 50px;
-  outline: none;
-  color: white;
-  box-shadow: none;
-  border: none;
-  transition: ease-in-out 0.3s;
-  -webkit-font-smoothing: antialiased;
 
-}
+
 
 
 .form-footer {

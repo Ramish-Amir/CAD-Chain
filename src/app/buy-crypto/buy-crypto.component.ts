@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable, Subscription, throwError} from 'rxjs';
+import {Observable, of, Subscription, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 
 @Component({
@@ -8,11 +8,13 @@ import {catchError, retry} from 'rxjs/operators';
   templateUrl: './buy-crypto.component.html',
   styleUrls: ['./buy-crypto.component.scss']
 })
+
+
 export class BuyCryptoComponent implements OnInit {
   sendAmount;
   getAmount: any = [];
-  depositCurrency;
-  receiveCurrency;
+  depositCurrency: any = [];
+  receiveCurrency: any = [];
   coinList1: any = [];
   coinList2: any = [];
   minMax: any = [];
@@ -41,7 +43,7 @@ export class BuyCryptoComponent implements OnInit {
       (data) => {
         this.coinList2 = data;
         // this.receiveCurrency = this.coinList2[0].symbol;
-        console.log(data);
+        // console.log(data);
         console.log(this.receiveCurrency);
       }
     );
@@ -56,15 +58,18 @@ export class BuyCryptoComponent implements OnInit {
     console.log(depositCoin);
     console.log(receiveCoin);
     console.log(this.receiveCurrency);
-    this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + this.depositCurrency + '&receive=' + this.receiveCurrency).subscribe(
+    const minMaxUrl = 'http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive=' + receiveCoin;
+    console.log(minMaxUrl);
+    this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive=' + receiveCoin).subscribe(
       data => {
         this.minMax = data;
         console.log(data);
       }
     );
   }
-  validateAddress(address) {
-    this.http.get('http://127.0.0.1:5000/validateaddress?symbol=eth&address=' + address).subscribe(
+  validateAddress(receiveCoin, address) {
+    console.log('http://127.0.0.1:5000/validateaddress?symbol=' + receiveCoin + '&address=' + address);
+    this.http.get('http://127.0.0.1:5000/validateaddress?symbol=' + receiveCoin + '&address=' + address).subscribe(
       data => {
         this.addressValidation = data;
         console.log(data);
@@ -109,7 +114,7 @@ export class BuyCryptoComponent implements OnInit {
         console.log(this.receiveCurrency);
       }
     );
-    this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + this.depositCurrency + '&receive=' + this.receiveCurrency).subscribe(
+    this.http.get('http://127.0.0.1:5000/getminmax?deposit=abt&receive=ada').subscribe(
       data => {
         this.minMax = data;
         console.log(data);
