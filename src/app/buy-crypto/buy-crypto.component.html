@@ -83,7 +83,7 @@
 
 
           <div class="exchange-button">
-            <input (click)="postData(depositCoin.value, receiveCoin.value)" id="exchangeButton" type="submit" value="EXCHANGE">
+            <input [disabled]="!sendAmount || !recipientAddress || !addressValidation.valid" (click)="postData(depositCoin.value, receiveCoin.value)" id="exchangeButton" type="submit" value="EXCHANGE">
           </div>
           <p>0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae</p>
 

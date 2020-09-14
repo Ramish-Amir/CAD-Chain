@@ -4,6 +4,7 @@ import {HttpHeaders} from '@angular/common/http';
 
 import {Observable, of, Subscription, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-buy-crypto',
@@ -24,11 +25,12 @@ export class BuyCryptoComponent implements OnInit {
   addressValidation: any = [];
   messageText = '';
   messageValidation: any = [];
+  exchangeId: any = [];
 
   convertTo(depositCoin, receiveCoin) {
     if (this.sendAmount < this.minMax.min) {
       console.log('amount is not valid');
-      this.getAmount.rate = '';
+      this.getAmount = '';
       return;
     }
     const deposit = depositCoin;
@@ -51,6 +53,8 @@ export class BuyCryptoComponent implements OnInit {
     );
     this.sendAmount = '';
     this.getAmount = '';
+    this.recipientAddress = '';
+    this.messageText = '';
     this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive=' + this.coinList2[0].symbol).subscribe(
       (data) => {
         this.minMax = data;
@@ -72,6 +76,8 @@ export class BuyCryptoComponent implements OnInit {
     );
     this.sendAmount = '';
     this.getAmount = '';
+    this.recipientAddress = '';
+    this.messageText = '';
   }
 
   validateAddress(receiveCoin, address) {
@@ -91,16 +97,16 @@ export class BuyCryptoComponent implements OnInit {
     );
   }
 
-  convert() {
-    const deposit = this.depositCurrency;
-    const receive = 'eth';
-    const amount = this.sendAmount;
-    return this.http.get('http://127.0.0.1:5000/getRate?deposit=' + deposit + '&receive=' + receive + '&amount=' + amount).subscribe(
-      (data) => {
-        this.getAmount = data;
-        console.log(data);
-      });
-  }
+  // convert() {
+  //   const deposit = this.depositCurrency;
+  //   const receive = 'eth';
+  //   const amount = this.sendAmount;
+  //   return this.http.get('http://127.0.0.1:5000/getRate?deposit=' + deposit + '&receive=' + receive + '&amount=' + amount).subscribe(
+  //     (data) => {
+  //       this.getAmount = data;
+  //       console.log(data);
+  //     });
+  // }
 
   postData(depositCoin, receiveCoin) {
     const postData = {
@@ -118,12 +124,16 @@ export class BuyCryptoComponent implements OnInit {
     console.log(postData);
     this.http.post('http://127.0.0.1:5000/createexchange', postData, opts).toPromise().then(
       (data: any) => {
+        this.exchangeId = data;
+        console.log('excahnge id' + this.exchangeId.id);
         console.log(data);
-    });
+        this.router.navigate(['/buy', this.exchangeId.id]);
+      });
   }
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   ngOnInit(): void {

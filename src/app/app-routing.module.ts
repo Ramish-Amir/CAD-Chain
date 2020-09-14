@@ -4,11 +4,13 @@ import {LoginComponent} from './login/login.component';
 import {SignupComponent} from './signup/signup.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
 import {BuyCryptoComponent} from './buy-crypto/buy-crypto.component';
+import {BuyIdComponent} from './buy-id/buy-id.component';
 
 export const appRoutes: Routes = [
   { path: 'home', component: LandingPageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'login' , component: LoginComponent},
   { path: 'signup' , component: SignupComponent},
-  { path: 'buy' , component: BuyCryptoComponent}
+  { path: 'buy' , component: BuyCryptoComponent},
+  { path: 'buy/:id', component: BuyIdComponent}
 ];

@@ -18,6 +18,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgSelectModule} from '@ng-select/ng-select';
 import { BuyCryptoComponent } from './buy-crypto/buy-crypto.component';
 import {HttpClientModule} from '@angular/common/http';
+import { BuyIdComponent } from './buy-id/buy-id.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
     SignupComponent,
     CarouselComponent,
     BuyCryptoComponent,
+    BuyIdComponent
   ],
   entryComponents: [
     LandingPageComponent,
