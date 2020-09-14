@@ -1,1 +1,16 @@
-<p>buy-id works!</p>
+<h1>The exchange ID  = {{exchangeId}}</h1>
+
+<h3>You Send </h3>
+{{exchangeData.amount_from}} - {{exchangeData.currency_from}}
+<hr>
+<h3>You Get</h3>
+{{exchangeData.amount_to}} - {{exchangeData.currency_to}}
+<hr>
+<h3>Send your {{exchangeData.currency_from}} to address</h3>
+{{exchangeData.address_from}}
+<hr>
+<h3>Recipient Address</h3>
+{{exchangeData.address_to}}
+<hr>
+<h3>Memo/Message</h3>
+{{exchangeData.extra_id_to}}

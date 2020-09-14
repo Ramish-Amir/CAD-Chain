@@ -104,6 +104,7 @@ div.crypto-converter {
 div.label-wrap {
   display: flex;
   white-space: nowrap;
+  //height: 30px;
 }
 
 label.coin-input-label, label {
@@ -112,8 +113,9 @@ label.coin-input-label, label {
   display: inline-block;
   color: rgba(57, 119, 153, 0.6);
   font-size: 17px;
-  padding: 8px 15px;
+  padding: 0 15px;
   text-transform: capitalize;
+  margin-top: 10px;
 }
 
 div.input-container {
@@ -152,6 +154,10 @@ option {
   height: 2.5rem;
   border: 1px solid rgba(57, 119, 153, 0.7);
   -webkit-font-smoothing: antialiased;
+}
+
+div.form-group {
+  margin: 0;
 }
 
 div.exchange-button input {
@@ -193,6 +199,8 @@ div.exchange-button input:hover {
 
 .info {
   text-align: left;
+  animation-name: fadeDown;
+  animation-duration: 3s;
 
 }
 
@@ -200,6 +208,22 @@ div.exchange-button input:hover {
   font-size: 12px;
   margin-left: 12px;
   color: darkred;
+}
+
+.message-container {
+  animation-name: fadeDown;
+  animation-duration: 0.5s;
+}
+
+@keyframes fadeDown {
+  0% {
+    //opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 

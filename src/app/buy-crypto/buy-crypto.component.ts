@@ -2,9 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 
+
 import {Observable, of, Subscription, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {Route, Router} from '@angular/router';
+import {ExchangeService} from '../Services/exchange.service';
 
 @Component({
   selector: 'app-buy-crypto',
@@ -25,7 +27,7 @@ export class BuyCryptoComponent implements OnInit {
   addressValidation: any = [];
   messageText = '';
   messageValidation: any = [];
-  exchangeId: any = [];
+  public exchangeId: any = [];
 
   convertTo(depositCoin, receiveCoin) {
     if (this.sendAmount < this.minMax.min) {
@@ -81,6 +83,9 @@ export class BuyCryptoComponent implements OnInit {
   }
 
   validateAddress(receiveCoin, address) {
+    if (address === '') {
+      return;
+    }
     console.log('http://127.0.0.1:5000/validateaddress?symbol=' + receiveCoin + '&address=' + address);
     this.http.get('http://127.0.0.1:5000/validateaddress?symbol=' + receiveCoin + '&address=' + address).subscribe(
       data => {
@@ -90,6 +95,9 @@ export class BuyCryptoComponent implements OnInit {
     );
   }
   validateMessage(receiveCoin, message) {
+    if (message === '') {
+      return;
+    }
     this.http.get('http://127.0.0.1:5000/validateextra?symbol=' + receiveCoin + '&extra=' + message).subscribe(
       data => {
         this.messageValidation = data;
@@ -125,15 +133,14 @@ export class BuyCryptoComponent implements OnInit {
     this.http.post('http://127.0.0.1:5000/createexchange', postData, opts).toPromise().then(
       (data: any) => {
         this.exchangeId = data;
-        console.log('excahnge id' + this.exchangeId.id);
-        console.log(data);
         this.router.navigate(['/buy', this.exchangeId.id]);
       });
   }
 
 
   constructor(private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private exchangeService: ExchangeService) {
   }
 
   ngOnInit(): void {
