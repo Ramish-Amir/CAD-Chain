@@ -44,7 +44,7 @@ p {
   padding-bottom: 20%;
 }
 
-.form-content {
+.form-content, .title-bar {
   min-width: 300px;
   margin: 0;
   border-radius: 8px;
@@ -85,11 +85,52 @@ form {
   margin: 0;
 }
 
+.exchange-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.floating {
+  padding: 10px;
+  width: 50%;
+  //background-color: rgba(57, 119, 153, 0.2);
+  color: rgb(57, 119, 153);
+  cursor: pointer;
+
+}
+
+.fixed {
+  padding: 10px;
+  width: 50%;
+  color: rgb(57, 119, 153);
+
+  //background-color: rgba(57, 119, 153, 0.2);
+  cursor: pointer;
+
+
+}
+
+.active-option {
+  background-color: rgba(57, 119, 153, 0.2);
+  border-bottom: 2px solid rgba(57, 119, 153, 0.7);
+}
+
+.inactive-option {
+
+}
+
+.inactive-option:hover {
+  background-color: rgba(57, 119, 153, 0.1);
+  transition: ease-in-out 0.3s;
+}
+
 
 div.crypto-converter {
   display: block;
   margin: 0;
-  padding: 2rem 2rem 5rem;
+  padding: 0 2rem 5rem;
 
 
   div.send-crypto, div.get-crypto {
@@ -200,7 +241,7 @@ div.exchange-button input:hover {
 .info {
   text-align: left;
   animation-name: fadeDown;
-  animation-duration: 3s;
+  animation-duration: 2s;
 
 }
 
@@ -225,8 +266,6 @@ div.exchange-button input:hover {
     transform: translateY(0);
   }
 }
-
-
 
 
 .form-footer {

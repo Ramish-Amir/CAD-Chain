@@ -3,11 +3,23 @@
   <app-navigation-bar></app-navigation-bar>
 
   <!------- Currency Converter ------>
+
+
   <div class="container fadeInDown" data-aos="zoom-in" data-aos-duration="900">
     <div class="form-content">
       <div class="form-background">
         <h1>Exchange</h1>
         <hr>
+        <div class="exchange-options">
+          <div (click)="changeToFloatingRate(depositCoin.value, receiveCoin.value)" [ngClass]="{'active-option': !fixedRate, 'inactive-option': fixedRate}"
+               class="floating">
+            <span>Floating Rate</span>
+          </div>
+          <div (click)="changeToFixedRate(depositCoin.value, receiveCoin.value)"
+               [ngClass]="{'active-option': fixedRate, 'inactive-option': !fixedRate}" class="fixed">
+            <span>Fixed Rate</span>
+          </div>
+        </div>
 
 
         <div class="crypto-converter">
@@ -17,11 +29,11 @@
                 <label class="coin-input-label" for="sendAmount">You Send</label>
               </div>
               <div class="input-container">
-                <input [(ngModel)]="sendAmount" class="coin-input" #sendingAmount name="depositAmount" id="sendAmount"
+                <input [(ngModel)]="sendAmount" class="coin-input" name="depositAmount" id="sendAmount"
                        type="text" placeholder="Enter amount"
                        onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
                        (keyup)="convertTo(depositCoin.value, receiveCoin.value)">
-                <select (change)="getReceiveCoinList(depositCoin.value)" #depositCoin>
+                <select (change)="getReceiveCoinList(depositCoin.value, receiveCoin.value)" #depositCoin>
                   <option *ngFor="let coin of coinList1" value="{{coin.symbol}}">{{coin.symbol}}</option>
                 </select>
               </div>
@@ -29,6 +41,7 @@
                 <span *ngIf="minMax.max === null && minMax.min !== 0">Minimum amount should be {{minMax.min}}</span>
                 <span
                   *ngIf="minMax.min === null || minMax.min === 0 && minMax.max !== null">Maximum amount should be {{minMax.max}}</span>
+                <span *ngIf="errorCheck.error === 'Empty response'">Pairs not supported</span>
               </div>
             </form>
 
@@ -83,7 +96,9 @@
 
 
           <div class="exchange-button">
-            <input [disabled]="!sendAmount || !recipientAddress || !addressValidation.valid" (click)="postData(depositCoin.value, receiveCoin.value)" id="exchangeButton" type="submit" value="EXCHANGE">
+            <input [disabled]="!sendAmount || !getAmount || !recipientAddress || !addressValidation.valid"
+                   (click)="postData(depositCoin.value, receiveCoin.value)" id="exchangeButton" type="submit"
+                   value="EXCHANGE">
           </div>
           <p>0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae</p>
 

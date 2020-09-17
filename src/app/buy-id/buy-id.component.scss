@@ -1,0 +1,157 @@
+$bluecolor: rgba(51, 186, 207, 0.5);
+$greencolor: rgba(92, 208, 95, 0.5);
+
+* {
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+.background-container {
+  background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  //overflow: auto;
+  height: 100vh;
+  width: 100%;
+  overflow: auto;
+}
+
+.card-container {
+  margin: 5% auto;
+  width: 70%;
+  min-width: 600px;
+
+}
+
+.card-background {
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.status-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  background-color: rgba(86, 186, 237, 0.15);
+}
+
+.status {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  width: 18%;
+}
+
+.waiting {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.finished {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+
+mdb-icon {
+  margin-top: 15px;
+  padding: 0 10px;
+  color: rgba(57, 119, 153, 0.7);
+  width: 2.5%;
+}
+
+.active {
+  color: #ffffff;
+  background: rgba(57, 119, 153, 0.7);
+
+}
+
+.exchange-info {
+  margin-top: 5%;
+  border-radius: 10px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  background: rgba(86, 186, 237, 0.15);
+  padding: 20px 30px;
+}
+
+.header {
+  padding: 10px;
+  text-align: center;
+}
+
+.header h2 {
+  color: rgb(128,128,128);
+}
+
+.id {
+  text-align: center;
+  //color: rgb(118, 143, 174);
+  color: rgba(57, 119, 153, 0.7);
+
+}
+
+hr {
+  height: 1px;
+  background-color: darkgray;
+  border: none;
+}
+
+.exchange-content {
+  text-align: center;
+}
+
+.exchange-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.title {
+  //color: rgb(118, 143, 174);
+ color: rgba(57, 119, 153, 0.7);
+}
+
+
+.exchange-icon mdb-icon {
+    font-size: 30px;
+}
+
+.box-wrap p {
+  text-transform: uppercase;
+}
+
+.addresses {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.recipient-address {
+  width: 50%;
+  text-align: center;
+}
+
+.recipient-address p, .sender-address p {
+  flex-wrap: wrap;
+  max-width: 70%;
+  word-wrap: break-word;
+  text-align: center;
+  margin: auto;
+}
+
+.message {
+  width: 50%;
+  text-align: center;
+}
+
+.sender-address {
+  text-align: center;
+}
+
+.sender-address span {
+  text-transform: uppercase;
+}

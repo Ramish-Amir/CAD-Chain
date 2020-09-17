@@ -1,16 +1,103 @@
-<h1>The exchange ID  = {{exchangeId}}</h1>
+<div class="background-container">
 
-<h3>You Send </h3>
-{{exchangeData.amount_from}} - {{exchangeData.currency_from}}
-<hr>
-<h3>You Get</h3>
-{{exchangeData.amount_to}} - {{exchangeData.currency_to}}
-<hr>
-<h3>Send your {{exchangeData.currency_from}} to address</h3>
-{{exchangeData.address_from}}
-<hr>
-<h3>Recipient Address</h3>
-{{exchangeData.address_to}}
-<hr>
-<h3>Memo/Message</h3>
-{{exchangeData.extra_id_to}}
+  <app-navigation-bar></app-navigation-bar>
+  <div class="card-container">
+    <div class="card-background">
+      <div class="status-bar">
+        <div
+          [ngClass]="{'active': exchangeStatus === 'waiting' || exchangeStatus === 'confirming'
+        || exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+          class="status waiting">
+          <span>Waiting</span>
+        </div>
+        <div [ngClass]="{'active': exchangeStatus === 'confirming'
+        || exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} ">
+          <mdb-icon fas icon="angle-double-right"></mdb-icon>
+        </div>
+
+        <div [ngClass]="{'active': exchangeStatus === 'confirming'
+        || exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+             class="status">
+          <span>Confirming</span>
+        </div>
+        <div
+          [ngClass]="{'active': exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} ">
+          <mdb-icon fas icon="angle-double-right"></mdb-icon>
+        </div>
+        <div
+          [ngClass]="{'active': exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+          class="status">
+          <span>Exchanging</span>
+        </div>
+        <div class="next-icon"
+             [ngClass]="{'active': exchangeStatus === 'sending' || exchangeStatus === 'finished'} ">
+          <mdb-icon fas icon="angle-double-right"></mdb-icon>
+        </div>
+
+        <div [ngClass]="{'active': exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+             class="status">
+          <span>Sending</span>
+        </div>
+        <div
+          [ngClass]="{'active': exchangeStatus === 'finished'} ">
+          <mdb-icon fas icon="angle-double-right"></mdb-icon>
+        </div>
+
+        <div [ngClass]="{'active': exchangeStatus === 'finished'} "
+             class="status finished">
+          <span>Finished</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-background">
+      <div class="exchange-info">
+        <div class="header">
+          <h2>Exchange Details</h2>
+        </div>
+        <div class="id">
+          <p>Exchange ID : {{exchangeId}}</p>
+        </div>
+        <hr>
+        <div class="exchange-content">
+          <div class="sending-details">
+            <div class="box-wrap">
+              <span class="title">You Send</span>
+              <div>
+                <p>{{exchangeData.amount_from}} {{exchangeData.currency_from}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="exchange-icon">
+            <mdb-icon fas icon="arrow-circle-right"></mdb-icon>
+          </div>
+          <div class="box-wrap">
+            <div class="receiving-details">
+              <span class="title">You Get</span>
+              <p>{{exchangeData.amount_to}} {{exchangeData.currency_to}}</p>
+            </div>
+          </div>
+
+        </div>
+        <hr>
+        <div class="addresses">
+          <div class="recipient-address">
+            <span class="title">Recipient Address</span>
+            <p>{{exchangeData.address_to}}</p>
+          </div>
+          <div class="message">
+            <span class="title">Memo</span>
+            <p>abcd</p>
+          </div>
+        </div>
+        <hr>
+        <div class="sender-address">
+          <span class="title">SEND YOUR {{exchangeData.currency_from}} TO THE ADDRESS</span>
+          <p>{{exchangeData.address_from}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

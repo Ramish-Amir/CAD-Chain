@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class BuyIdComponent implements OnInit {
   exchangeId;
   exchangeData: any = [];
+  exchangeStatus = 'waiting';
 
   constructor(private route: ActivatedRoute,
               private http: HttpClient) { }
