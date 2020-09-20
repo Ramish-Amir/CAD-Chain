@@ -1,6 +1,6 @@
 <div class="background-container">
 
-  <app-navigation-bar></app-navigation-bar>
+  <!--  <app-navigation-bar></app-navigation-bar>-->
   <div class="card-container">
     <div class="card-background">
       <div class="status-bar">
@@ -21,29 +21,29 @@
           <span>Confirming</span>
         </div>
         <div
-          [ngClass]="{'active': exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} ">
+          [ngClass]="{'active': exchangeData.status === 'exchanging' || exchangeData.status === 'sending' || exchangeData.status === 'finished'} ">
           <mdb-icon fas icon="angle-double-right"></mdb-icon>
         </div>
         <div
-          [ngClass]="{'active': exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+          [ngClass]="{'active': exchangeData.status === 'exchanging' || exchangeData.status === 'sending' || exchangeData.status === 'finished'} "
           class="status">
           <span>Exchanging</span>
         </div>
         <div class="next-icon"
-             [ngClass]="{'active': exchangeStatus === 'sending' || exchangeStatus === 'finished'} ">
+             [ngClass]="{'active': exchangeData.status === 'sending' || exchangeData.status === 'finished'} ">
           <mdb-icon fas icon="angle-double-right"></mdb-icon>
         </div>
 
-        <div [ngClass]="{'active': exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+        <div [ngClass]="{'active': exchangeData.status === 'sending' || exchangeData.status === 'finished'} "
              class="status">
           <span>Sending</span>
         </div>
         <div
-          [ngClass]="{'active': exchangeStatus === 'finished'} ">
+          [ngClass]="{'active': exchangeData.status === 'finished'} ">
           <mdb-icon fas icon="angle-double-right"></mdb-icon>
         </div>
 
-        <div [ngClass]="{'active': exchangeStatus === 'finished'} "
+        <div [ngClass]="{'active': exchangeData.status === 'finished'} "
              class="status finished">
           <span>Finished</span>
         </div>
@@ -59,42 +59,70 @@
           <p>Exchange ID : {{exchangeId}}</p>
         </div>
         <hr>
-        <div class="exchange-content">
-          <div class="sending-details">
+
+        <!--        Exchange Content   -->
+
+        <div
+          *ngIf="exchangeData.status !== 'failed' && exchangeData.status !== 'expired'
+          && exchangeData.status !== 'refunded' && exchangeData.status !== 'verifying'"
+          class="exchange-process">
+          <div class="exchange-content">
+            <div class="sending-details">
+              <div class="box-wrap">
+                <span class="title">You Send</span>
+                <div>
+                  <p>{{exchangeData.amount_from}} {{exchangeData.currency_from}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="exchange-icon">
+              <mdb-icon fas icon="arrow-circle-right"></mdb-icon>
+            </div>
             <div class="box-wrap">
-              <span class="title">You Send</span>
-              <div>
-                <p>{{exchangeData.amount_from}} {{exchangeData.currency_from}}</p>
+              <div class="receiving-details">
+                <span class="title">You Get</span>
+                <p>{{exchangeData.amount_to}} {{exchangeData.currency_to}}</p>
               </div>
             </div>
           </div>
-          <div class="exchange-icon">
-            <mdb-icon fas icon="arrow-circle-right"></mdb-icon>
-          </div>
-          <div class="box-wrap">
-            <div class="receiving-details">
-              <span class="title">You Get</span>
-              <p>{{exchangeData.amount_to}} {{exchangeData.currency_to}}</p>
+          <hr>
+          <div class="addresses">
+            <div class="recipient-address">
+              <span class="title">Recipient Address</span>
+              <p>{{exchangeData.address_to}}</p>
+            </div>
+            <div class="message">
+              <span class="title">Memo/Message</span>
+              <p>{{exchangeData.extra_id_to}}</p>
             </div>
           </div>
+          <hr>
+          <div class="hashes">
+            <div class="input-hash">
+              <span class="title">Input Hash</span>
+              <p>{{exchangeData.tx_from}}</p>
+            </div>
+            <div class="output-hash">
+              <span class="title">Output Hash</span>
+              <p>{{exchangeData.tx_to}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="sender-address">
+            <span class="title">SEND YOUR {{exchangeData.currency_from}} TO THE ADDRESS</span>
+            <p>{{exchangeData.address_from}}</p>
+          </div>
+        </div>
 
+        <!--        Exchange Error   -->
+
+        <div class="exchange-error">
+          <h4 *ngIf="exchangeData.status === 'failed'">Transaction failed!</h4>
+          <h4 *ngIf="exchangeData.status === 'expired'">Exchange expired! Please create new exchange...</h4>
+          <h4 *ngIf="exchangeData.status === 'refunded'">Exchange amount refunded</h4>
+          <h4 *ngIf="exchangeData.status === 'verifying'">Verification required. Please contact support...</h4>
         </div>
-        <hr>
-        <div class="addresses">
-          <div class="recipient-address">
-            <span class="title">Recipient Address</span>
-            <p>{{exchangeData.address_to}}</p>
-          </div>
-          <div class="message">
-            <span class="title">Memo</span>
-            <p>abcd</p>
-          </div>
-        </div>
-        <hr>
-        <div class="sender-address">
-          <span class="title">SEND YOUR {{exchangeData.currency_from}} TO THE ADDRESS</span>
-          <p>{{exchangeData.address_from}}</p>
-        </div>
+
       </div>
     </div>
   </div>

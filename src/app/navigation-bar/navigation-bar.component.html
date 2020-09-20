@@ -1,93 +1,99 @@
 <section>
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
-<!--    <a class="navbar-brand" style="" routerLink="/">CadChain</a>-->
-    <a class="navbar-brand" routerLink="/"><img src="assets/logo.svg" width="100" alt="logo"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="main_nav">
-      <ul class="navbar-nav">
-        <li routerLink="/buy" class="nav-item"><a class="nav-link">Buy Crypto</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Markets</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Spot Trading</a>
-          <ul class="dropdown-menu fade-up">
-            <li><a class="dropdown-item" href="#">Exchange</a></li>
-            <li><a class="dropdown-item" href="#">Margin</a></li>
-            <li><a class="dropdown-item" href="#">Brokerage OTC</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Derivatives</a>
-          <ul class="dropdown-menu fade-up">
-            <li><a class="dropdown-item" href="#">Future</a></li>
-            <li><a class="dropdown-item" href="#">Swap</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Wealth Management</a>
-          <ul class="dropdown-menu fade-up">
-            <li><a class="dropdown-item" href="#">Locking and Mining</a></li>
-            <li><a class="dropdown-item" href="#">C2C Landing</a></li>
-            <li><a class="dropdown-item" href="#">Asset Custody</a></li>
-            <li><a class="dropdown-item" href="#">Asset Management</a></li>
-          </ul>
-        </li>
-      </ul>
+  <div class="nav-background">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" routerLink="/"><img src="assets/logo.svg" width="100" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="main_nav">
+        <ul class="navbar-nav">
+          <li routerLink="/buy" class="nav-item"><a class="nav-link">Buy Crypto</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Markets</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Spot Trading</a>
+            <ul class="dropdown-menu fade-up">
+              <li><a class="dropdown-item" href="#">Exchange</a></li>
+              <li><a class="dropdown-item" href="#">Margin</a></li>
+              <li><a class="dropdown-item" href="#">Brokerage OTC</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Derivatives</a>
+            <ul class="dropdown-menu fade-up">
+              <li><a class="dropdown-item" href="#">Future</a></li>
+              <li><a class="dropdown-item" href="#">Swap</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Wealth Management</a>
+            <ul class="dropdown-menu fade-up">
+              <li><a class="dropdown-item" href="#">Locking and Mining</a></li>
+              <li><a class="dropdown-item" href="#">C2C Landing</a></li>
+              <li><a class="dropdown-item" href="#">Asset Custody</a></li>
+              <li><a class="dropdown-item" href="#">Asset Management</a></li>
+            </ul>
+          </li>
+        </ul>
 
-      <ul class="navbar-nav ml-auto">
-        <li *ngIf="!isLoggedIn" class="nav-item nav-buttons">
-          <a routerLink="/signup">
-            <button type="button" id="signup-button" class="btn btn-outline-light" href="#" >Sign up</button>
-          </a>
-        </li>
-        <li *ngIf="!isLoggedIn" class="nav-item nav-buttons">
-          <a routerLink="/login">
-            <button type="button" id="signin-button" class="btn btn-outline-light" href="#">Log in</button>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link  dropdown-toggle" id="language" href="#" data-toggle="dropdown"
-             style="padding-top: 4px">{{selectedLanguage}}</a>
-          <ul class="dropdown-menu dropdown-menu-right fade-down language">
-            <div class="row">
-              <div class="col-sm-6">
-                <li><a class="dropdown-item" (click)="changeLanguage('English')" href="javascript:void(0)"> English </a>
-                </li>
-                <li><a class="dropdown-item" (click)="changeLanguage('Chinese')" href="javascript:void(0)"> Chinese </a>
-                </li>
-                <li><a class="dropdown-item" (click)="changeLanguage('Spanish')" href="javascript:void(0)"> Spanish </a>
-                </li>
-                <li><a class="dropdown-item" (click)="changeLanguage('Russian')" href="javascript:void(0)"> Russian </a>
-                </li>
+        <ul class="navbar-nav ml-auto">
+          <li *ngIf="!isLoggedIn" class="nav-item nav-buttons">
+            <a routerLink="/signup">
+              <button type="button" id="signup-button" class="btn btn-outline-light" href="#">Sign up</button>
+            </a>
+          </li>
+          <li *ngIf="!isLoggedIn" class="nav-item nav-buttons">
+            <a routerLink="/login">
+              <button type="button" id="signin-button" class="btn btn-outline-light" href="#">Log in</button>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" id="language" href="#" data-toggle="dropdown"
+               style="padding-top: 4px">{{selectedLanguage}}</a>
+            <ul class="dropdown-menu dropdown-menu-right fade-down language">
+              <div class="row">
+                <div class="col-sm-6">
+                  <li><a class="dropdown-item" (click)="changeLanguage('English')" href="javascript:void(0)">
+                    English </a>
+                  </li>
+                  <li><a class="dropdown-item" (click)="changeLanguage('Chinese')" href="javascript:void(0)">
+                    Chinese </a>
+                  </li>
+                  <li><a class="dropdown-item" (click)="changeLanguage('Spanish')" href="javascript:void(0)">
+                    Spanish </a>
+                  </li>
+                  <li><a class="dropdown-item" (click)="changeLanguage('Russian')" href="javascript:void(0)">
+                    Russian </a>
+                  </li>
+                </div>
+                <div class="col-sm-6">
+                  <li><a class="dropdown-item" (click)="changeLanguage('Japanese')" href="javascript:void(0)">
+                    Japanese </a></li>
+                  <li><a class="dropdown-item" (click)="changeLanguage('Korean')" href="javascript:void(0)"> Korean </a>
+                  </li>
+                  <li><a class="dropdown-item" (click)="changeLanguage('Arabic')" href="javascript:void(0)"> Arabic </a>
+                  </li>
+                  <li><a class="dropdown-item" (click)="changeLanguage('Turkish')" href="javascript:void(0)">
+                    Turkish </a>
+                  </li>
+                </div>
               </div>
-              <div class="col-sm-6">
-                <li><a class="dropdown-item" (click)="changeLanguage('Japanese')" href="javascript:void(0)">
-                  Japanese </a></li>
-                <li><a class="dropdown-item" (click)="changeLanguage('Korean')" href="javascript:void(0)"> Korean </a>
-                </li>
-                <li><a class="dropdown-item" (click)="changeLanguage('Arabic')" href="javascript:void(0)"> Arabic </a>
-                </li>
-                <li><a class="dropdown-item" (click)="changeLanguage('Turkish')" href="javascript:void(0)"> Turkish </a>
-                </li>
-              </div>
-            </div>
-          </ul>
-        </li>
-        <li *ngIf="isLoggedIn" class="nav-item dropdown">
-          <a class="nav-link  dropdown-toggle" id="user" href="#" data-toggle="dropdown"
-             style="padding-top: 4px">User</a>
-          <ul class="dropdown-menu dropdown-menu-right fade-down" style="">
-            <li><a class="dropdown-item" href="javascript:void(0)"> Profile </a></li>
-            <li><a class="dropdown-item" href="javascript:void(0)"> History </a></li>
-            <li><a class="dropdown-item" (click)="logout()" href="javascript:void(0)"> Log out </a></li>
-          </ul>
-        </li>
-      </ul>
+            </ul>
+          </li>
+          <li *ngIf="isLoggedIn" class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" id="user" href="#" data-toggle="dropdown"
+               style="padding-top: 4px">User</a>
+            <ul class="dropdown-menu dropdown-menu-right fade-down" style="">
+              <li><a class="dropdown-item" href="javascript:void(0)"> Profile </a></li>
+              <li><a class="dropdown-item" href="javascript:void(0)"> History </a></li>
+              <li><a class="dropdown-item" (click)="logout()" href="javascript:void(0)"> Log out </a></li>
+            </ul>
+          </li>
+        </ul>
 
-    </div> <!-- navbar-collapse.// -->
+      </div> <!-- navbar-collapse.// -->
 
-  </nav>
+    </nav>
+  </div>
 </section>

@@ -1,6 +1,6 @@
 <body>
 <div class="background-container">
-  <app-navigation-bar></app-navigation-bar>
+<!--  <app-navigation-bar></app-navigation-bar>-->
 
   <!------- Currency Converter ------>
 
@@ -42,6 +42,7 @@
                 <span
                   *ngIf="minMax.min === null || minMax.min === 0 && minMax.max !== null">Maximum amount should be {{minMax.max}}</span>
                 <span *ngIf="errorCheck.error === 'Empty response'">Pairs not supported</span>
+                <span *ngIf="minMax.max && minMax.min && errorCheck.error !== 'Empty response'">Amount should be between {{minMax.min}} and {{minMax.max}}</span>
               </div>
             </form>
 
@@ -92,6 +93,10 @@
                 </div>
               </div>
             </div>
+          </div>
+
+          <div>
+            <span *ngIf="exchangeId === -1" style="color: red; font-size: 15px">{{exchangeError}}</span>
           </div>
 
 

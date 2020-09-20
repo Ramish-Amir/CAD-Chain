@@ -11,7 +11,7 @@ $greencolor: rgba(92, 208, 95, 0.5);
   background-attachment: fixed;
   background-repeat: no-repeat;
   //overflow: auto;
-  height: 100vh;
+  //height: 100vh;
   width: 100%;
   overflow: auto;
 }
@@ -124,18 +124,18 @@ hr {
   text-transform: uppercase;
 }
 
-.addresses {
+.addresses, .hashes {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.recipient-address {
+.recipient-address, .input-hash, .output-hash {
   width: 50%;
   text-align: center;
 }
 
-.recipient-address p, .sender-address p {
+.recipient-address p, .sender-address p, .input-hash p, .output-hash p {
   flex-wrap: wrap;
   max-width: 70%;
   word-wrap: break-word;
@@ -154,4 +154,13 @@ hr {
 
 .sender-address span {
   text-transform: uppercase;
+}
+
+.exchange-error {
+  text-align: center;
+}
+
+.exchange-error h4 {
+  margin: 20px auto;
+  color: darkred;
 }

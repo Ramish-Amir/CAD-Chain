@@ -17,7 +17,7 @@ export class BuyCryptoComponent implements OnInit {
   receiveCurrency: any = [];
   coinList1: any = [];
   coinList2: any = [];
-  minMax: any = [];
+  minMax: any = ['none'];
   recipientAddress = '';
   addressValidation: any = [];
   messageText = '';
@@ -25,6 +25,7 @@ export class BuyCryptoComponent implements OnInit {
   public exchangeId: any = [];
   fixedRate = false;
   errorCheck: any = [];
+  exchangeError;
 
   // ----- Method to change the exchange option to Fixed Rate ----- ////
 
@@ -41,6 +42,9 @@ export class BuyCryptoComponent implements OnInit {
           }
           this.coinList2 = data;
           // console.log(this.receiveCurrency);
+
+          // ----- Calling minMax function if currency Pair is available ----- //
+
           this.getMinMax(depositCoin, receiveCoin);
         }
       );
@@ -61,6 +65,9 @@ export class BuyCryptoComponent implements OnInit {
           }
           this.coinList2 = data;
           // console.log(this.receiveCurrency);
+
+          // ----- Calling minMax function if currency Pair is available ----- //
+
           this.getMinMax(depositCoin, receiveCoin);
         }
       );
@@ -178,7 +185,7 @@ export class BuyCryptoComponent implements OnInit {
   // ----- Final Method to post data to the server ----- ////
 
   postData(depositCoin, receiveCoin) {
-    const postData = {
+    const buyData = {
       depositcurrency: depositCoin,
       receivecurrency: receiveCoin,
       address: this.recipientAddress,
@@ -190,11 +197,15 @@ export class BuyCryptoComponent implements OnInit {
         'Content-Type': 'application/json'
       })
     };
-    console.log(postData);
-    this.http.post('http://127.0.0.1:5000/createexchange', postData, opts)
+    console.log(buyData);
+    this.http.post('http://127.0.0.1:5000/createexchange', buyData, opts)
       .subscribe(
         (data: any) => {
           this.exchangeId = data;
+          if (this.exchangeId.id === -1) {
+            this.exchangeError = 'Something went wrong... Please refresh the page';
+            return;
+          }
           this.router.navigate(['/buy', this.exchangeId.id]);
         });
   }

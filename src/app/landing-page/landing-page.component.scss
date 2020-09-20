@@ -26,21 +26,16 @@ $greencolor: rgba(92, 208, 95, 0.7);
 
 /* ============ background Image container ============ */
 div.background-img-container {
-  background: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg") fixed no-repeat;
   width: 100%;
+  margin: 0;
+  overflow: auto;
+  height: 100vh;
 }
 
 /* ============ HomePage Top ============ */
 section.homepage-top {
   font-weight: 500;
-  position: page;
-  //background-image: linear-gradient(to bottom, $bluecolor, $greencolor);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  //background-attachment: fixed;
   width: 100%;
 }
 
@@ -53,8 +48,8 @@ section.homepage-banner {
 }
 
 div.banner-wrap {
-  margin-top: 10vw;
-  margin-bottom: 10vw;
+  padding: 8vw 0;
+  margin: 0;
 }
 
 div.crypto-container {
@@ -304,8 +299,7 @@ p.mobile-view-only {
 
   }
   div.banner-wrap {
-    margin-top: 20%;
-    margin-bottom: 20%;
+    padding: 20% 0;
 
     h1 {
       font-size: 2rem;
