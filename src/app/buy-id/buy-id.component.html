@@ -10,7 +10,7 @@
           class="status waiting">
           <span>Waiting</span>
         </div>
-        <div [ngClass]="{'active': exchangeStatus === 'confirming'
+        <div class="next-icon" [ngClass]="{'active': exchangeStatus === 'confirming'
         || exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} ">
           <mdb-icon fas icon="angle-double-right"></mdb-icon>
         </div>
@@ -20,7 +20,7 @@
              class="status">
           <span>Confirming</span>
         </div>
-        <div
+        <div class="next-icon"
           [ngClass]="{'active': exchangeData.status === 'exchanging' || exchangeData.status === 'sending' || exchangeData.status === 'finished'} ">
           <mdb-icon fas icon="angle-double-right"></mdb-icon>
         </div>
@@ -38,7 +38,7 @@
              class="status">
           <span>Sending</span>
         </div>
-        <div
+        <div class="next-icon"
           [ngClass]="{'active': exchangeData.status === 'finished'} ">
           <mdb-icon fas icon="angle-double-right"></mdb-icon>
         </div>
@@ -55,7 +55,7 @@
         <div class="header">
           <h2>Exchange Details</h2>
         </div>
-        <div class="id">
+        <div class="id title">
           <p>Exchange ID : {{exchangeId}}</p>
         </div>
         <hr>
@@ -111,6 +111,20 @@
           <div class="sender-address">
             <span class="title">SEND YOUR {{exchangeData.currency_from}} TO THE ADDRESS</span>
             <p>{{exchangeData.address_from}}</p>
+          </div>
+
+          <hr *ngIf="exchangeData.type === 'fixed'">
+          <div *ngIf="exchangeData.type === 'fixed'" class="timer">
+            <div class="time-icon title">
+              <mdb-icon far icon="clock"></mdb-icon>
+            </div>
+            <div class="time-label title">
+              <span >Time window to deposit </span>
+            </div>
+            <div class="time-left">
+              <countdown *ngIf="remainingTime !== -1" [config]="{ leftTime: remainingTime, format: 'mm:ss' }"></countdown>
+              <span *ngIf="remainingTime === -1">00:00</span>
+            </div>
           </div>
         </div>
 

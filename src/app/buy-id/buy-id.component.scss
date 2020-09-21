@@ -56,16 +56,17 @@ $greencolor: rgba(92, 208, 95, 0.5);
 }
 
 
-mdb-icon {
+.next-icon mdb-icon, .exchange-icon mdb-icon {
   margin-top: 15px;
   padding: 0 10px;
-  color: rgba(57, 119, 153, 0.7);
+  color: rgba(57, 119, 153, 1);
   width: 2.5%;
 }
 
 .active {
   color: #ffffff;
-  background: rgba(57, 119, 153, 0.7);
+  background: rgba(57, 119, 153, 0.9);
+
 
 }
 
@@ -89,8 +90,6 @@ mdb-icon {
 
 .id {
   text-align: center;
-  //color: rgb(118, 143, 174);
-  color: rgba(57, 119, 153, 0.7);
 
 }
 
@@ -111,8 +110,7 @@ hr {
 }
 
 .title {
-  //color: rgb(118, 143, 174);
- color: rgba(57, 119, 153, 0.7);
+ color: rgba(57, 119, 153, 0.9);
 }
 
 
@@ -154,6 +152,16 @@ hr {
 
 .sender-address span {
   text-transform: uppercase;
+}
+
+.timer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.time-icon, .time-label, .time-left {
+  padding: 0 5px;
 }
 
 .exchange-error {

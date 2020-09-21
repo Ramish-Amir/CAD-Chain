@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -6,8 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  exchangeID;
 
-  constructor() { }
+  trackSwap() {
+    if (this.exchangeID) {
+      const id = this.exchangeID;
+      console.log(id);
+      this.router.navigate(['/buy', this.exchangeID]);
+      this.exchangeID = '';
+    }
+  }
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }

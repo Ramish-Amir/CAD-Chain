@@ -19,6 +19,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import { BuyCryptoComponent } from './buy-crypto/buy-crypto.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BuyIdComponent } from './buy-id/buy-id.component';
+import {CountdownModule} from 'ngx-countdown';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { BuyIdComponent } from './buy-id/buy-id.component';
         FormsModule,
         RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'}),
         NgSelectModule,
-      HttpClientModule,
+        HttpClientModule,
+        CountdownModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

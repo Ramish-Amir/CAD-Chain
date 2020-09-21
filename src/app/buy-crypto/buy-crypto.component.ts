@@ -237,7 +237,6 @@ export class BuyCryptoComponent implements OnInit {
       .subscribe(
         data => {
           this.minMax = data;
-          console.log(JSON.stringify(data));
           console.log(data);
         }
       );

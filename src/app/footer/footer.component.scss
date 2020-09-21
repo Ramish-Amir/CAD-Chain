@@ -1,11 +1,62 @@
 footer.page-footer {
-  background: rgba(57, 119, 153, 0.8);
+  background: rgba(57, 119, 153, 0.9);
   padding-top: 3rem;
   padding-bottom: 2rem;
   padding-left: 12%;
   padding-right: 12%;
   font-family: 'Nunito', sans-serif;
 }
+
+.track {
+  text-align: center;
+  width: 100%;
+  min-width: 280px;
+}
+
+.track p:hover {
+  color: white;
+}
+
+.track-exchange {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+  background: white;
+  height: 2rem;
+  width: 30%;
+  min-width: 300px;
+  text-align: center;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  padding: 2px 2px 2px 15px;
+}
+
+.id-input {
+  background: none;
+  border: none;
+  outline: none;
+  padding: 10px 0;
+}
+
+.search {
+  position: relative;
+  background: rgba(57, 119, 153, 0.9);
+  border-radius: 50px;
+  min-width: 30px;
+  cursor: pointer;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  //height: 30px;
+  //width: 30px;
+}
+
 
 p, i, p a {
   font-size: 14px;
@@ -57,6 +108,8 @@ h6 {
 li.list-inline-item {
   margin-top: 5px;
 }
+
+
 @media screen and (max-width: 992px){
   h6 {
     font-size: 0.8rem;
