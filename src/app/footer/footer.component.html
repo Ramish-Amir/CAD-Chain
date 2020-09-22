@@ -8,7 +8,9 @@
     <div class="track">
       <span>Track your swap</span>
       <div class="track-exchange">
-        <input [(ngModel)]="exchangeID" class="id-input" type="text" placeholder="Enter exchange ID...">
+        <input [(ngModel)]="exchangeID" class="id-input" type="text" placeholder="Enter exchange ID..."
+        onkeypress=" return !(!(event.charCode > 47 && event.charCode < 58) && !(event.charCode > 64 && event.charCode < 91) &&
+        !(event.charCode > 96 && event.charCode < 123))">
         <div class="search">
           <mdb-icon (click)="trackSwap()" class="search-icon" fas icon="search"></mdb-icon>
         </div>

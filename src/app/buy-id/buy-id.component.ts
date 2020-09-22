@@ -11,8 +11,8 @@ import {CountdownModule} from 'ngx-countdown';
 export class BuyIdComponent implements OnInit {
   exchangeId;
   exchangeData: any = [];
-  exchangeStatus ;
   remainingTime: any = [];
+  errorCheck: any = [];
 
   constructor(private route: ActivatedRoute,
               private http: HttpClient) {

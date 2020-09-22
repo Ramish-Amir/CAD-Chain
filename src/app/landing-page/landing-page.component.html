@@ -27,34 +27,34 @@
         </div>
 
         <!-- Crypto-currency Converter -->
-        <div class="crypto-converter">
-          <div class="send-crypto">
-            <div class="input-container">
-              <label class="coin-input-label" for="sendAmount">You Send</label>
-              <input class="coin-input" #sendingAmount id="sendAmount" type="text" placeholder="Enter amount"
-                     value="{{sendAmount}}"
-                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
-                     (keyup)="convertTo(sendingAmount.value)">
-            </div>
-            <select>
-              <option style="overflow-y: auto" *ngFor="let coin of coinList1" value="{{coin}}">{{coin}}</option>
-            </select>
-          </div>
-          <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>
-          <div class="get-crypto">
-            <div class="input-container">
-              <label class="coin-input-label" for="getAmount">You Get</label>
-              <input class="coin-input" #receivingAmount id="getAmount" type="text" placeholder="- - - "
-                     value="{{getAmount}}"
-                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
-                     (keyup)="convertFrom(receivingAmount.value)">
-            </div>
-            <select>
-              <option *ngFor="let coin of coinList2" value="{{coin}}">{{coin}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="exchange-button">
+<!--        <div class="crypto-converter">-->
+<!--          <div class="send-crypto">-->
+<!--            <div class="input-container">-->
+<!--              <label class="coin-input-label" for="sendAmount">You Send</label>-->
+<!--              <input class="coin-input" #sendingAmount id="sendAmount" type="text" placeholder="Enter amount"-->
+<!--                     value="{{sendAmount}}"-->
+<!--                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"-->
+<!--                     (keyup)="convertTo(sendingAmount.value)">-->
+<!--            </div>-->
+<!--            <select>-->
+<!--              <option style="overflow-y: auto" *ngFor="let coin of coinList1" value="{{coin}}">{{coin}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>-->
+<!--          <div class="get-crypto">-->
+<!--            <div class="input-container">-->
+<!--              <label class="coin-input-label" for="getAmount">You Get</label>-->
+<!--              <input class="coin-input" #receivingAmount id="getAmount" type="text" placeholder="- - - "-->
+<!--                     value="{{getAmount}}"-->
+<!--                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"-->
+<!--                     (keyup)="convertFrom(receivingAmount.value)">-->
+<!--            </div>-->
+<!--            <select>-->
+<!--              <option *ngFor="let coin of coinList2" value="{{coin}}">{{coin}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div style="margin-top: 50px" class="exchange-button">
           <input routerLink="/buy" id="exchangeButton" type="submit" value="EXCHANGE">
         </div>
         <!-- ./Crypto-currency Converter End -->

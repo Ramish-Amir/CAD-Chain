@@ -6,7 +6,8 @@ div.background-container {
   background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 
 }
 
