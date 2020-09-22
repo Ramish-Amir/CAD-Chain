@@ -18,7 +18,7 @@ export class BuyCryptoComponent implements OnInit {
   coinList1: any = [];
   coinList2: any = [];
   minMax: any = ['none'];
-  recipientAddress = '';
+  recipientAddress;
   addressValidation: any = [];
   messageText = '';
   messageValidation: any = [];
@@ -30,60 +30,36 @@ export class BuyCryptoComponent implements OnInit {
   // ----- Method to change the exchange option to Fixed Rate ----- ////
 
   changeToFixedRate(depositCoin, receiveCoin) {
-    this.fixedRate = true;
-    const tUrl = 'http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate;
-    console.log(tUrl);
-    this.http.get('http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate)
-      .subscribe(
-        (data) => {
-          this.errorCheck = data;
-          if (this.errorCheck.error === 'Empty Response') {
-            return;
-          }
-          this.coinList2 = data;
-          // console.log(this.receiveCurrency);
-
-          // ----- Calling minMax function if currency Pair is available ----- //
-
-          this.getMinMax(depositCoin, receiveCoin);
-        }
-      );
+    if (!this.fixedRate) {
+      this.fixedRate = true;
+      this.getReceiveCoinList(depositCoin, this.receiveCurrency);
+    }
   }
 
   // ----- Method to change the exchange option to Floating Rate ----- ////
 
   changeToFloatingRate(depositCoin, receiveCoin) {
-    this.fixedRate = false;
-    const tUrl = 'http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate;
-    console.log(tUrl);
-    this.http.get('http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate)
-      .subscribe(
-        (data) => {
-          this.errorCheck = data;
-          if (this.errorCheck.error === 'Empty Response') {
-            return;
-          }
-          this.coinList2 = data;
-          // console.log(this.receiveCurrency);
-
-          // ----- Calling minMax function if currency Pair is available ----- //
-
-          this.getMinMax(depositCoin, receiveCoin);
-        }
-      );
+    if (this.fixedRate) {
+      this.fixedRate = false;
+      this.getReceiveCoinList(depositCoin, this.receiveCurrency);
+    }
   }
 
-  // ----- Method for value conversion whenever a value in entered ----- ////
+  //// ----- Method for value conversion whenever a value in entered ----- ////
 
   convertTo(depositCoin, receiveCoin) {
-    if (this.sendAmount < this.minMax.min) {
+    if (this.sendAmount < this.minMax.min || this.sendAmount === undefined
+      || (this.minMax.max !== null && this.sendAmount > this.minMax.max)) {
       console.log('amount is not valid');
       this.getAmount = '';
       return;
     }
-    console.log(receiveCoin);
-    return this.http.get('http://127.0.0.1:5000/getrate?deposit=' + depositCoin + '&receive='
-      + receiveCoin + '&amount=' + this.sendAmount + '&fixed=' + this.fixedRate)
+
+    const getRateUrl = 'http://127.0.0.1:5000/getrate?deposit=' + depositCoin + '&receive='
+      + this.receiveCurrency + '&amount=' + this.sendAmount + '&fixed=' + this.fixedRate;
+    console.log('GetRateUrl ' + getRateUrl);
+
+    return this.http.get(getRateUrl)
       .subscribe(
         (data) => {
           this.getAmount = data;
@@ -94,32 +70,38 @@ export class BuyCryptoComponent implements OnInit {
   // ----- Method to update the Receiving Currency List (CoinList2) ----- ////
 
   getReceiveCoinList(depositCoin, receiveCoin) {
-    const rUrl = 'http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate;
-    console.log(rUrl);
-    this.http.get('http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate)
+    const currencyPairUrl = 'http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate;
+    console.log(currencyPairUrl);
+    this.http.get(currencyPairUrl)
       .subscribe(
         data => {
-          this.coinList2 = data;
-          // console.log(data);
-          console.log(this.receiveCurrency);
-          console.log(this.depositCurrency);
-        }
-      );
-    this.sendAmount = '';
-    this.getAmount = '';
-    this.recipientAddress = '';
-    this.messageText = '';
-    const mmUrl = 'http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive='
-      + this.coinList2[0].symbol + '&fixed=' + this.fixedRate;
-    console.log(mmUrl);
-    this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive='
-      + receiveCoin + '&fixed=' + this.fixedRate)
-      .subscribe(
-        (data) => {
           this.errorCheck = data;
-          console.log(this.errorCheck.error);
-          this.minMax = data;
-          console.log(data);
+          if (this.errorCheck.error === 'Empty response') {
+            return;
+          }
+          const prevCoin = this.receiveCurrency;
+          this.coinList2 = data;
+          // let isAvailable = false;
+          // for (const coin of this.coinList2) {
+          //   if (coin.symbol === this.receiveCurrency) {
+          //     isAvailable = true;
+          //     console.log('Receive currency remains as it is: ' + this.receiveCurrency);
+          //     break;
+          //   }
+          // }
+          // console.log('Is available: ' + isAvailable);
+          const index = this.coinList2.findIndex(obj => obj.symbol === prevCoin);
+          console.log('Index: ' + index);
+          if (index !== -1) {
+            this.receiveCurrency = this.coinList2[index].symbol;
+          } else {
+            this.receiveCurrency = this.coinList2[0].symbol;
+          }
+          // this.receiveCurrency = this.coinList2[70].symbol;
+          console.log('deposit coin ' + depositCoin);
+          console.log('this.receiveCurrency ' + this.receiveCurrency);
+
+          this.getMinMax(depositCoin, this.receiveCurrency);
         }
       );
   }
@@ -129,24 +111,22 @@ export class BuyCryptoComponent implements OnInit {
 
   getMinMax(depositCoin, receiveCoin) {
     console.log(depositCoin);
-    console.log(receiveCoin);
+    // console.log(receiveCoin);
     console.log(this.receiveCurrency);
-    const minMaxUrl = 'http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive=' + receiveCoin + '&fixed=' + this.fixedRate;
+    const minMaxUrl = 'http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive='
+      + this.receiveCurrency + '&fixed=' + this.fixedRate;
     console.log(minMaxUrl);
-    this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive=' + receiveCoin + '&fixed=' + this.fixedRate)
+    this.http.get(minMaxUrl)
       .subscribe(
         data => {
           this.errorCheck = data;
           this.minMax = data;
           console.log(data);
           console.log('Min max works fine');
-          this.sendAmount = '';
-          this.getAmount = '';
-          this.recipientAddress = '';
-          this.messageText = '';
           if (this.errorCheck.error === 'Empty response') {
             return;
           }
+          this.convertTo(depositCoin, this.receiveCurrency);
         }
       );
   }
@@ -190,7 +170,8 @@ export class BuyCryptoComponent implements OnInit {
       receivecurrency: receiveCoin,
       address: this.recipientAddress,
       amount: this.sendAmount,
-      extraid: this.messageText
+      extraid: this.messageText,
+      fixed: this.fixedRate,
     };
     const opts = {
       headers: new HttpHeaders({

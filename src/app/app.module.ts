@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { FooterComponent } from './footer/footer.component';
@@ -46,6 +46,7 @@ import {CountdownModule} from 'ngx-countdown';
         NgSelectModule,
         HttpClientModule,
         CountdownModule,
+        ReactiveFormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

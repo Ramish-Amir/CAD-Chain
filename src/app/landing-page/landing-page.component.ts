@@ -1,22 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {isNull} from 'util';
-import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss'],
-  // encapsulation: ViewEncapsulation.None
 })
 
 export class LandingPageComponent implements OnInit {
   public cryptoAssets = '240';
   public tradingVolume = 23847534383;
-  public getAmount; sendAmount;
-  public xButton = document.getElementById('exchangeButton');
+  public getAmount;
+  sendAmount;
 
   coinList1 = ['USD', 'CNY', 'HKD', 'VND', 'MYR', 'TWD', 'KRW', 'RUB', 'AUD', 'CAD', 'SGD', 'GBP', 'EUR', 'INR', 'CHF', 'NGN',
-          'BRL', 'AED', 'TRY', 'NZD', 'ZAR', 'NOK', 'DKK', 'SEK', 'ALL', 'BGN', 'CZK', 'HRK', 'HUF', 'MDL', 'MKD', 'PLN', 'RON'];
+    'BRL', 'AED', 'TRY', 'NZD', 'ZAR', 'NOK', 'DKK', 'SEK', 'ALL', 'BGN', 'CZK', 'HRK', 'HUF', 'MDL', 'MKD', 'PLN', 'RON'];
 
   coinList2 = ['BTC', 'USDT', 'ETH', 'BCH', 'XRP', 'EOS', 'LTC', 'HUSD', 'ETC', 'BSV',
     'DASH', 'HPT'];
@@ -43,11 +40,12 @@ export class LandingPageComponent implements OnInit {
     this.getAmount = amount;
     return;
   }
+
   convertFrom(val) {
     const amount = val / 2;
     if (isNaN(amount)) {
-        this.sendAmount = 'Invalid Amount';
-        return;
+      this.sendAmount = 'Invalid Amount';
+      return;
     }
     if (amount === 0) {
       this.sendAmount = '';
@@ -56,7 +54,6 @@ export class LandingPageComponent implements OnInit {
     this.sendAmount = amount;
     return;
   }
-
 
   constructor() {
   }

@@ -5,18 +5,18 @@
     <div class="card-background">
       <div class="status-bar">
         <div
-          [ngClass]="{'active': exchangeStatus === 'waiting' || exchangeStatus === 'confirming'
-        || exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+          [ngClass]="{'active': exchangeData.status === 'waiting' || exchangeData.status === 'confirming'
+        || exchangeData.status === 'exchanging' || exchangeData.status === 'sending' || exchangeData.status === 'finished'} "
           class="status waiting">
           <span>Waiting</span>
         </div>
-        <div class="next-icon" [ngClass]="{'active': exchangeStatus === 'confirming'
-        || exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} ">
+        <div class="next-icon" [ngClass]="{'active': exchangeData.status === 'confirming'
+        || exchangeData.status === 'exchanging' || exchangeData.status === 'sending' || exchangeData.status === 'finished'} ">
           <mdb-icon fas icon="angle-double-right"></mdb-icon>
         </div>
 
-        <div [ngClass]="{'active': exchangeStatus === 'confirming'
-        || exchangeStatus === 'exchanging' || exchangeStatus === 'sending' || exchangeStatus === 'finished'} "
+        <div [ngClass]="{'active': exchangeData.status === 'confirming'
+        || exchangeData.status === 'exchanging' || exchangeData.status === 'sending' || exchangeData.status === 'finished'} "
              class="status">
           <span>Confirming</span>
         </div>

@@ -38,11 +38,11 @@
                 </select>
               </div>
               <div class="info">
-                <span *ngIf="minMax.max === null && minMax.min !== 0">Minimum amount should be {{minMax.min}}</span>
-                <span
-                  *ngIf="minMax.min === null || minMax.min === 0 && minMax.max !== null">Maximum amount should be {{minMax.max}}</span>
+                <span *ngIf="minMax.max === null && minMax.min !== 0 && sendAmount < minMax.min && errorCheck.error !== 'Empty response'">Minimum amount should be {{minMax.min}}</span>
+<!--                <span-->
+<!--                  *ngIf="minMax.min === null || minMax.min === 0 && minMax.max !== null">Maximum amount should be {{minMax.max}}</span>-->
+                <span *ngIf="minMax.max && minMax.min && (sendAmount < minMax.min || sendAmount > minMax.max) && errorCheck.error !== 'Empty response'">Amount should be between {{minMax.min}} and {{minMax.max}}</span>
                 <span *ngIf="errorCheck.error === 'Empty response'">Pairs not supported</span>
-                <span *ngIf="minMax.max && minMax.min && errorCheck.error !== 'Empty response'">Amount should be between {{minMax.min}} and {{minMax.max}}</span>
               </div>
             </form>
 
@@ -54,9 +54,9 @@
             <div class="input-container">
               <input [(ngModel)]="getAmount.rate" class="coin-input" id="getAmount" type="text" placeholder="-"
                      onkeypress="return !(event.charCode !==46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))">
-              <select (change)="getMinMax(depositCoin.value, receiveCoin.value)" [(ngModel)]="receiveCurrency" name="r"
+              <select (change)="getMinMax(depositCoin.value, receiveCoin.value)" [(ngModel)]="receiveCurrency" name="receiveCoin"
                       #receiveCoin>
-                <option *ngFor="let coin of coinList2" value="{{coin.symbol}}">{{coin.symbol}}</option>
+                <option *ngFor="let coin of coinList2" [value]="coin.symbol">{{coin.symbol}}</option>
               </select>
             </div>
 
