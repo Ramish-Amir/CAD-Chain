@@ -36,7 +36,7 @@
                        type="text" placeholder="Enter amount"
                        onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"
                        (keyup)="convertTo(depositCoin.value)">
-                <select (change)="getReceiveCoinList(depositCoin.value)" #depositCoin>
+                <select (change)="getReceiveCoinList(depositCoin.value)" #depositCoin [(ngModel)]="depositCurrency" name="depositCoin">
                   <option *ngFor="let coin of coinList1" value="{{coin.symbol}}">{{coin.symbol}}</option>
                 </select>
               </div>
@@ -107,7 +107,7 @@
 
           <div class="exchange-button">
             <input *ngIf="!disableExchangeButton"
-                   [disabled]="!sendAmount || !getAmount || !recipientAddress || !addressValidation.valid || disableExchangeButton"
+                   [disabled]="!sendAmount || !getAmount || !recipientAddress || !addressValidation.valid || disableExchangeButton || errorCheck.error === 'Empty response'"
                    (click)="postData(depositCoin.value)" id="exchangeButton" type="submit"
                    value="EXCHANGE">
             <div>

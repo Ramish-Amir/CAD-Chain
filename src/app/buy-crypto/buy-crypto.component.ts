@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
+import { Observable} from 'rxjs';
+import {interval} from 'rxjs';
 
 @Component({
   selector: 'app-buy-crypto',
@@ -83,6 +85,7 @@ export class BuyCryptoComponent implements OnInit {
     return this.http.get(getRateUrl)
       .subscribe(
         (data) => {
+          this.errorCheck = data;
           this.getAmount = data;
           this.fetchingRate = false;
           console.log(this.getAmount);
@@ -245,8 +248,10 @@ export class BuyCryptoComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient,
-              private router: Router) {
+  constructor(private http: HttpClient, private router: Router) {
+    interval(30000).subscribe(x => {
+      this.convertTo(this.depositCurrency);
+    });
   }
 
   ngOnInit(): void {
@@ -270,6 +275,9 @@ export class BuyCryptoComponent implements OnInit {
                     minMaxData => {
                       this.minMax = minMaxData;
                       console.log(minMaxData);
+                    },
+                    () => {
+                      console.log('Error occured in MinMax');
                     }
                   );
               }

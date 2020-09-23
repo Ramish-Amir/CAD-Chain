@@ -12,7 +12,8 @@
         onkeypress=" return !(!(event.charCode > 47 && event.charCode < 58) && !(event.charCode > 64 && event.charCode < 91) &&
         !(event.charCode > 96 && event.charCode < 123))">
         <div class="search">
-          <mdb-icon (click)="trackSwap()" class="search-icon" fas icon="search"></mdb-icon>
+          <mdb-icon *ngIf="!validatingID" (click)="trackSwap()" class="search-icon" fas icon="search"></mdb-icon>
+          <img *ngIf="validatingID" src="assets/blue-spinner.svg" width="15">
         </div>
       </div>
       <p *ngIf="isValidId.valid === false" class="id-error">Exchange not found!</p>

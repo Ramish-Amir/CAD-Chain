@@ -6,8 +6,8 @@ div.background-container {
   background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
-  overflow-y: auto;
-  overflow-x: hidden;
+  //overflow-y: auto;
+  //overflow-x: visible;
 
 }
 
@@ -185,7 +185,7 @@ option {
 
 .address-input {
   background: transparent;
-  padding: 15px 32px;
+  padding: 15px 16px;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
