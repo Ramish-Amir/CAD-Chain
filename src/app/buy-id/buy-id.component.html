@@ -64,7 +64,7 @@
 
         <div
           *ngIf="exchangeData.status !== 'failed' && exchangeData.status !== 'expired'
-          && exchangeData.status !== 'refunded' && exchangeData.status !== 'verifying'"
+          && exchangeData.status !== 'refunded' && exchangeData.status !== 'verifying' && !fetchingData"
           class="exchange-process">
           <div class="exchange-content">
             <div class="sending-details">
@@ -130,13 +130,19 @@
 
         <!--        Exchange Error   -->
 
-        <div class="exchange-error">
+        <div *ngIf="!fetchingData" class="exchange-error">
           <h4 *ngIf="exchangeData.status === 'failed'">Transaction failed!</h4>
           <h4 *ngIf="exchangeData.status === 'expired'">Exchange expired! Please create new exchange...</h4>
           <h4 *ngIf="exchangeData.status === 'refunded'">Exchange amount refunded</h4>
           <h4 *ngIf="exchangeData.status === 'verifying'">Verification required. Please contact support...</h4>
         </div>
 
+        <div *ngIf="fetchingData" class="preload-indicator">
+          <h2 class="title">Fetching data...</h2>
+          <div>
+            <img src="assets/blue-spinner.svg"width="80">
+          </div>
+        </div>
       </div>
     </div>
   </div>

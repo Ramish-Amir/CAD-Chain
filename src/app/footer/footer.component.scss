@@ -13,8 +13,8 @@ footer.page-footer {
   min-width: 280px;
 }
 
-.track p:hover {
-  color: white;
+.track span {
+  font-size: 20px;
 }
 
 .track-exchange {
@@ -53,8 +53,14 @@ footer.page-footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  //height: 30px;
-  //width: 30px;
+}
+
+.id-error {
+  color: white;
+}
+
+.id-error:hover {
+  color: #ffffff;
 }
 
 

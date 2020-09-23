@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {log} from 'util';
+import {error} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-footer',
@@ -24,17 +25,20 @@ export class FooterComponent implements OnInit {
             console.log(data);
             this.isValidId = data;
             if (this.isValidId.valid) {
-              console.log('Data is working fine');
               this.router.navigate(['/buy', this.exchangeID]);
               this.exchangeID = '';
             }
+          },
+          () => {
+
           }
         );
     }
   }
 
   constructor(private router: Router,
-              private http: HttpClient) {
+              private http: HttpClient,
+              ) {
   }
 
   ngOnInit(): void {

@@ -15,6 +15,7 @@
           <mdb-icon (click)="trackSwap()" class="search-icon" fas icon="search"></mdb-icon>
         </div>
       </div>
+      <p *ngIf="isValidId.valid === false" class="id-error">Exchange not found!</p>
     </div>
 
     <!-- Footer links -->

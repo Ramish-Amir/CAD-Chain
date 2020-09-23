@@ -20,6 +20,7 @@ import { BuyCryptoComponent } from './buy-crypto/buy-crypto.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BuyIdComponent } from './buy-id/buy-id.component';
 import {CountdownModule} from 'ngx-countdown';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {CountdownModule} from 'ngx-countdown';
     SignupComponent,
     CarouselComponent,
     BuyCryptoComponent,
-    BuyIdComponent
+    BuyIdComponent,
+    ErrorDialogComponent
   ],
   entryComponents: [
     LandingPageComponent,

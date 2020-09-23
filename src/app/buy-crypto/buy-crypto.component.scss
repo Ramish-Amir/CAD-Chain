@@ -202,12 +202,42 @@ div.form-group {
   margin: 0;
 }
 
-div.exchange-button input {
+div.exchange-button {
+  position: relative;
   margin: 10px auto 0;
-  font-size: 1.1rem;
   background: rgba(57, 119, 153, 0.8);
   height: 2.5rem;
   width: 250px;
+  border-radius: 50px;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  transition: ease-in-out 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+div.exchange-button input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  width: 100%;
+  color: white;
+  background: none;
+  border: none;
+
+}
+
+div.exchange-button img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+  font-size: 1.1rem;
+  height: 2.5rem;
+  //width: 250px;
   border-radius: 50px;
   outline: none;
   color: white;
@@ -233,7 +263,7 @@ select {
   //text-align: center;
 }
 
-div.exchange-button input:hover {
+div.exchange-button:hover {
   transition: 0.3s ease-out;
   transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
   -webkit-font-smoothing: antialiased;

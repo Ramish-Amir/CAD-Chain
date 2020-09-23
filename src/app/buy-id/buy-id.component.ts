@@ -13,6 +13,7 @@ export class BuyIdComponent implements OnInit {
   exchangeData: any = [];
   remainingTime: any = [];
   errorCheck: any = [];
+  fetchingData = true;
 
   constructor(private route: ActivatedRoute,
               private http: HttpClient) {
@@ -37,6 +38,7 @@ export class BuyIdComponent implements OnInit {
             console.log(timeData);
             this.remainingTime = timeData;
             console.log(this.remainingTime);
+            this.fetchingData = false;
           });
       }
     );
