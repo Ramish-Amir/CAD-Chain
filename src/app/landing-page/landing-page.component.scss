@@ -41,8 +41,8 @@ section.homepage-top {
 
 section.homepage-banner {
   color: #ffffff;
-  margin-right: 12%;
-  margin-left: 12%;
+  margin-right: 10%;
+  margin-left: 10%;
   padding-bottom: 1px;
   text-align: center;
 }
@@ -86,7 +86,7 @@ div.crypto-wrap {
 }
 
 section.homepage-bottom {
-  margin: 0 12% 1rem;
+  margin: 0 10% 1rem;
 }
 
 section.crypto-price-table {
@@ -213,6 +213,35 @@ section.crypto-table-container {
     }
 
   }
+}
+
+div.widgets-container {
+  display: flex;
+  width: 100%;
+  padding: 10px 10%;
+  background-color: rgba(86, 186, 237, 0.15);
+  margin: 5% 0 ;
+}
+
+div.widgets-wrap {
+  overflow: auto;
+  display: flex;
+  padding: 30px 0;
+}
+
+div.widgets-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+div.widget {
+  border-radius: 10px;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  margin: 0 20px;
+  min-width: 400px;
+  height: 300px;
+  overflow: hidden;
+  border: none;
 }
 
 

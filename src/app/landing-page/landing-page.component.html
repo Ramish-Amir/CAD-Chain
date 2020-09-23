@@ -5,7 +5,7 @@
 <div class="background-img-container">
   <section class="homepage-top">
     <!--Navbar -->
-<!--    <app-navigation-bar></app-navigation-bar>-->
+    <!--    <app-navigation-bar></app-navigation-bar>-->
     <!--/.Navbar end -->
 
     <!-- Homepage banner-->
@@ -27,33 +27,33 @@
         </div>
 
         <!-- Crypto-currency Converter -->
-<!--        <div class="crypto-converter">-->
-<!--          <div class="send-crypto">-->
-<!--            <div class="input-container">-->
-<!--              <label class="coin-input-label" for="sendAmount">You Send</label>-->
-<!--              <input class="coin-input" #sendingAmount id="sendAmount" type="text" placeholder="Enter amount"-->
-<!--                     value="{{sendAmount}}"-->
-<!--                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"-->
-<!--                     (keyup)="convertTo(sendingAmount.value)">-->
-<!--            </div>-->
-<!--            <select>-->
-<!--              <option style="overflow-y: auto" *ngFor="let coin of coinList1" value="{{coin}}">{{coin}}</option>-->
-<!--            </select>-->
-<!--          </div>-->
-<!--          <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>-->
-<!--          <div class="get-crypto">-->
-<!--            <div class="input-container">-->
-<!--              <label class="coin-input-label" for="getAmount">You Get</label>-->
-<!--              <input class="coin-input" #receivingAmount id="getAmount" type="text" placeholder="- - - "-->
-<!--                     value="{{getAmount}}"-->
-<!--                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"-->
-<!--                     (keyup)="convertFrom(receivingAmount.value)">-->
-<!--            </div>-->
-<!--            <select>-->
-<!--              <option *ngFor="let coin of coinList2" value="{{coin}}">{{coin}}</option>-->
-<!--            </select>-->
-<!--          </div>-->
-<!--        </div>-->
+        <!--        <div class="crypto-converter">-->
+        <!--          <div class="send-crypto">-->
+        <!--            <div class="input-container">-->
+        <!--              <label class="coin-input-label" for="sendAmount">You Send</label>-->
+        <!--              <input class="coin-input" #sendingAmount id="sendAmount" type="text" placeholder="Enter amount"-->
+        <!--                     value="{{sendAmount}}"-->
+        <!--                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"-->
+        <!--                     (keyup)="convertTo(sendingAmount.value)">-->
+        <!--            </div>-->
+        <!--            <select>-->
+        <!--              <option style="overflow-y: auto" *ngFor="let coin of coinList1" value="{{coin}}">{{coin}}</option>-->
+        <!--            </select>-->
+        <!--          </div>-->
+        <!--          <mdb-icon class="exchange-icon" fas icon="exchange-alt"></mdb-icon>-->
+        <!--          <div class="get-crypto">-->
+        <!--            <div class="input-container">-->
+        <!--              <label class="coin-input-label" for="getAmount">You Get</label>-->
+        <!--              <input class="coin-input" #receivingAmount id="getAmount" type="text" placeholder="- - - "-->
+        <!--                     value="{{getAmount}}"-->
+        <!--                     onkeypress="return !(event.charCode !=46 && event.charCode > 31 && (event.charCode < 48 || event.charCode > 57))"-->
+        <!--                     (keyup)="convertFrom(receivingAmount.value)">-->
+        <!--            </div>-->
+        <!--            <select>-->
+        <!--              <option *ngFor="let coin of coinList2" value="{{coin}}">{{coin}}</option>-->
+        <!--            </select>-->
+        <!--          </div>-->
+        <!--        </div>-->
         <div style="margin-top: 50px" class="exchange-button">
           <input routerLink="/buy" id="exchangeButton" type="submit" value="EXCHANGE">
         </div>
@@ -75,36 +75,62 @@
     <app-carousel></app-carousel>
   </section>
 
-  <section class="crypto-table-container">
-    <table class="crypto-table" mdbTable hover="true">
-      <!--        <caption>List of users</caption>-->
-      <thead>
-      <tr>
-        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr class="table-rows" mdbTableCol *ngFor="let el of elements">
-        <th scope="row">{{el.rank}}</th>
-        <td>{{el.name}}</td>
-        <td>{{el.price}}</td>
-        <td>{{el.change}}</td>
-        <td>{{el.market}}</td>
-        <!--          <td>{{el.market}}</td>-->
-      </tr>
-      </tbody>
-    </table>
-  </section>
-<!--  <div>-->
-<!--    style="width: 250px; height:80px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #56667F; border-radius: 4px; text-align: right; line-height:14px; block-size:220px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; box-shadow: inset 0 -20px 0 0 #56667F;padding:1px;padding: 0px; margin: 0px;">-->
-<!--    <div style="height:80px; padding:0px; margin:0px; width: 100%;">-->
-<!--      <iframe src="https://widget.coinlib.io/widget?type=single_v2&theme=light&coin_id=859&pref_coin_id=1505"-->
-<!--              width="250" height="80px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"-->
-<!--              style="border:0;margin:0;padding:0;line-height:14px;"></iframe>-->
-<!--    </div>-->
-<!--  </div>-->
+
+  <!--  <section class="crypto-table-container">-->
+  <!--    <table class="crypto-table" mdbTable hover="true">-->
+  <!--      &lt;!&ndash;        <caption>List of users</caption>&ndash;&gt;-->
+  <!--      <thead>-->
+  <!--      <tr>-->
+  <!--        <th *ngFor="let head of headElements" scope="col">{{head}} </th>-->
+  <!--      </tr>-->
+  <!--      </thead>-->
+  <!--      <tbody>-->
+  <!--      <tr class="table-rows" mdbTableCol *ngFor="let el of elements">-->
+  <!--        <th scope="row">{{el.rank}}</th>-->
+  <!--        <td>{{el.name}}</td>-->
+  <!--        <td>{{el.price}}</td>-->
+  <!--        <td>{{el.change}}</td>-->
+  <!--        <td>{{el.market}}</td>-->
+  <!--      </tr>-->
+  <!--      </tbody>-->
+  <!--    </table>-->
+  <!--  </section>-->
+
 
 </section>
+
+<div class="widgets-container">
+  <div class="widgets-wrap">
+    <div class="widget">
+      <coingecko-coin-price-chart-widget coin-id="bitcoin" currency="usd" height="300" locale="en"
+                                         background-color="#ffffff" width="400"></coingecko-coin-price-chart-widget>
+    </div>
+    <div class="widget">
+      <coingecko-coin-price-chart-widget coin-id="ethereum" currency="usd" height="300" locale="en"
+                                         background-color="#ffffff" width="400"></coingecko-coin-price-chart-widget>
+    </div>
+    <div class="widget">
+      <coingecko-coin-price-chart-widget coin-id="binancecoin" currency="usd" height="300" locale="en"
+                                         background-color="#ffffff" width="400"></coingecko-coin-price-chart-widget>
+    </div>
+    <div class="widget">
+      <coingecko-coin-price-chart-widget coin-id="litecoin" currency="usd" height="300" locale="en"
+                                         background-color="#ffffff" width="400"></coingecko-coin-price-chart-widget>
+    </div>
+    <div class="widget">
+      <coingecko-coin-price-chart-widget coin-id="tether" currency="usd" height="300" locale="en"
+                                         background-color="#ffffff" width="400"></coingecko-coin-price-chart-widget>
+    </div>
+    <div class="widget">
+      <coingecko-coin-price-chart-widget coin-id="ripple" currency="usd" height="300" locale="en"
+                                         background-color="#ffffff" width="400"></coingecko-coin-price-chart-widget>
+    </div>
+    <div class="widget">
+      <coingecko-coin-price-chart-widget coin-id="link" currency="usd" height="300" locale="en"
+                                         background-color="#ffffff" width="400"></coingecko-coin-price-chart-widget>
+    </div>
+  </div>
+</div>
 
 <!--------- ./Homepage Bottom End ---------->
 
