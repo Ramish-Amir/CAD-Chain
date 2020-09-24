@@ -11,6 +11,6 @@ export const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'login' , component: LoginComponent},
   { path: 'signup' , component: SignupComponent},
-  { path: 'buy' , component: BuyCryptoComponent},
-  { path: 'buy/:id', component: BuyIdComponent}
+  { path: 'exchange' , component: BuyCryptoComponent},
+  { path: 'exchange/:id', component: BuyIdComponent}
 ];

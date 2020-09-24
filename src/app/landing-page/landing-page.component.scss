@@ -6,24 +6,6 @@ $greencolor: rgba(92, 208, 95, 0.7);
   font-family: 'Nunito', sans-serif;
 }
 
-///* width */
-//::-webkit-scrollbar {
-//  width: 10px;
-//}
-//
-///* Track */
-//::-webkit-scrollbar-track {
-//  box-shadow: inset 0 0 5px grey;
-//  margin-right: 5px;
-//
-//}
-//
-///* Handle */
-//::-webkit-scrollbar-thumb {
-//  background-color: rgba(57, 119, 153, 0.8);
-//  border-radius: 10px;
-//}
-
 /* ============ background Image container ============ */
 div.background-img-container {
   background: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg") fixed no-repeat;
@@ -48,7 +30,7 @@ section.homepage-banner {
 }
 
 div.banner-wrap {
-  padding: 8vw 0;
+  padding: 30vh 0;
   margin: 0;
 }
 

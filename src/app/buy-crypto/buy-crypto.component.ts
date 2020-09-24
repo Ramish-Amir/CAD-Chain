@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
-import { Observable} from 'rxjs';
 import {interval} from 'rxjs';
 
 @Component({
@@ -32,6 +31,8 @@ export class BuyCryptoComponent implements OnInit {
   disableExchangeButton = false;
   fetchingRate = false;
   fetchingMinMax = false;
+  isServerError = false;
+  isValidInputAmount = true;
 
   // ----- Method to change the exchange option to Fixed Rate ----- ////
 
@@ -45,6 +46,9 @@ export class BuyCryptoComponent implements OnInit {
             this.depositCurrency = this.coinList1[0].symbol;
             console.log(this.depositCurrency);
             this.getReceiveCoinList(this.depositCurrency);
+          },
+          (error) => {
+            this.isServerError = true;
           }
         );
     }
@@ -62,6 +66,9 @@ export class BuyCryptoComponent implements OnInit {
             this.depositCurrency = this.coinList1[0].symbol;
             console.log(this.depositCurrency);
             this.getReceiveCoinList(this.depositCurrency);
+          },
+          (error) => {
+            this.isServerError = true;
           }
         );
     }
@@ -70,9 +77,16 @@ export class BuyCryptoComponent implements OnInit {
   //// ----- Method for value conversion whenever a value in entered ----- ////
 
   convertTo(depositCoin) {
+    this.isValidInputAmount = true;
+    this.errorCheck = '';
     if (this.sendAmount < this.minMax.min || this.sendAmount === undefined
       || (this.minMax.max !== null && this.sendAmount > this.minMax.max)) {
       console.log('amount is not valid');
+      this.getAmount = '';
+      return;
+    } else if (!(/^\d+\.\d+$|^\d+$|^\.\d+$|^\d+\.$/.test(this.sendAmount))) {
+      console.log('The given amount is not a valid number');
+      this.isValidInputAmount = false;
       this.getAmount = '';
       return;
     }
@@ -81,7 +95,6 @@ export class BuyCryptoComponent implements OnInit {
     const getRateUrl = 'http://127.0.0.1:5000/getrate?deposit=' + depositCoin + '&receive='
       + this.receiveCurrency + '&amount=' + this.sendAmount + '&fixed=' + this.fixedRate;
     console.log('GetRateUrl ' + getRateUrl);
-
     return this.http.get(getRateUrl)
       .subscribe(
         (data) => {
@@ -89,10 +102,15 @@ export class BuyCryptoComponent implements OnInit {
           this.getAmount = data;
           this.fetchingRate = false;
           console.log(this.getAmount);
+        },
+        (error) => {
+          console.log('Check your internet Connection and try again');
+          this.isServerError = true;
+          return;
         });
   }
 
-  // ----- Method to update the Receiving Currency List (CoinList2) ----- ////
+  // ----- Method to update the Receiving Currency Pair List (CoinList2) ----- ////
 
   getReceiveCoinList(depositCoin) {
     const currencyPairUrl = 'http://127.0.0.1:5000/currencypair?symbol=' + depositCoin + '&fixed=' + this.fixedRate;
@@ -134,6 +152,9 @@ export class BuyCryptoComponent implements OnInit {
           console.log('this.receiveCurrency ' + this.receiveCurrency);
 
           this.validatePair(depositCoin);
+        },
+        (error) => {
+          this.isServerError = true;
         }
       );
   }
@@ -142,8 +163,8 @@ export class BuyCryptoComponent implements OnInit {
   // ----- Method for getting the minimum and maximum values for the currencies ----- ////
 
   getMinMax(depositCoin) {
+    this.minMax = '';
     console.log(depositCoin);
-    // console.log(receiveCoin);
     console.log(this.receiveCurrency);
     this.fetchingMinMax = true;
     const minMaxUrl = 'http://127.0.0.1:5000/getminmax?deposit=' + depositCoin + '&receive='
@@ -156,12 +177,15 @@ export class BuyCryptoComponent implements OnInit {
           this.minMax = data;
           console.log(data);
           console.log('Min max works fine');
+          this.fetchingMinMax = false;
           if (this.errorCheck.error === 'Empty response') {
             this.minMax = '';
             return;
           }
-          this.fetchingMinMax = false;
           this.convertTo(depositCoin);
+        },
+        (error) => {
+          this.isServerError = true;
         }
       );
   }
@@ -181,6 +205,9 @@ export class BuyCryptoComponent implements OnInit {
           } else if (this.isValidPair) {
             this.getMinMax(depositCoin);
           }
+        },
+        (error) => {
+          this.isServerError = true;
         }
       );
   }
@@ -198,6 +225,9 @@ export class BuyCryptoComponent implements OnInit {
         data => {
           this.addressValidation = data;
           console.log(data);
+        },
+        (error) => {
+          this.isServerError = true;
         }
       );
   }
@@ -212,6 +242,9 @@ export class BuyCryptoComponent implements OnInit {
       .subscribe(
         data => {
           this.messageValidation = data;
+        },
+        (error) => {
+          this.isServerError = true;
         }
       );
   }
@@ -239,18 +272,24 @@ export class BuyCryptoComponent implements OnInit {
         (data: any) => {
           this.exchangeId = data;
           if (this.exchangeId.id === -1) {
-            this.exchangeError = 'Something went wrong... Please refresh the page';
+            this.exchangeError = 'Something went wrong... Please try again';
             return;
           }
           this.disableExchangeButton = false;
-          this.router.navigate(['/buy', this.exchangeId.id]);
+          this.sendAmount = '';
+          this.router.navigate(['/exchange', this.exchangeId.id]);
+        },
+        (error) => {
+          this.isServerError = true;
         });
   }
 
 
   constructor(private http: HttpClient, private router: Router) {
     interval(30000).subscribe(x => {
-      this.convertTo(this.depositCurrency);
+      if (!this.isServerError) {
+        this.convertTo(this.depositCurrency);
+      }
     });
   }
 
@@ -269,15 +308,18 @@ export class BuyCryptoComponent implements OnInit {
                 this.receiveCurrency = this.coinList2[0].symbol;
                 console.log(this.receiveCurrency);
 
+                this.fetchingMinMax = true;
                 this.http.get('http://127.0.0.1:5000/getminmax?deposit=' + this.depositCurrency + '&receive='
                   + this.receiveCurrency + '&fixed=false')
                   .subscribe(
                     minMaxData => {
                       this.minMax = minMaxData;
+                      this.fetchingMinMax = false;
                       console.log(minMaxData);
                     },
                     () => {
                       console.log('Error occured in MinMax');
+                      this.fetchingMinMax = false;
                     }
                   );
               }

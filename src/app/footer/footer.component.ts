@@ -27,7 +27,7 @@ export class FooterComponent implements OnInit {
             this.isValidId = data;
             this.validatingID = false;
             if (this.isValidId.valid) {
-              this.router.navigate(['/buy', this.exchangeID]);
+              this.router.navigate(['/exchange', this.exchangeID]);
               this.exchangeID = '';
             }
           },

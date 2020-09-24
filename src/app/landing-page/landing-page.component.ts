@@ -12,7 +12,7 @@ export class LandingPageComponent implements OnInit {
   public getAmount;
   sendAmount;
 
-  widgetCoinId = ['binancecoin', 'bitcoin', 'ethereum', 'litecoin',  'ripple', 'link', 'tether', 'bitcoin-cash', 'eos'];
+  widgetCoinId = ['binancecoin', 'bitcoin', 'ethereum', 'litecoin', 'ripple', 'link', 'tether', 'bitcoin-cash', 'eos'];
 
   coinList1 = ['USD', 'CNY', 'HKD', 'VND', 'MYR', 'TWD', 'KRW', 'RUB', 'AUD', 'CAD', 'SGD', 'GBP', 'EUR', 'INR', 'CHF', 'NGN',
     'BRL', 'AED', 'TRY', 'NZD', 'ZAR', 'NOK', 'DKK', 'SEK', 'ALL', 'BGN', 'CZK', 'HRK', 'HUF', 'MDL', 'MKD', 'PLN', 'RON'];

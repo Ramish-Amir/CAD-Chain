@@ -168,8 +168,13 @@ div.input-container {
   border-radius: 50px;
   height: 2.5rem;
   border: 1px solid rgba(57, 119, 153, 0.7);
-  //margin: 0 20px;
+  transition: ease-in-out 0.3s;
   padding: 1px 1px 1px 15px;
+}
+
+div.input-container:focus-within {
+  transition: ease-in-out 0.3s;
+  box-shadow: 0 0 10px 0 rgba(57, 119, 153, 0.7) ;
 }
 
 input.coin-input {
@@ -181,6 +186,26 @@ input.coin-input {
 option {
   text-align: right;
   white-space: pre;
+}
+
+select {
+  display: inline-block;
+  color: white;
+  width: 110px;
+  text-align: right;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 50px;
+  float: right;
+  background: rgba(57, 119, 153, 0.7);
+  border: none;
+  margin-left: 1px;
+  padding: 0 20px;
+  //text-align: center;
+}
+
+div.form-group {
+  margin: 0;
 }
 
 .address-input {
@@ -198,8 +223,9 @@ option {
   -webkit-font-smoothing: antialiased;
 }
 
-div.form-group {
-  margin: 0;
+.address-input:focus-within {
+  transition: ease-in-out 0.3s;
+  box-shadow: 0 0 10px 0 rgba(57, 119, 153, 0.7) ;
 }
 
 div.exchange-button {
@@ -247,22 +273,6 @@ div.exchange-button img {
   -webkit-font-smoothing: antialiased;
 }
 
-select {
-  display: inline-block;
-  color: white;
-  width: 110px;
-  text-align: right;
-  text-transform: uppercase;
-  outline: none;
-  border-radius: 50px;
-  float: right;
-  background: rgba(57, 119, 153, 0.7);
-  border: none;
-  margin-left: 1px;
-  padding: 0 20px;
-  //text-align: center;
-}
-
 div.exchange-button:hover {
   transition: 0.3s ease-out;
   transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
@@ -271,9 +281,6 @@ div.exchange-button:hover {
 
 .info {
   text-align: left;
-  animation-name: fadeDown;
-  animation-duration: 2s;
-
 }
 
 .info span {
@@ -304,6 +311,52 @@ div.exchange-button:hover {
   border-top: 1px solid #dce8f1;
   padding: 25px;
   text-align: center;
+}
+
+.server-error-container {
+  text-align: center;
+  padding: 20% 20px 25%;
+}
+
+.error-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.error-header h3 {
+  color: rgb(220,20,60);
+}
+
+.error-header img {
+  background: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+.server-error-container span {
+  color: rgba(57, 119, 153, 0.8);
+}
+
+.server-error-container button {
+  margin: 20px auto 0;
+  background: rgba(57, 119, 153, 0.8);
+  height: 2.5rem;
+  width: 250px;
+  border-radius: 50px;
+  outline: none;
+  box-shadow: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  transition: ease-in-out 0.3s;
+  -webkit-font-smoothing: antialiased;
+}
+
+.server-error-container button:hover {
+  transition: 0.3s ease-out;
+  transform: perspective(1px) scale(1.02) translate3d(0, 0, 0);
+  -webkit-font-smoothing: antialiased;
 }
 
 /////////  Mobile view  ////////////////
