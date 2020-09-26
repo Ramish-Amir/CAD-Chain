@@ -6,6 +6,7 @@ div.background-container {
   background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
+  min-height: 100vh;
   //overflow-y: auto;
   //overflow-x: visible;
 
@@ -43,6 +44,7 @@ p {
   min-height: 100%;
   padding-top: 7rem;
   padding-bottom: 20%;
+  transition: line-height 0.5s;
 }
 
 .form-content, .title-bar {
@@ -290,18 +292,17 @@ div.exchange-button:hover {
 }
 
 .message-container {
-  animation-name: fadeDown;
-  animation-duration: 0.5s;
+  animation: fadeDown linear 0.5s;
 }
 
 @keyframes fadeDown {
-  0% {
-    //opacity: 0;
-    transform: translateY(-20px);
+  from {
+    max-height: 0px;
+    overflow: hidden;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+  to {
+
+    max-height: 100px;
   }
 }
 
@@ -314,8 +315,17 @@ div.exchange-button:hover {
 }
 
 .server-error-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
+  background-color: #dce8f1;
+  width: 60%;
+  border-radius: 10px;
   text-align: center;
-  padding: 20% 20px 25%;
+  padding: 5% 20px 7%;
 }
 
 .error-header {
@@ -400,12 +410,6 @@ div.exchange-button:hover {
   }
   h1 {
     font-size: 25px;
-  }
-}
-
-@media screen and (min-height: 600px) and (max-width: 992px) {
-  div.background-container {
-    height: 100vh;
   }
 }
 

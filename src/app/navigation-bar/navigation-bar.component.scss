@@ -30,6 +30,8 @@ a.nav-link, button {
   font-size: 15px;
   padding-top: 0;
   padding-bottom: 0;
+  outline: none;
+
 }
 
 button.btn.btn-outline-light {
@@ -50,6 +52,7 @@ button.btn.btn-outline-light:hover {
 a.dropdown-item {
   //font-family: sans-serif;
   font-size: 15px;
+  outline: none;
 }
 .fade-down {
   background-color: rgba(28, 52, 108, 0.5);
@@ -57,6 +60,7 @@ a.dropdown-item {
 li.nav-item {
   white-space: nowrap;
   a {
+    outline: none;
     //display: inline-block;
   }
 }
@@ -138,16 +142,16 @@ li.nav-item {
     margin-left: 10%;
   }
   ul.dropdown-menu.fade-up, .fade-down {
-    transition: all ease-in-out 0.5s;
-    animation-name: fadeDown;
-    animation-duration: 0.5s;
+    animation: fadeDown ease-in-out 0.5s;
   }
   @keyframes fadeDown {
-    0% {
-      transform: translateY(-10px);
+    from {
+      max-height: 0px;
+      overflow: hidden;
     }
-    100% {
-      transform: translateY(0);
+    to {
+
+      max-height: 500px;
     }
   }
 

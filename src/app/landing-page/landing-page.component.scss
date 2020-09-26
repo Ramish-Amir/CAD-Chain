@@ -11,8 +11,8 @@ div.background-img-container {
   background: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg") fixed no-repeat;
   width: 100%;
   margin: 0;
-  overflow: auto;
-  height: 100vh;
+  //overflow: auto;
+  min-height: 100vh;
 }
 
 /* ============ HomePage Top ============ */
@@ -30,7 +30,7 @@ section.homepage-banner {
 }
 
 div.banner-wrap {
-  padding: 30vh 0;
+  padding: 25vh 0;
   margin: 0;
 }
 

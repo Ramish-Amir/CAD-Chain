@@ -7,6 +7,7 @@ div.background-container {
   overflow: auto;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  min-height: 100vh;
 }
 
 *:focus {
@@ -246,8 +247,8 @@ datalist option {
     font-size: 12px;
   }
 }
-@media screen and (min-height: 600px) and (max-width: 992px){
-  div.background-container {
-    height: 100vh;
-  }
-}
+//@media screen and (min-height: 600px) and (max-width: 992px){
+//  div.background-container {
+//    height: 100vh;
+//  }
+//}

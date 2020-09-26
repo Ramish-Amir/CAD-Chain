@@ -20,6 +20,7 @@ export class FooterComponent implements OnInit {
         id: this.exchangeID
       };
       this.validatingID = true;
+      this.isValidId.valid = true;
       this.http.post('http://127.0.0.1:5000/validateid', postId)
         .subscribe(
           data => {
@@ -32,6 +33,9 @@ export class FooterComponent implements OnInit {
             }
           },
           () => {
+            this.validatingID = false;
+            alert('Something went wrong. Please check your connection and try again...');
+            return;
           }
         );
     }

@@ -164,6 +164,7 @@ export class BuyCryptoComponent implements OnInit {
 
   getMinMax(depositCoin) {
     this.minMax = '';
+    this.recipientAddress = '';
     console.log(depositCoin);
     console.log(this.receiveCurrency);
     this.fetchingMinMax = true;

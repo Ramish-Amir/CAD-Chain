@@ -10,7 +10,6 @@
       <div class="form-background">
         <h1>Exchange</h1>
         <hr>
-        <div *ngIf="!isServerError">
           <div class="exchange-options">
             <div (click)="changeToFloatingRate(depositCoin.value)"
                  [ngClass]="{'active-option': !fixedRate, 'inactive-option': fixedRate}"
@@ -112,7 +111,7 @@
             </div>
 
 
-            <div class="exchange-button">
+            <div data-aos="zoom-in" class="exchange-button">
               <input *ngIf="!disableExchangeButton"
                      [disabled]="!sendAmount || !getAmount || !recipientAddress || !addressValidation.valid || disableExchangeButton || errorCheck.error === 'Empty response'"
                      (click)="postData(depositCoin.value)" id="exchangeButton" type="submit"
@@ -123,17 +122,6 @@
             </div>
             <!--          <p>0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae</p>-->
           </div>
-        </div>
-        <div *ngIf="isServerError" class="server-error-container">
-          <div class="error-header">
-            <img src="assets/error-icon.png">
-            <h3>Something went wrong</h3>
-          </div>
-          <span>Check your internet connection</span>
-          <div><span>AND</span></div>
-          <button onClick="window.location.reload()">Refresh Page</button>
-        </div>
-
 
       </div>
 
@@ -144,6 +132,16 @@
   <!------- ./Login End ------>
 
 
+</div>
+
+<div *ngIf="isServerError" class="server-error-container">
+  <div class="error-header">
+    <img src="assets/error-icon.png">
+    <h3>Something went wrong</h3>
+  </div>
+  <span>Check your internet connection</span>
+  <div><span>AND</span></div>
+  <button onClick="window.location.reload()">Refresh Page</button>
 </div>
 
 </body>
