@@ -111,7 +111,7 @@
             </div>
 
 
-            <div data-aos="zoom-in" class="exchange-button">
+            <div class="exchange-button">
               <input *ngIf="!disableExchangeButton"
                      [disabled]="!sendAmount || !getAmount || !recipientAddress || !addressValidation.valid || disableExchangeButton || errorCheck.error === 'Empty response'"
                      (click)="postData(depositCoin.value)" id="exchangeButton" type="submit"
@@ -134,7 +134,7 @@
 
 </div>
 
-<div *ngIf="isServerError" class="server-error-container">
+<div data-aos="zoom-in" *ngIf="isServerError" class="server-error-container">
   <div class="error-header">
     <img src="assets/error-icon.png">
     <h3>Something went wrong</h3>
