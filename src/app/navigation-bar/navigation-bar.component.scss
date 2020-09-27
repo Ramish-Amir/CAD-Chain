@@ -142,15 +142,15 @@ li.nav-item {
     margin-left: 10%;
   }
   ul.dropdown-menu.fade-up, .fade-down {
-    animation: fadeDown ease-in-out 0.5s;
+    animation: fadeDown linear 0.2s;
+    transition: 0.2s;
   }
   @keyframes fadeDown {
-    from {
-      max-height: 0px;
+    0% {
+      max-height: 0;
       overflow: hidden;
     }
-    to {
-
+    100% {
       max-height: 500px;
     }
   }

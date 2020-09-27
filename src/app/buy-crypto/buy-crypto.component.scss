@@ -135,13 +135,6 @@ div.crypto-converter {
   margin: 0;
   padding: 0 2rem 5rem;
 
-
-  div.send-crypto, div.get-crypto {
-    //margin-top: 1rem;
-    //margin-bottom: 1rem;
-
-  }
-
 }
 
 
@@ -153,12 +146,11 @@ div.label-wrap {
 
 label.coin-input-label, label {
   float: left;
-  width: 100px;
   display: inline-block;
   color: rgba(57, 119, 153, 0.6);
   font-size: 17px;
-  padding: 0 15px;
   text-transform: capitalize;
+  margin-left: 15px;
   margin-top: 10px;
 }
 
@@ -176,7 +168,7 @@ div.input-container {
 
 div.input-container:focus-within {
   transition: ease-in-out 0.3s;
-  box-shadow: 0 0 10px 0 rgba(57, 119, 153, 0.7) ;
+  box-shadow: 0 0 10px 0 rgba(57, 119, 153, 0.7);
 }
 
 input.coin-input {
@@ -227,7 +219,7 @@ div.form-group {
 
 .address-input:focus-within {
   transition: ease-in-out 0.3s;
-  box-shadow: 0 0 10px 0 rgba(57, 119, 153, 0.7) ;
+  box-shadow: 0 0 10px 0 rgba(57, 119, 153, 0.7);
 }
 
 div.exchange-button {
@@ -273,6 +265,10 @@ div.exchange-button img {
   border: none;
   transition: ease-in-out 0.3s;
   -webkit-font-smoothing: antialiased;
+}
+
+img.spinner {
+  width: 30px;
 }
 
 div.exchange-button:hover {
@@ -335,7 +331,7 @@ div.exchange-button:hover {
 }
 
 .error-header h3 {
-  color: rgb(220,20,60);
+  color: rgb(220, 20, 60);
 }
 
 .error-header img {
@@ -344,6 +340,7 @@ div.exchange-button:hover {
   height: 30px;
   margin-right: 5px;
 }
+
 .server-error-container span {
   color: rgba(57, 119, 153, 0.8);
 }
@@ -379,30 +376,42 @@ div.exchange-button:hover {
     padding: 1rem 1rem 3rem;
 
     div.send-crypto, div.get-crypto {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-
-      div.label-wrap {
-        label.coin-input-label {
-          font-size: 14px;
-          padding: 0;
-        }
-      }
 
       div.input-container {
         height: 2rem;
         margin-left: 2px;
         margin-right: 2px;
         font-size: 12px;
+        width: 100%;
       }
-
     }
-
   }
-  div.exchange-button input {
+  div.label-wrap label {
+    font-size: 14px;
+    padding: 0
+  }
+
+  .address-input {
+    height: 2rem;
+    font-size: 12px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  div.exchange-button {
     height: 2rem;
     width: 100%;
+    margin-top: 20px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  div.exchange-button input {
     font-size: 13px;
+  }
+
+  img.spinner {
+    width: 20px;
   }
 
   h2 {
