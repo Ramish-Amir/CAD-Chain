@@ -3,7 +3,7 @@
   <!--  <app-navigation-bar></app-navigation-bar>-->
   <div class="card-container">
     <div class="card-background">
-      <div class="status-bar">
+      <div *ngIf="screenWidth >= 660" class="status-bar">
         <div
           [ngClass]="{'active': exchangeData.status === 'waiting' || exchangeData.status === 'confirming'
         || exchangeData.status === 'exchanging' || exchangeData.status === 'sending' || exchangeData.status === 'finished'} "
@@ -48,7 +48,23 @@
           <span>Finished</span>
         </div>
       </div>
+
+<!--      Status bar for mobile view   -->
+
+      <div *ngIf="screenWidth < 660" class="status-bar mobile">
+        <div class="status mobile active">
+          <span class="status-label">Status :</span>
+          <span>{{exchangeData.status}}</span>
+<!--          <span *ngIf="exchangeData.status === 'waiting'">Waiting</span>-->
+<!--          <span *ngIf="exchangeData.status === 'confirming'">Confirming</span>-->
+<!--          <span *ngIf="exchangeData.status === 'exchanging'">Exchanging</span>-->
+<!--          <span *ngIf="exchangeData.status === 'sending'">Sending</span>-->
+<!--          <span *ngIf="exchangeData.status === 'finished'">Finished</span>-->
+          <img *ngIf="fetchingData" src="assets/blue-spinner.svg" width="21px">
+        </div>
+      </div>
     </div>
+
 
     <div class="card-background">
       <div class="exchange-info">
@@ -76,7 +92,7 @@
               </div>
             </div>
             <div class="exchange-icon">
-              <mdb-icon fas icon="arrow-circle-right"></mdb-icon>
+              <mdb-icon class="exchange-to-icon" fas icon="arrow-circle-right"></mdb-icon>
             </div>
             <div class="box-wrap">
               <div class="receiving-details">
@@ -91,23 +107,26 @@
               <span class="title">Recipient Address</span>
               <p>{{exchangeData.address_to}}</p>
             </div>
+            <br>
             <div class="message">
               <span class="title">Memo/Message</span>
+              <p *ngIf="!exchangeData.extra_id_to">-</p>
               <p>{{exchangeData.extra_id_to}}</p>
             </div>
           </div>
           <hr>
-          <div class="hashes">
-            <div class="input-hash">
+          <div *ngIf="exchangeData.txt_from || exchangeData.txt_to" class="hashes">
+            <div *ngIf="exchangeData.txt_from" class="input-hash">
               <span class="title">Input Hash</span>
               <p>{{exchangeData.tx_from}}</p>
             </div>
-            <div class="output-hash">
+            <br>
+            <div *ngIf="exchangeData.txt_to" class="output-hash">
               <span class="title">Output Hash</span>
               <p>{{exchangeData.tx_to}}</p>
             </div>
           </div>
-          <hr>
+          <hr *ngIf="exchangeData.txt_from || exchangeData.txt_to">
           <div class="sender-address">
             <span class="title">SEND YOUR {{exchangeData.currency_from}} TO THE ADDRESS</span>
             <p>{{exchangeData.address_from}}</p>

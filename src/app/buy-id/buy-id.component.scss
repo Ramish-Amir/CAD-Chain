@@ -1,5 +1,5 @@
-$bluecolor: rgba(51, 186, 207, 0.5);
-$greencolor: rgba(92, 208, 95, 0.5);
+$bluecolor: rgba(51, 186, 207, 0.7);
+$greencolor: rgba(92, 208, 95, 0.7);
 
 * {
   box-sizing: border-box;
@@ -10,8 +10,6 @@ $greencolor: rgba(92, 208, 95, 0.5);
   background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
-  //overflow: auto;
-  //height: 100vh;
   width: 100%;
   overflow: auto;
 }
@@ -61,6 +59,25 @@ $greencolor: rgba(92, 208, 95, 0.5);
   padding: 0 10px;
   color: rgba(57, 119, 153, 1);
   width: 2.5%;
+}
+
+.mobile {
+  width: 100%;
+  background: rgba(57, 119, 153, 0.9);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mobile span {
+  text-transform: capitalize;
+}
+
+.status-label {
+  color: #dce8f1;
+  opacity: 0.7;
+  margin-right: 5px;
 }
 
 .active {
@@ -176,4 +193,44 @@ hr {
 .preload-indicator {
   margin: 10% auto;
   text-align: center;
+}
+
+@media screen and (max-width: 660px) {
+
+  h2 {
+    font-size: 25px;
+  }
+
+  .card-container {
+    margin: 5% auto;
+    width: 90%;
+    min-width: 200px;
+
+  }
+
+  .exchange-content, .addresses, .hashes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .exchange-icon {
+    //height: 30px;
+  }
+
+  .exchange-to-icon {
+    transform: rotate(90deg);
+    margin-top: 0;
+    margin-bottom: 50px;
+
+  }
+
+  .recipient-address, .input-hash, .output-hash {
+    width: 100%;
+  }
+
+  .recipient-address p, .sender-address p, .input-hash p, .output-hash p {
+    width: 100%;
+  }
+
+
 }

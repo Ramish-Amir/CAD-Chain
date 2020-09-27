@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {CountdownModule} from 'ngx-countdown';
@@ -9,6 +9,7 @@ import {CountdownModule} from 'ngx-countdown';
   styleUrls: ['./buy-id.component.scss']
 })
 export class BuyIdComponent implements OnInit {
+  screenWidth;
   exchangeId;
   exchangeData: any = [];
   remainingTime: any = [];
@@ -17,6 +18,12 @@ export class BuyIdComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private http: HttpClient) {
+    this.screenWidth = window.innerWidth;
+  }
+
+  @HostListener('window: resize', ['$event'])
+  onResize(event) {
+    this.screenWidth = innerWidth;
   }
 
 
