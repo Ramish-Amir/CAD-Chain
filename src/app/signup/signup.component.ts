@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {filter} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -33,21 +34,23 @@ export class SignupComponent implements OnInit {
 
   register() {
     const user = {
-      username: 'abc',
-      password: 'xyz'
+      username: this.user,
+      password: this.pass
     };
     console.log(user);
     this.http.post('http://127.0.0.1:5000/registration', user).subscribe(
       res => {
         this.token = res;
         console.log(this.token);
-        // localStorage.setItem('token', this.token.token);
-        // console.log(localStorage.getItem('token'));
-        // console.log('User has been logged in');
+        localStorage.setItem('access_token', this.token.access_token);
+        console.log(localStorage.getItem('access_token'));
+        console.log('User has been registered');
+        this.router.navigate(['/login']);
       });
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router) {
   }
 
   ngOnInit(): void {
