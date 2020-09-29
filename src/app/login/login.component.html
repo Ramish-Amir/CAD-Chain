@@ -13,19 +13,19 @@
         <form #loginForm="ngForm">
           <div class="form-group">
             <input type="text" class="form-control" #username="ngModel" name="username" placeholder="Username" required
-                   ngModel>
+                   [(ngModel)]="name">
             <div class="error-display">
               <span style="color: red" *ngIf="username.touched && username.invalid">Please enter username</span>
             </div>
           </div>
           <div class="form-group">
             <input type="password" class="form-control" #password="ngModel" name="password" placeholder="Password"
-                   required ngModel>
+                   required [(ngModel)]="pass">
             <div class="error-display">
               <span *ngIf="password.touched && password.invalid">Please enter your password</span>
             </div>
           </div>
-          <input [disabled]="loginForm.form.invalid" type="submit" class="fadeIn button" value="Login">
+          <input [disabled]="loginForm.form.invalid" (click)="loginUser()" type="submit" class="fadeIn button" value="Login">
           <a class="underlineHover" routerLink="/">Forgot Password?</a>
 
         </form>

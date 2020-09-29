@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class NavigationBarComponent implements OnInit {
 
   public selectedLanguage = 'English';
-    public isLoggedIn = false;
+  public isLoggedIn = true;
 
   changeLanguage(newLanguage) {
     this.selectedLanguage = newLanguage;

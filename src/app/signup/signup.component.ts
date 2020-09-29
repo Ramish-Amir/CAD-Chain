@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {filter} from 'rxjs/operators';
 
 @Component({
@@ -8,12 +8,13 @@ import {filter} from 'rxjs/operators';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
+  token;
+  user;
+  pass;
 
-  // tslint:disable-next-line:max-line-length
-  countries = ['United Kingdom', 'Pakistan', 'Canada', 'China', 'Korea', 'Vietnam', 'Brazil', 'Russia', 'Albania', 'Algeria', 'Angola', 'Argentina',
+  countries = ['United Kingdom', 'Pakistan', 'Canada', 'China', 'Korea',
+    'Vietnam', 'Brazil', 'Russia', 'Albania', 'Algeria', 'Angola', 'Argentina',
     'Armenia', 'Australia', 'Austria', 'Bahrain', 'Belgium', 'Bermuda', 'Bhutan', 'Cyprus', 'Combodia', 'Columbia'];
-  public selectedCountry;
-  // public selectedSignupOption = 'email';
   public isEmailActive = true;
   public emailClass = 'active';
   public phoneClass = 'inactive';
@@ -30,7 +31,23 @@ export class SignupComponent implements OnInit {
     this.emailClass = 'active';
   }
 
-  constructor() {
+  register() {
+    const user = {
+      username: 'abc',
+      password: 'xyz'
+    };
+    console.log(user);
+    this.http.post('http://127.0.0.1:5000/registration', user).subscribe(
+      res => {
+        this.token = res;
+        console.log(this.token);
+        // localStorage.setItem('token', this.token.token);
+        // console.log(localStorage.getItem('token'));
+        // console.log('User has been logged in');
+      });
+  }
+
+  constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {

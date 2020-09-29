@@ -225,8 +225,9 @@ div.form-group {
 div.exchange-button {
   position: relative;
   margin: 10px auto 0;
-  background: rgba(57, 119, 153, 0.8);
+  //background: rgba(57, 119, 153, 0.8);
   height: 2.5rem;
+  background-image: linear-gradient(to right, $bluecolor, $greencolor);
   width: 250px;
   border-radius: 50px;
   outline: none;
@@ -293,11 +294,10 @@ div.exchange-button:hover {
 
 @keyframes fadeDown {
   from {
-    max-height: 0px;
+    max-height: 0;
     overflow: hidden;
   }
   to {
-
     max-height: 100px;
   }
 }

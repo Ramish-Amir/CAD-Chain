@@ -5,6 +5,7 @@ import {SignupComponent} from './signup/signup.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
 import {BuyCryptoComponent} from './buy-crypto/buy-crypto.component';
 import {BuyIdComponent} from './buy-id/buy-id.component';
+import {AuthGuard} from './Guards/auth.guard';
 
 export const appRoutes: Routes = [
   { path: 'home', component: LandingPageComponent},
@@ -12,5 +13,5 @@ export const appRoutes: Routes = [
   { path: 'login' , component: LoginComponent},
   { path: 'signup' , component: SignupComponent},
   { path: 'exchange' , component: BuyCryptoComponent},
-  { path: 'exchange/:id', component: BuyIdComponent}
+  { path: 'exchange/:id', component: BuyIdComponent, canActivate: [AuthGuard]}
 ];

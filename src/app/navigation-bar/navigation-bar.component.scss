@@ -5,10 +5,6 @@ $greencolor: rgba(66, 236, 129, 0.8);
   font-family: 'Nunito', sans-serif;
 }
 
-div.nav-background {
-  //background: url("/assets/blueSquareCube.jpg");
-}
-
 nav.navbar {
   //background-color: rgba(28, 52, 108, 0.5);
   background: rgba(57, 119, 153, 1);
@@ -18,7 +14,7 @@ nav.navbar {
 }
 
 a.navbar-brand {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 500;
   padding-top: 0;
   padding-bottom: 0;
@@ -27,22 +23,24 @@ a.navbar-brand {
 
 a.nav-link, button {
   margin: 0 5px;
-  font-size: 15px;
+  font-size: 13px;
   padding-top: 0;
   padding-bottom: 0;
   outline: none;
 
 }
 
-button.btn.btn-outline-light {
+.nav-button {
   border-radius: 20px;
-  padding: 2px 20px;
+  padding: 1px 20px;
   outline: none;
-  border: solid 2px;
+  border: solid 1.5px #ffffff;
+  background: none;
+  color: white;
   transition: 0.3s;
 }
 
-button.btn.btn-outline-light:hover {
+.nav-button:hover {
   background-color: $bluecolor;
   border-color: $bluecolor;
   color: white;
@@ -51,7 +49,7 @@ button.btn.btn-outline-light:hover {
 
 a.dropdown-item {
   //font-family: sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   outline: none;
 }
 .fade-down {
@@ -82,6 +80,7 @@ li.nav-item {
     top: 80%;
     transform: rotateX(-75deg);
     transform-origin: 0% 0%;
+    background-color: rgba(28, 52, 108, 0.7);
   }
   .navbar .dropdown-menu.fade-up {
     top: 180%;

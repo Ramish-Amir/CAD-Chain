@@ -39,6 +39,14 @@
             </div>
           </div>
 
+          <div data-aos="fade-right" data-aos-duration="" class="form-group">
+            <input  type="text" required
+                   #username="ngModel" name="username" class="form-control" placeholder="Username" [(ngModel)]="user">
+            <div class="error-display">
+              <span *ngIf="username.invalid && username.touched">Please enter email with format "example@abc.com"</span>
+            </div>
+          </div>
+
           <div data-aos="fade-left" data-aos-duration="" *ngIf="!isEmailActive" class="form-group">
             <input type="text"
                    onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"
@@ -49,7 +57,7 @@
           </div>
           <div class="form-group">
             <input type="password" class="form-control" placeholder="Set Password" required minlength="8" maxlength="20"
-                   name="setPass" #setPass="ngModel" ngModel>
+                   name="setPass" #setPass="ngModel" [(ngModel)]="pass">
             <div class="error-display">
               <span *ngIf="setPass.invalid && setPass.touched">Please insert 8-20 char password</span>
             </div>
@@ -61,7 +69,8 @@
               <span *ngIf="confirmPass.invalid && confirmPass.touched">Please confirm your password</span>
             </div>
           </div>
-          <input [disabled]="signupForm.form.invalid" type="submit" class="fadeIn button" value="Sign Up">
+<!--          <input [disabled]="signupForm.form.invalid" type="submit" class="fadeIn button" value="Sign Up">-->
+          <input (click)="register()" type="submit" class="fadeIn button" value="Sign Up">
         </form>
         <!-- Forgot Password -->
         <div class="form-footer">

@@ -40,17 +40,17 @@
         <ul class="navbar-nav ml-auto">
           <li *ngIf="!isLoggedIn" class="nav-item nav-buttons">
             <a routerLink="/signup">
-              <button type="button" id="signup-button" class="btn btn-outline-light" href="#">Sign up</button>
+              <button id="signup-button" class="nav-button" href="#">Sign up</button>
             </a>
           </li>
           <li *ngIf="!isLoggedIn" class="nav-item nav-buttons">
             <a routerLink="/login">
-              <button type="button" id="signin-button" class="btn btn-outline-light" href="#">Log in</button>
+              <button id="signin-button" class="nav-button" href="#">Log in</button>
             </a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link  dropdown-toggle" id="language" href="#" data-toggle="dropdown"
-               style="padding-top: 4px">{{selectedLanguage}}</a>
+               style="padding-top: 2px">{{selectedLanguage}}</a>
             <ul class="dropdown-menu dropdown-menu-right fade-down language">
               <div class="row">
                 <div class="col-sm-6">
@@ -83,7 +83,7 @@
           </li>
           <li *ngIf="isLoggedIn" class="nav-item dropdown">
             <a class="nav-link  dropdown-toggle" id="user" href="#" data-toggle="dropdown"
-               style="padding-top: 4px">User</a>
+               style="padding-top: 2px"><mdb-icon far icon="user-circle"></mdb-icon></a>
             <ul class="dropdown-menu dropdown-menu-right fade-down" style="">
               <li><a class="dropdown-item" href="javascript:void(0)"> Profile </a></li>
               <li><a class="dropdown-item" href="javascript:void(0)"> History </a></li>
