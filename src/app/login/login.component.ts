@@ -3,6 +3,7 @@ import {AuthService} from '../Services/auth.service';
 import {HttpClient} from '@angular/common/http';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import SJCL from 'sjcl';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   name;
   pass;
-  token;
+  response;
 
   loginUser() {
     const user = {
@@ -23,13 +24,14 @@ export class LoginComponent implements OnInit {
     console.log(user);
     this.http.post('http://127.0.0.1:5000/login', user).subscribe(
         res => {
-          this.token = res;
-          console.log(this.token);
-          localStorage.setItem('access_token', this.token.access_token);
-          console.log(localStorage.getItem('access_token'));
-          console.log('User has been logged in');
-          this.router.navigate(['/home']);
-          // window.location.reload();
+          this.response = res;
+          console.log(this.response);
+          if (this.response.message === 'Logged in as ' + this.name) {
+            localStorage.setItem('access_token', this.response.access_token);
+            console.log(localStorage.getItem('access_token'));
+            console.log('User has been logged in');
+            this.router.navigate(['/home']);
+          }
     });
 
   }

@@ -33,6 +33,7 @@ export class BuyCryptoComponent implements OnInit {
   fetchingMinMax = false;
   isServerError = false;
   isValidInputAmount = true;
+  tokenError: any = [];
 
   // ----- Method to change the exchange option to Fixed Rate ----- ////
 
@@ -262,9 +263,12 @@ export class BuyCryptoComponent implements OnInit {
       extraid: this.messageText,
       fixed: this.fixedRate,
     };
+    const authToken = localStorage.getItem('access_token');
+    console.log(authToken);
     const opts = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`
       })
     };
     console.log(buyData);
@@ -272,8 +276,15 @@ export class BuyCryptoComponent implements OnInit {
       .subscribe(
         (data: any) => {
           this.exchangeId = data;
+          this.tokenError = data;
+          console.log(data);
           if (this.exchangeId.id === -1) {
             this.exchangeError = 'Something went wrong... Please try again';
+            return;
+          }
+          if (this.tokenError.msg === 'blah blah blah') {
+            console.log('Token not found');
+            this.router.navigate(['/login']);
             return;
           }
           this.disableExchangeButton = false;
@@ -281,7 +292,14 @@ export class BuyCryptoComponent implements OnInit {
           this.router.navigate(['/exchange', this.exchangeId.id]);
         },
         (error) => {
-          this.isServerError = true;
+          if (error.status === 500) {
+            this.disableExchangeButton = false;
+            this.router.navigate(['/login']);
+            return;
+
+          }
+          console.log(error);
+          // this.isServerError = true;
         });
   }
 

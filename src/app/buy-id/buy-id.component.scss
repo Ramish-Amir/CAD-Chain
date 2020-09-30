@@ -10,6 +10,7 @@ $greencolor: rgba(92, 208, 95, 0.7);
   background-image: linear-gradient(to bottom, $bluecolor, $greencolor), url("/assets/blueSquareCube.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
+  min-height: 100vh;
   width: 100%;
   overflow: auto;
 }

@@ -12,6 +12,7 @@ export class FooterComponent implements OnInit {
   exchangeID;
   isValidId: any = [];
   validatingID = false;
+  tokenError: any = [];
 
   trackSwap() {
     if (this.exchangeID) {
@@ -26,7 +27,13 @@ export class FooterComponent implements OnInit {
           data => {
             console.log(data);
             this.isValidId = data;
+            this.tokenError = data;
             this.validatingID = false;
+            if (this.tokenError.msg === 'blah blah blah') {
+              console.log('Token not found');
+              this.router.navigate(['/login']);
+              return;
+            }
             if (this.isValidId.valid) {
               this.router.navigate(['/exchange', this.exchangeID]);
               this.exchangeID = '';

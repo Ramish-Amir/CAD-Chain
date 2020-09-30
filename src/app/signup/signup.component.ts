@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class SignupComponent implements OnInit {
   user;
   pass;
+  response;
 
   countries = ['United Kingdom', 'Pakistan', 'Canada', 'China', 'Korea',
     'Vietnam', 'Brazil', 'Russia', 'Albania', 'Algeria', 'Angola', 'Argentina',
@@ -40,8 +41,11 @@ export class SignupComponent implements OnInit {
     this.http.post('http://127.0.0.1:5000/registration', user).subscribe(
       res => {
         console.log(res);
-        console.log('User has been registered');
-        this.router.navigate(['/login']);
+        this.response = res;
+        if (this.response.message === 'user created') {
+          console.log('User has been registered');
+          this.router.navigate(['/login']);
+        }
       });
   }
 
