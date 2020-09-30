@@ -14,12 +14,12 @@ export class AuthService {
   logoutUser(user) {
   }
 
-  loggedIn() {
-    return !!localStorage.getItem('token');
+  isLoggedIn() {
+    return !!localStorage.getItem('access_token');
   }
 
   getToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('access_token');
   }
 
 

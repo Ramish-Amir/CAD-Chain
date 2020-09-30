@@ -9,7 +9,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  token;
   user;
   pass;
 
@@ -40,10 +39,7 @@ export class SignupComponent implements OnInit {
     console.log(user);
     this.http.post('http://127.0.0.1:5000/registration', user).subscribe(
       res => {
-        this.token = res;
-        console.log(this.token);
-        localStorage.setItem('access_token', this.token.access_token);
-        console.log(localStorage.getItem('access_token'));
+        console.log(res);
         console.log('User has been registered');
         this.router.navigate(['/login']);
       });

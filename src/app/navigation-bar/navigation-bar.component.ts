@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {AuthService} from '../Services/auth.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -9,7 +11,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class NavigationBarComponent implements OnInit {
 
   public selectedLanguage = 'English';
-  public isLoggedIn = !!localStorage.getItem('access_token');
+  public isLoggedIn;
 
   changeLanguage(newLanguage) {
     this.selectedLanguage = newLanguage;
@@ -31,11 +33,17 @@ export class NavigationBarComponent implements OnInit {
     });
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router: Router,
+              private authService: AuthService) {
   }
 
   ngOnInit(): void {
-    // this.isLoggedIn = !!localStorage.getItem('access_token');
+    this.router.events.subscribe(event => {
+      if (event.constructor.name === 'NavigationEnd') {
+        this.isLoggedIn = this.authService.isLoggedIn();
+      }
+    });
     console.log(this.isLoggedIn);
   }
 

@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
           console.log(localStorage.getItem('access_token'));
           console.log('User has been logged in');
           this.router.navigate(['/home']);
+          // window.location.reload();
     });
 
   }

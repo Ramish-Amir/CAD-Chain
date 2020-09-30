@@ -22,6 +22,7 @@ import {CountdownModule} from 'ngx-countdown';
 import {ErrorDialogComponent} from './error-dialog/error-dialog.component';
 import {AuthService} from './Services/auth.service';
 import {AuthGuard} from './Guards/auth.guard';
+import { HistoryComponent } from './history/history.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {AuthGuard} from './Guards/auth.guard';
     CarouselComponent,
     BuyCryptoComponent,
     BuyIdComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    HistoryComponent
   ],
   entryComponents: [
     LandingPageComponent,

@@ -8,7 +8,7 @@ import {AuthService} from '../Services/auth.service';
 export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
-    if (this.authService.loggedIn()) {
+    if (this.authService.isLoggedIn()) {
       console.log('Token has been found');
       return true;
     } else {
