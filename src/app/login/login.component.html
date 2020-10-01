@@ -25,6 +25,9 @@
               <span *ngIf="password.touched && password.invalid">Please enter your password</span>
             </div>
           </div>
+          <div *ngIf="invalidCredentials" class="login-response">
+            <span>Username or password is incorrect</span>
+          </div>
           <input [disabled]="loginForm.form.invalid" (click)="loginUser()" type="submit" class="fadeIn button" value="Login">
           <a class="underlineHover" routerLink="/">Forgot Password?</a>
 

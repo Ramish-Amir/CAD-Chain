@@ -53,7 +53,7 @@ a.dropdown-item {
   outline: none;
 }
 .fade-down {
-  background-color: rgba(28, 52, 108, 0.5);
+  background: rgba(57, 119, 153, 1);
 }
 li.nav-item {
   white-space: nowrap;
@@ -80,11 +80,11 @@ li.nav-item {
     top: 80%;
     transform: rotateX(-75deg);
     transform-origin: 0% 0%;
-    background-color: rgba(28, 52, 108, 0.7);
+    background-color: rgba(57, 119, 153, 0.8);
   }
   .navbar .dropdown-menu.fade-up {
     top: 180%;
-    background-color: rgba(28, 52, 108, 0.7);
+    background: rgba(57, 119, 153, 0.8);
   }
   .navbar .nav-item:hover .dropdown-menu {
     transition: .3s;
@@ -104,12 +104,12 @@ li.nav-item {
     border-radius: 5px;
     transform: scale(1.07);
     transition: 0.3s ease-in-out;
-    background-color: rgba(28, 52, 108, 0.7);
+    background-color: rgba(57, 119, 153, 1);
   }
   .language {
     width: 230px;
     margin-right: 15px;
-    background-color: rgba(28, 52, 108, 0.7);
+    background-color:rgba(57, 119, 153, 1);
   }
 }
 

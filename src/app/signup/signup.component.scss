@@ -155,24 +155,6 @@ input[type=text]:focus,input[type=email]:focus, input[type="password"]:focus{
 
 /* ANIMATIONS */
 
-/* Fade-in Animation */
-
-//@keyframes fadeIn {
-//  from {
-//    opacity:0;
-//  }
-//
-//  to {
-//    opacity:1;
-//  }
-//}
-
-//.fadeIn {
-//  opacity:1;
-//  animation: fadeIn ease-in 1s;
-//  animation-fill-mode: forwards;
-//  animation-duration: 1s;
-//}
 
 
 /* Fade-in Animation */
@@ -227,6 +209,28 @@ datalist option {
   text-align: center;
   display: block;
 }
+
+.signup-info {
+  text-align: center;
+  margin: auto;
+  padding: 0;
+  //font-size: 12px;
+  color: darkred;
+  animation: fade-in 1s ease-in-out;
+}
+
+/* Fade-in Animation */
+
+@keyframes fade-in {
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;
+  }
+}
+
 
 /////////  Mobile view  ////////////////
 @media screen and (max-width: 992px) {

@@ -1,1 +1,44 @@
-<p>history works!</p>
+<div class="history-background-container">
+  <div class="header">
+    <h2>Exchange History</h2>
+  </div>
+  <div class="history-content">
+    <div *ngFor="let exchange of response.exchanges, index as index" class="exchange-item">
+      <div class="serial-no">
+        <span>Serial no : {{index + 1}}</span>
+      </div>
+      <div class="id">{{exchange}}</div>
+    </div>
+
+<!--    <div (click)="displayExchangeInfo(exchangeID.value)" class="exchange-item">-->
+<!--      <div class="serial-no">-->
+<!--        <span>Serial no : 1</span>-->
+<!--      </div>-->
+<!--      <div class="id">-->
+<!--        <input #exchangeID disabled type="text" value="asadfkjhsakjd">-->
+<!--        <span >Exchange ID : asdfasdfasdfsagsd</span>-->
+<!--      </div>-->
+<!--      <div class="exchange-date">-->
+<!--        <span>Date : Oct 1, 2020</span>-->
+<!--      </div>-->
+<!--      <div class="exchange-time">-->
+<!--        <span>Time : 22:25</span>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div (click)="displayExchangeInfo(exchangeID.value)" class="exchange-item">-->
+<!--      <div class="serial-no">-->
+<!--        <span>Serial no : 1</span>-->
+<!--      </div>-->
+<!--      <div class="id">-->
+<!--        <input #exchangeID disabled type="text" value="shkjhfakjsdfhakjd">-->
+<!--        <span >Exchange ID : asdfasdfasdfsagsd</span>-->
+<!--      </div>-->
+<!--      <div class="exchange-date">-->
+<!--        <span>Date : Oct 1, 2020</span>-->
+<!--      </div>-->
+<!--      <div class="exchange-time">-->
+<!--        <span>Time : 22:25</span>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+</div>

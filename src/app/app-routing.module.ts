@@ -15,6 +15,6 @@ export const appRoutes: Routes = [
   { path: 'login' , component: LoginComponent},
   { path: 'signup' , component: SignupComponent},
   { path: 'exchange' , component: BuyCryptoComponent},
-  { path: 'exchange/:id', component: BuyIdComponent},
+  { path: 'exchange/:id', component: BuyIdComponent, canActivate: [AuthGuard]},
   { path: 'history', component: HistoryComponent, canActivate: [AuthGuard]}
 ];

@@ -15,20 +15,28 @@ export class LoginComponent implements OnInit {
   name;
   pass;
   response;
+  invalidCredentials = false;
 
   loginUser() {
     const user = {
       username: this.name,
       password: this.pass
     };
+    this.invalidCredentials = false;
     console.log(user);
     this.http.post('http://127.0.0.1:5000/login', user).subscribe(
         res => {
           this.response = res;
           console.log(this.response);
+          if (this.response.message === 'Wrong credentials') {
+            this.invalidCredentials = true;
+            return;
+          }
           if (this.response.message === 'Logged in as ' + this.name) {
             localStorage.setItem('access_token', this.response.access_token);
+            localStorage.setItem('username', this.response.username);
             console.log(localStorage.getItem('access_token'));
+            console.log(localStorage.getItem('username'));
             console.log('User has been logged in');
             this.router.navigate(['/home']);
           }

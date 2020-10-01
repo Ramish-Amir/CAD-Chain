@@ -25,9 +25,11 @@ export class NavigationBarComponent implements OnInit {
         Authorization: `Bearer ${authToken}`
       })
     };
-    this.http.post('http://127.0.0.1:5000/logout/access', data, opts).subscribe((res) => {
+    this.http.post('http://127.0.0.1:5000/logout/access', data, opts)
+      .subscribe((res) => {
       console.log(res);
       localStorage.removeItem('access_token');
+      localStorage.removeItem('username');
       console.log(localStorage.getItem('access_token'));
       this.isLoggedIn = false;
     });

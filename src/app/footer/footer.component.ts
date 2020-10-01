@@ -22,6 +22,12 @@ export class FooterComponent implements OnInit {
       };
       this.validatingID = true;
       this.isValidId.valid = true;
+      if (localStorage.getItem('access_token') === null) {
+        this.router.navigate(['/login']);
+        this.exchangeID = '';
+        this.validatingID = false;
+        return;
+      }
       this.http.post('http://127.0.0.1:5000/validateid', postId)
         .subscribe(
           data => {
@@ -29,11 +35,6 @@ export class FooterComponent implements OnInit {
             this.isValidId = data;
             this.tokenError = data;
             this.validatingID = false;
-            if (this.tokenError.msg === 'blah blah blah') {
-              console.log('Token not found');
-              this.router.navigate(['/login']);
-              return;
-            }
             if (this.isValidId.valid) {
               this.router.navigate(['/exchange', this.exchangeID]);
               this.exchangeID = '';

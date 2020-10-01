@@ -12,6 +12,7 @@ export class SignupComponent implements OnInit {
   user;
   pass;
   response;
+  userAlreadyExists = false;
 
   countries = ['United Kingdom', 'Pakistan', 'Canada', 'China', 'Korea',
     'Vietnam', 'Brazil', 'Russia', 'Albania', 'Algeria', 'Angola', 'Argentina',
@@ -37,11 +38,16 @@ export class SignupComponent implements OnInit {
       username: this.user,
       password: this.pass
     };
+    this.userAlreadyExists = false;
     console.log(user);
     this.http.post('http://127.0.0.1:5000/registration', user).subscribe(
       res => {
         console.log(res);
         this.response = res;
+        if (this.response.message === 'User ' + this.user + ' already exists') {
+          this.userAlreadyExists = true;
+          return;
+        }
         if (this.response.message === 'user created') {
           console.log('User has been registered');
           this.router.navigate(['/login']);

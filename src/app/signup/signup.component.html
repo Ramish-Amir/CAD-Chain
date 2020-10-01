@@ -70,6 +70,9 @@
               <span *ngIf="confirmPass.invalid && confirmPass.touched">Please confirm your password</span>
             </div>
           </div>
+          <div *ngIf="userAlreadyExists" class="signup-info">
+            <span>User already exists</span>
+          </div>
           <!--          <input [disabled]="signupForm.form.invalid" type="submit" class="fadeIn button" value="Sign Up">-->
           <input (click)="register()" type="submit" class="fadeIn button" value="Sign Up">
         </form>

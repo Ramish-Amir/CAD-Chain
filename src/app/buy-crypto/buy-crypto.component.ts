@@ -265,6 +265,12 @@ export class BuyCryptoComponent implements OnInit {
     };
     const authToken = localStorage.getItem('access_token');
     console.log(authToken);
+    if (authToken === null) {
+      console.log('Token not found');
+      this.disableExchangeButton = false;
+      this.router.navigate(['/login']);
+      return;
+    }
     const opts = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -290,17 +296,40 @@ export class BuyCryptoComponent implements OnInit {
           this.disableExchangeButton = false;
           this.sendAmount = '';
           this.router.navigate(['/exchange', this.exchangeId.id]);
+
+          // --- Adding exchange to user history --- //
+          this.addExchange(this.exchangeId.id, opts);
+
         },
         (error) => {
           if (error.status === 500) {
             this.disableExchangeButton = false;
             this.router.navigate(['/login']);
+            console.log(error);
             return;
 
           }
-          console.log(error);
-          // this.isServerError = true;
+
         });
+  }
+
+  addExchange(id, tokenHeader) {
+    const userName = localStorage.getItem('username');
+    const addExchangePostData = {
+      username: userName,
+      exchangeid: id
+    };
+    const addExchangeUrl = 'http://127.0.0.1:5000/addexchange';
+    this.http.post(addExchangeUrl, addExchangePostData, tokenHeader)
+      .subscribe(
+        res => {
+          console.log(res);
+          console.log('Exchange Data has been addes');
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
 
 
