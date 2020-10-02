@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {log} from 'util';
+import {SecurityService} from '../Services/security.service';
 
 @Component({
   selector: 'app-footer',
@@ -22,7 +23,7 @@ export class FooterComponent implements OnInit {
       };
       this.validatingID = true;
       this.isValidId.valid = true;
-      if (localStorage.getItem('access_token') === null) {
+      if (localStorage.getItem('encryptedData') === null) {
         this.router.navigate(['/login']);
         this.exchangeID = '';
         this.validatingID = false;
@@ -50,6 +51,7 @@ export class FooterComponent implements OnInit {
   }
 
   constructor(private router: Router,
+              private secureService: SecurityService,
               private http: HttpClient) {
   }
 

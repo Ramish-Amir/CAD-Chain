@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {SecurityService} from '../Services/security.service';
 
 @Component({
   selector: 'app-history',
@@ -15,10 +16,10 @@ export class HistoryComponent implements OnInit {
 
   getUserHistory() {
     this.fetchingData = true;
-    const authToken = localStorage.getItem('access_token');
+    const authToken = this.secureService.getToken();
     const getUserExchangeUrl = 'http://127.0.0.1:5000/getuserexchange';
     const getUserExchangePostData = {
-      username: (localStorage.getItem('username'))
+      username: this.secureService.getUsername()
     };
     const opts = {
       headers: new HttpHeaders({
@@ -62,7 +63,7 @@ export class HistoryComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private secureService: SecurityService) {
   }
 
   ngOnInit(): void {

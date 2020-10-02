@@ -23,6 +23,7 @@ import {ErrorDialogComponent} from './error-dialog/error-dialog.component';
 import {AuthService} from './Services/auth.service';
 import {AuthGuard} from './Guards/auth.guard';
 import { HistoryComponent } from './history/history.component';
+import {SecurityService} from './Services/security.service';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import { HistoryComponent } from './history/history.component';
     CountdownModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, SecurityService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

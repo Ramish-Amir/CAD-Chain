@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {interval} from 'rxjs';
+import {SecurityService} from '../Services/security.service';
 
 @Component({
   selector: 'app-buy-crypto',
@@ -263,7 +264,7 @@ export class BuyCryptoComponent implements OnInit {
       extraid: this.messageText,
       fixed: this.fixedRate,
     };
-    const authToken = localStorage.getItem('access_token');
+    const authToken = this.secureService.getToken();
     console.log(authToken);
     if (authToken === null) {
       console.log('Token not found');
@@ -325,7 +326,7 @@ export class BuyCryptoComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          console.log('Exchange Data has been addes');
+          console.log('Exchange Data has been added');
         },
         error => {
           console.log(error);
@@ -334,7 +335,7 @@ export class BuyCryptoComponent implements OnInit {
   }
 
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private secureService: SecurityService) {
     interval(30000).subscribe(x => {
       if (!this.isServerError) {
         this.convertTo(this.depositCurrency);

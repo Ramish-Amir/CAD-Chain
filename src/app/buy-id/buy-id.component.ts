@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CountdownModule} from 'ngx-countdown';
+import {SecurityService} from '../Services/security.service';
 
 @Component({
   selector: 'app-buy-id',
@@ -18,6 +19,7 @@ export class BuyIdComponent implements OnInit {
   tokenError: any = [];
 
   constructor(private route: ActivatedRoute,
+              private secureService: SecurityService,
               private http: HttpClient,
               private router: Router) {
     this.screenWidth = window.innerWidth;
@@ -30,7 +32,8 @@ export class BuyIdComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const authToken = localStorage.getItem('access_token');
+    console.log();
+    const authToken = this.secureService.getToken();
     // if (authToken === null) {
     //   authToken = 'slkdjsldkfj';
     // }
