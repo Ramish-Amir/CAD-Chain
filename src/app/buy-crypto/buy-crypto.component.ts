@@ -286,6 +286,7 @@ export class BuyCryptoComponent implements OnInit {
           console.log(data);
           if (this.exchangeId.id === -1) {
             this.exchangeError = 'Something went wrong... Please try again';
+            this.disableExchangeButton = false;
             return;
           }
           if (this.tokenError.msg === 'blah blah blah') {

@@ -15,16 +15,21 @@
   color: rgb(128, 128, 128);
 }
 
+.preload-spinner {
+  margin: auto;
+  text-align: center;
+}
+
 .exchange-item {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   text-align: left;
-  //flex-wrap: wrap;
+  flex-wrap: wrap;
   border-radius: 10px;
   border: 1px solid rgba(57, 119, 153, 0.5);
   padding: 5px 10px;
-  margin: 30px 0;
+  margin: 10px 0;
   transition: 0.5s;
   background: rgba(57, 119, 153, 0.1);
   cursor: pointer;
@@ -32,11 +37,67 @@
 
 .exchange-item:hover {
   transition: 0.5s;
-  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+  background: rgba(57, 119, 153, 0.3);
 }
 
-input {
-  border: none;
-  background: none;
+.exchange-item:focus {
   outline: none;
+}
+
+.labels-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: left;
+  border-radius: 10px;
+  border: 1px solid rgba(57, 119, 153, 0.5);
+  padding: 5px 10px;
+  margin: 30px 0;
+  transition: 0.5s;
+  background: rgba(57, 119, 153, 0.3);
+
+}
+
+.label {
+  text-align: center;
+  width: 20%;
+}
+
+.label span {
+  color: rgba(57, 119, 153, 1);
+}
+
+.id-label, .status-label, .date-label, .from-label {
+  border-right: 1px solid rgba(57, 119, 153, 0.5);
+}
+
+.value {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  //text-align: center;
+  //vertical-align: center;
+  padding: 5px;
+  width: 20%;
+}
+
+.value:focus {
+  outline: none;
+}
+
+.value span {
+  font-size: 13px;
+}
+
+.id-value, .status-value, .date-value, .from-value {
+  border-right: 1px solid rgba(57, 119, 153, 0.5);
+}
+
+.status-value {
+  text-transform: capitalize;
+}
+
+.from-value, .to-value {
+  text-transform: uppercase;
 }
