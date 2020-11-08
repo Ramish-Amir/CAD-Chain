@@ -28,6 +28,9 @@
           <div *ngIf="invalidCredentials" class="login-response">
             <span>Username or password is incorrect</span>
           </div>
+          <div *ngIf="userNotFound" class="login-response">
+            <span>User does not exist. Please create account first.</span>
+          </div>
           <input [disabled]="loginForm.form.invalid" (click)="loginUser()" type="submit" class="fadeIn button" value="Login">
           <a class="underlineHover" routerLink="/">Forgot Password?</a>
 

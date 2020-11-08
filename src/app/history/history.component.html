@@ -25,17 +25,21 @@
     <img src="assets/blue-spinner.svg">
   </div>
 
+  <div *ngIf="noExchangeData" class="history-content">
+    <div class="exchange-item">No Exchange data found</div>
+  </div>
+
   <div *ngIf="!fetchingData && exchangeDetails" class="history-content">
 
     <div *ngFor="let exchange of exchangeDetails, index as index" class="exchange-item">
-      <div *ngIf="exchange.id && exchange.id !== null" routerLink='/exchange/{{exchange.id}}' class="id-value value">
+      <div *ngIf="exchange && exchange.id && exchange.id !== null" routerLink='/exchange/{{exchange.id}}' class="id-value value">
         <span>{{exchange.id}}</span>
       </div>
       <div routerLink='/exchange/{{exchange.id}}' class="status-value value">
         <span>{{exchange.status}}</span>
       </div>
       <div routerLink='/exchange/{{exchange.id}}' class="date-value value">
-        <span>{{exchange.timestamp}}</span>
+        <span>{{exchange.timestamp | date:'fullDate'}}</span>
       </div>
       <div routerLink='/exchange/{{exchange.id}}' class="from-value value">
         <span>{{exchange.amount_from }} {{exchange.currency_from}}</span>

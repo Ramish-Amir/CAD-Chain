@@ -316,7 +316,7 @@ export class BuyCryptoComponent implements OnInit {
   }
 
   addExchange(id, tokenHeader) {
-    const userName = localStorage.getItem('username');
+    const userName = this.secureService.getUsername();
     const addExchangePostData = {
       username: userName,
       exchangeid: id

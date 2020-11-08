@@ -19,7 +19,7 @@ export class NavigationBarComponent implements OnInit {
   }
 
   logout() {
-    const authToken = this.secureService.getDecryptedData().access_token;
+    const authToken = this.secureService.getToken();
     const data = {};
     const opts = {
       headers: new HttpHeaders({

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   pass;
   response;
   invalidCredentials = false;
+  userNotFound = false;
 
   loginUser() {
     const user = {
@@ -31,6 +32,10 @@ export class LoginComponent implements OnInit {
         console.log(this.response);
         if (this.response.message === 'Wrong credentials') {
           this.invalidCredentials = true;
+          return;
+        }
+        if (this.response.message === 'User doesn\'t exist') {
+          this.userNotFound = true;
           return;
         }
         if (this.response.message === 'Logged in as ' + this.name) {

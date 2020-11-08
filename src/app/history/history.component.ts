@@ -11,6 +11,7 @@ export class HistoryComponent implements OnInit {
 
   response: any = [];
   exchangeDetails: any = [];
+  noExchangeData = false;
   fetchingData = true;
 
 
@@ -34,7 +35,14 @@ export class HistoryComponent implements OnInit {
           this.response = res;
           console.log(this.response);
 
-          for (let i = 1; i <= this.response.exchanges.length ; i++) {
+          if (!this.response.exchanges.length) {
+            this.noExchangeData = true;
+            console.log('Array: ' + this.response.exchanges);
+            this.fetchingData = false;
+            return;
+          }
+
+          for (let i = 1; i <= this.response.exchanges.length; i++) {
             this.getExchangeData(this.response.exchanges[i - 1], i - 1, opts);
           }
         },
@@ -52,12 +60,19 @@ export class HistoryComponent implements OnInit {
           // console.log(data);
           this.exchangeDetails[index] = data;
           console.log(this.exchangeDetails[index]);
+          // this.fetchingData = false;
           if (index === this.response.exchanges.length - 1) {
-            this.fetchingData = false;
+            setTimeout(() => {
+              this.fetchingData = false;
+            }, 1000);
+            // this.fetchingData = false;
           }
         },
         error => {
+          this.noExchangeData = true;
+          this.fetchingData = false;
           console.log(error);
+          return;
         }
       );
   }
