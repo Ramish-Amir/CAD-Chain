@@ -11,12 +11,12 @@ img {
   transition: 0.3s;
 }
 
-img:hover, img:focus, img:active {
-  display: inline-block;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  transform: scale(1.1);
-  transition: 0.5s;
-}
+//img:hover, img:focus, img:active {
+//  display: inline-block;
+//  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+//  transform: scale(1.1);
+//  transition: 0.5s;
+//}
 i.fa {
   color: $bluecolor;
   padding: 8px 6px 8px 10px;
@@ -29,4 +29,53 @@ i.fa:hover {
   background-image: linear-gradient($bluecolor, $greencolor);
   color: #ffffff;
   transition: 0.3s;
+}
+
+.tiles-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/assets/eco.jpg");
+  background-size: cover;
+  width: 32%;
+  height: 120px;
+  border-radius: 5px;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.tile:hover {
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transform: scale(1.05);
+  border-radius: 5px;
+  transition: 0.5s;
+}
+
+.tile-img {
+  width: 100%;
+  border-radius: 5px;
+
+}
+
+.tile-heading {
+  color: white;
+  font-size: 20px;
+}
+
+.carousel-button-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: lightblue;
+  border-radius: 50%;
+  color: white;
 }

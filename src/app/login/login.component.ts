@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
           this.invalidCredentials = true;
           return;
         }
-        if (this.response.message === 'User doesn\'t exist') {
+        if (this.response.message === 'User ' + this.name + ' doesn\'t exist') {
           this.userNotFound = true;
           return;
         }

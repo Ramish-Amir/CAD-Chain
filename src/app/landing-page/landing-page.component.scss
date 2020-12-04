@@ -212,7 +212,15 @@ div.widgets-wrap {
 }
 
 div.widgets-wrap::-webkit-scrollbar {
-  display: none;
+  border-radius: 10px;
+  background: rgba(57, 119, 153, 0.1);
+  height: 10px;
+  transition: 0.5s;
+}
+
+div.widgets-wrap::-webkit-scrollbar-thumb {
+  background: rgba(57, 119, 153, 0.4);
+  border-radius: 10px;
 }
 
 div.widget {
@@ -224,6 +232,12 @@ div.widget {
   height: 300px;
   overflow: hidden;
   border: none;
+}
+
+.widget span {
+  font-size: 25px;
+  margin: 25px auto;
+
 }
 
 

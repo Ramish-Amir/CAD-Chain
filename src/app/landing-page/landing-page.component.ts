@@ -7,8 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class LandingPageComponent implements OnInit {
-  public cryptoAssets = '240';
-  public tradingVolume = 23847534383;
+  public cryptoAssets = '-';
+  public tradingVolume = '-';
   public getAmount;
   sendAmount;
 
